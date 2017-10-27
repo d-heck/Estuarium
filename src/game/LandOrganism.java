@@ -1,34 +1,35 @@
 package game;
 
-/* 
- * Parent Class of LandOranism, PlantBasedOrganism, and AquaticOrganisms
- * A default type of organism.
- */
-
-public class Organism {
-	
+public class LandOrganism extends Organism{
 	//Variables
 	private boolean doesBelong = false;
 	boolean canSwim = false;
 	boolean canWalk = false;
 	String name;
+	String toString;
 	
-	//Contructors
-	public Organism() {
+	//Constructor
+	public LandOrganism() {
 		doesBelong = false;
-		canWalk = false;
 		canSwim = false;
-		name = "Organism";
-	}//Organism
+		canWalk = true;	
+		name = "Land Organism.";
+	}
 	
-	public Organism(boolean X) {
-		doesBelong = X;
-	}//Organism
-	
-	public Organism(String Name, boolean X) {
+	//Overloaded Constructors
+	public LandOrganism(String Name, Boolean x) {
+		doesBelong = x;
+		canSwim = false;
+		canWalk = true;
 		name = Name;
-		doesBelong = X;
-	}//Organism
+	}
+	
+	public LandOrganism(Boolean x) {
+		doesBelong = x;
+		canSwim = false;
+		canWalk = true;	
+		name = "Land Organism.";
+	}
 	
 	//Getters + Setters
 	public boolean isDoesBelong() {
@@ -47,11 +48,11 @@ public class Organism {
 		this.canSwim = canSwim;
 	}
 
-	public boolean isCanWalk() {
+	public boolean iscanWalk() {
 		return canWalk;
 	}
 
-	public void setCanWalk(boolean canWalk) {
+	public void setcanWalk(boolean canWalk) {
 		this.canWalk = canWalk;
 	}
 
@@ -63,14 +64,14 @@ public class Organism {
 		this.name = name;
 	}
 	
+	
+	
 	//toString
 	public String toString() {
-		if(doesBelong = true) {
-			return "This Organism belongs in the estuary!";
-		}//if
-		else {
-			return "This Organism does not belong in the estuary!";
-		}//else
+		return toString;
 	}//toString
 	
-}//Class Organism
+	public void setToString(String x) {
+		toString = x;
+	}
+}
