@@ -1,0 +1,31 @@
+[Next Entry Here]
+-------------------------------------
+David 10/27/17 12:44 PM
+
+- Added Organism Class
+	- Added AquaticOrganism (Subclass of Organism)
+		- canSwim = true
+		- canWalk = false
+	- Added LandOrganism (Subclass of Organism)
+		- canSwim = false
+		- canWalk = true
+	- Added PlantBasedAnimal (Subclass of Organism)
+		- canSwim = false
+		- canSwim = true
+	Purpose:
+		The Organism class is broken into three subclasses which can be used
+		to differentiated between the types of organisms being used.
+		
+		This was done in order to help with the placement and management
+		of organisms in the view class later on.
+
+- Added Level Class
+	Purpose:
+		Basically the brains of the model.
+		Can generate a list of organisms that we use in the level.
+		Can also play the level. AKA run the game instance in that level.
+
+- Changed Model Class
+	Purpose:
+		Just runs the game w/o the need of a view. Not really super important.
+		Not sure if this class will actually be used in the future or not.
