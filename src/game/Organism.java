@@ -25,9 +25,9 @@ public class Organism {
 		doesBelong = X;
 	}//Organism
 	
-	public Organism(String Name, boolean X) {
+	public Organism(String Name, boolean Belongs) {
 		name = Name;
-		doesBelong = X;
+		doesBelong = Belongs;
 	}//Organism
 	
 	//Getters + Setters
