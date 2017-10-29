@@ -1,12 +1,12 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SaltMarshLevel extends Level{
 	
 	ArrayList<Organism> acceptedOrganisms; //Holds Organisms with doesBelong = true;
 	ArrayList<Organism> unacceptedOrganisms; //Holds Organisms with doesBelong = false;
-	ArrayList<Organism> organismList;
 	
 	//Constructor
 	public SaltMarshLevel(){
@@ -34,6 +34,11 @@ public class SaltMarshLevel extends Level{
 		unacceptedOrganisms.add(new LandOrganism("Green Crab",false));
 	}//createUnacceptedList
 	
+	public void createOrganismList(){
+		organismList.addAll(acceptedOrganisms);
+		organismList.addAll(unacceptedOrganisms);
+		Collections.shuffle(organismList);
+	}
 	
 
 }
