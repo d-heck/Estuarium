@@ -31,6 +31,12 @@ public class Organism {
 		doesBelong = Belongs;
 	}//Organism
 	
+	public Organism(String Name, boolean Belongs, String File) {
+		name = Name;
+		doesBelong = Belongs;
+		filepath = File;
+	}
+	
 	//Getters + Setters
 	public boolean isDoesBelong() {
 		return doesBelong;

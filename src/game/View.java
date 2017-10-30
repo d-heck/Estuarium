@@ -2,6 +2,7 @@ package game;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -9,6 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -18,9 +20,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JInternalFrame;
 
 public class View extends JFrame implements ActionListener, MouseMotionListener {
-	
 	
 	//Dimensions
 	final static int frameWidth = 1280;
@@ -29,20 +31,16 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
-		
 	}
 	// TODO: View Class
 	
@@ -70,7 +68,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			}
         	
         });
-        JLabel l1 = new JLabel("Click here to play!"); 
+        JLabel l1 = new JLabel("Click here to play!");
         
         p.add(b1);
         p.add(l1);
@@ -88,7 +86,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
     public void LoadLevel(Level L) {
     	//TODO: This method should "play" the level.
     	//Variables
-    	ImageIcon image;
+    	BufferedImage cardImg = null;
     	
     	//Pre Load List
     	L.createOrganismList();
@@ -97,39 +95,124 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
         JFrame frame = new JFrame("Estuarium");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        //Create Panel
+        JPanel p = new JPanel(new GridBagLayout());
+        //GridBagConstraints settings = new GridBagConstraints();
+        
+        JPanel backgroundPanel = new JPanel(new GridBagLayout());
+        backgroundPanel.setBackground(new Color(0,0,0,0));
+        
+        backgroundPanel.setSize(frameWidth, frameHeight);
+        
+              
         try {
             frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.background)))));
         } catch (IOException e) {
             e.printStackTrace();
         }
         
-        /*
-         * Was trying to add the organisms on cards here.
+        
+      
+        
+         /*
         //Show Each Organism
         for(int i = 0; i < L.organismList.size(); i++) {
-        	image = new ImageIcon(L.organismList.get(i).getFilePath());
+			try {
+				cardImg = ImageIO.read(new File(L.organismList.get(i).getFilePath()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        	JLabel picLabel = new JLabel(new ImageIcon(cardImg));
+        	card.add(picLabel);
         	
-        	
-        }
-        */
-        
-        JPanel p = new JPanel(new GridBagLayout());
-        p.setSize(frameWidth, frameHeight);
-        
+        	JButton yes = new JButton("Yes");
+        	//Yes Listener
+            yes.addActionListener(new ActionListener() {
 
+    			@Override
+    			public void actionPerformed(ActionEvent arg0) {
+    				System.out.print(L.organismList.get(i).toString());		
+    			}
+            	
+            });
+            
+        	JButton no = new JButton("No");
+            no.addActionListener(new ActionListener() {
+
+     			@Override
+     			public void actionPerformed(ActionEvent arg0) {
+     				System.out.print(L.organismList.get(i).toString());		
+     			}
+             	
+             });
+            
+        	card.add(yes);
+        	card.add(no);
+        }
+       
+      	*/
+        
+        
+        //Create Buttons For Card
+    	JButton bYes = new JButton("YES");
+    	JButton bNo = new JButton("NO");
+    	
+    	bYes.setSize(800, 800);
+    	bNo.setSize(800, 800);
+    	
+    	//Button Functionality          
+    	bYes.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.print(L.organismList.get(1).toString());		
+			}	
+        });
+    	
+    	bNo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.print(L.organismList.get(1).toString());		
+			}	
+        });
+    	
+    	
+    	//Get Image From Organism
+		try {
+			cardImg = ImageIO.read(new File(L.organismList.get(1).getFilePath()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		//Organism Image
+    	JLabel picLabel = new JLabel(new ImageIcon(cardImg));
+    	
+    	picLabel.setSize(800,800);
+    	
+    	//Set Up Panel
+    	p.add(picLabel);
+    	p.add(bYes); 
+    	p.add(bNo);
+    	p.setSize(400, 400);
+    	
+    	
+    	//Set Up Frame
+    	backgroundPanel.add(p);
+        //frame.add(p, BorderLayout.CENTER);
+    	frame.add(backgroundPanel);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(frameWidth, frameHeight);
-        
-    	
+        frame.setSize(frameWidth, frameHeight);    
+
     }
     public View() {
     	createAndShowGUI();
     }
     
+    public void createCard() {
+    	//MyInternalFrame frame = new MyInternalFrame();
+    }
+    
 	public static void main(String[] Args) {
-		JPanel Menu = new JPanel();
-
 		View view = new View();
 	}
 }

@@ -32,6 +32,12 @@ public class LandOrganism extends Organism{
 		name = "Land Organism.";
 	}
 	
+	public LandOrganism(String Name, boolean Belongs, String File) {
+		name = Name;
+		doesBelong = Belongs;
+		filepath = File;
+	}
+	
 	//Getters + Setters
 	public boolean isDoesBelong() {
 		return doesBelong;

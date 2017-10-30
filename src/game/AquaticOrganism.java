@@ -31,6 +31,12 @@ public class AquaticOrganism extends Organism {
 			canWalk = false;	
 			name = "Aquatic Organism.";
 		}
+	
+	public AquaticOrganism(String Name, boolean Belongs, String File) {
+		name = Name;
+		doesBelong = Belongs;
+		filepath = File;
+	}
 
 	// Getters + Setters
 	public boolean isDoesBelong() {
