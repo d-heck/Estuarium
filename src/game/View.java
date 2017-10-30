@@ -23,8 +23,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	
 	
 	//Dimensions
-	final static int frameWidth = 720;
-	final static int frameHeight = 1080;
+	final static int frameWidth = 1280;
+	final static int frameHeight = 760;
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -79,7 +79,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
         frame.add(p);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(frameHeight, frameWidth);
+        frame.setSize(frameWidth, frameHeight);
         
     }
     
@@ -119,7 +119,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(frameHeight, frameWidth);
+        frame.setSize(frameWidth, frameHeight);
         
     	
     }
@@ -129,13 +129,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
     
 	public static void main(String[] Args) {
 		JPanel Menu = new JPanel();
-<<<<<<< HEAD
-		//createAndShowGUI();
+
 		View view = new View();
-		//view.createAndShowGUI();
-=======
-		createAndShowGUI(); //This is what is currently running
-	
->>>>>>> 33b71d4b6a1e22e39363a074f23b6a282bb42a73
 	}
 }
