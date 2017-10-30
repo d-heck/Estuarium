@@ -12,6 +12,7 @@ public class Organism {
 	boolean canSwim = false;
 	boolean canWalk = false;
 	String name;
+	String filepath;
 	
 	//Contructors
 	public Organism() {
@@ -62,6 +63,15 @@ public class Organism {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String getFilePath() {
+		return filepath;
+	}
+
+	public void setFilePath(String filepath) {
+		this.filepath = filepath;
+	}
+	
 	
 	//toString
 	public String toString() {

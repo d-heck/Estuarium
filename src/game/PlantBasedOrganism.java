@@ -8,6 +8,7 @@ public class PlantBasedOrganism extends Organism{
 	final boolean canWalk = false;
 	String name;
 	String toString;
+	String filepath;
 	
 	//Constructor
 	public PlantBasedOrganism() {
@@ -41,6 +42,14 @@ public class PlantBasedOrganism extends Organism{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getFilePath() {
+		return filepath;
+	}
+
+	public void setFilePath(String filepath) {
+		this.filepath = filepath;
 	}
 	
 	//toString

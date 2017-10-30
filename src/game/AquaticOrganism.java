@@ -7,6 +7,7 @@ public class AquaticOrganism extends Organism {
 	boolean canWalk = false;
 	String name;
 	String toString;
+	String filepath;
 
 	// Constructor
 	public AquaticOrganism() {
@@ -64,6 +65,13 @@ public class AquaticOrganism extends Organism {
 		this.name = name;
 	}
 
+	public String getFilePath() {
+		return filepath;
+	}
+
+	public void setFilePath(String filepath) {
+		this.filepath = filepath;
+	}
 	
 	//toString
 	public String toString() {

@@ -21,6 +21,7 @@ public class Level {
 	//Variables
 	ArrayList<Organism> organismList = new ArrayList<Organism>();
 	String name;
+	String background = "resources/images/Background.png";
 	
 	//Constuctor
 	public Level() {

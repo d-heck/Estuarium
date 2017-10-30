@@ -2,6 +2,10 @@ package game;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -21,7 +25,7 @@ public class View extends JPanel implements ActionListener, MouseMotionListener 
 	//Dimensions
 	final static int frameWidth = 720;
 	final static int frameHeight = 1080;
-	
+
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -41,7 +45,8 @@ public class View extends JPanel implements ActionListener, MouseMotionListener 
 	}
 	// TODO: View Class
 	
-    private static void createAndShowGUI() {
+	//Load Main Menu, Launch Level on Play
+    private void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("Estuarium");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,6 +58,17 @@ public class View extends JPanel implements ActionListener, MouseMotionListener 
         
         //Add Button + Label
         JButton b1 = new JButton("Play");
+        
+        //Play Button
+        b1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				LoadLevel(new Level());		
+			}
+        	
+        });
         JLabel l1 = new JLabel("Click here to play!"); 
         
         p.add(b1);
@@ -66,9 +82,54 @@ public class View extends JPanel implements ActionListener, MouseMotionListener 
         
     }
     
+    //Loads a Level to play, initializes organism list and loads BG image
+
+    public void LoadLevel(Level L) {
+    	//TODO: This method should "play" the level.
+    	//Variables
+    	ImageIcon image;
+    	
+    	//Pre Load List
+    	L.createOrganismList();
+    	
+    	//Create and set up the window.
+        JFrame frame = new JFrame("Estuarium");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        try {
+            frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.background)))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        /*
+         * Was trying to add the organisms on cards here.
+        //Show Each Organism
+        for(int i = 0; i < L.organismList.size(); i++) {
+        	image = new ImageIcon(L.organismList.get(i).getFilePath());
+        	
+        	
+        }
+        */
+        
+        JPanel p = new JPanel(new GridBagLayout());
+        p.setSize(frameWidth, frameHeight);
+        
+
+        frame.pack();
+        frame.setVisible(true);
+        frame.setSize(frameHeight, frameWidth);
+        
+    	
+    }
+    public View() {
+    	createAndShowGUI();
+    }
+    
 	public static void main(String[] Args) {
 		JPanel Menu = new JPanel();
-		createAndShowGUI();
-	
+		//createAndShowGUI();
+		View view = new View();
+		//view.createAndShowGUI();
 	}
 }
