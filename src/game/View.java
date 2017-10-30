@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-public class View extends JPanel implements ActionListener, MouseMotionListener {
+public class View extends JFrame implements ActionListener, MouseMotionListener {
 	
 	
 	//Dimensions
@@ -37,6 +37,7 @@ public class View extends JPanel implements ActionListener, MouseMotionListener 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		
 		
 	}
 	// TODO: View Class
@@ -68,7 +69,7 @@ public class View extends JPanel implements ActionListener, MouseMotionListener 
     
 	public static void main(String[] Args) {
 		JPanel Menu = new JPanel();
-		createAndShowGUI();
+		createAndShowGUI(); //This is what is currently running
 	
 	}
 }
