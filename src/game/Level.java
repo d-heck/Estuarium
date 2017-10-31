@@ -18,29 +18,31 @@ public class Level {
 	 * 		- May want to use this as a superclass and every actual level as a subclass.
 	 */
 	
-	//Variables
 	ArrayList<Organism> organismList = new ArrayList<Organism>();
 	String name;
 	String background = "resources/images/Background.png";
+	ArrayList<Organism> acceptedOrganisms; //Holds Organisms with doesBelong = true;
+	ArrayList<Organism> unacceptedOrganisms; //Holds Organisms with doesBelong = false;
 	
 	//Constuctor
 	public Level() {
+		createOrganismList();
 	}
 	
 	//Create list of all organisms for particular level
-	public void createOrganismList() {
+	private void createOrganismList() {
 		//Manually code in every organism we desire for a level.
 		//exs)
-		LandOrganism Example1 = new LandOrganism("Jerald", false, "resources/images/crab.png");
+		Organism Example1 = new Organism("Jerald", false, "resources/images/crab.png");
 		Example1.setToString("This is Jerald's toString, he doesn't belong.");
 		organismList.add(Example1);
 		
-		AquaticOrganism Example2 = new AquaticOrganism("Fish Boi", true, "resources/images/fish.png");
+		Organism Example2 = new Organism("Fish Boi", true, "resources/images/fish.png");
 		Example2.setToString("This is Fish Boi's toString, he belongs.");
 		organismList.add(Example2);
 		
 		
-		PlantBasedOrganism Example3 = new PlantBasedOrganism("Planter", true, "resources/images/kelp.png");
+		Organism Example3 = new Organism("Planter", true, "resources/images/kelp.png");
 		Example3.setToString("This is Planter's toString, he belongs.");
 		organismList.add(Example3);
 		

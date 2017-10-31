@@ -17,24 +17,24 @@ public class SaltMarshLevel extends Level{
 	
 	
 	private void createAcceptedList(){
-		acceptedOrganisms.add(new LandOrganism("Muskrat",true));
-		acceptedOrganisms.add(new AquaticOrganism("Ribbed Mussel", true));
-		acceptedOrganisms.add(new AquaticOrganism("Whelk", true));
-		acceptedOrganisms.add(new LandOrganism("Fiddler Crab", true));
-		acceptedOrganisms.add(new LandOrganism("Great Blue Heron",true));
-		acceptedOrganisms.add(new PlantBasedOrganism("Cordgrass",true));
+		acceptedOrganisms.add(new Organism("Muskrat",true));
+		acceptedOrganisms.add(new Organism("Ribbed Mussel", true));
+		acceptedOrganisms.add(new Organism("Whelk", true));
+		acceptedOrganisms.add(new Organism("Fiddler Crab", true));
+		acceptedOrganisms.add(new Organism("Great Blue Heron",true));
+		acceptedOrganisms.add(new Organism("Cordgrass",true));
 	}//createAcceptedList
 	
 	private void createUnacceptedList(){
-		unacceptedOrganisms.add(new PlantBasedOrganism("Phragmites Reed",false));
-		unacceptedOrganisms.add(new AquaticOrganism("Anglerfish",false));
-		unacceptedOrganisms.add(new LandOrganism("Lynx",false));
-		unacceptedOrganisms.add(new PlantBasedOrganism("Purple Loosestrife",false));
-		unacceptedOrganisms.add(new PlantBasedOrganism("Narrow-Leaf Cattail",false));
-		unacceptedOrganisms.add(new LandOrganism("Green Crab",false));
+		unacceptedOrganisms.add(new Organism("Phragmites Reed",false));
+		unacceptedOrganisms.add(new Organism("Anglerfish",false));
+		unacceptedOrganisms.add(new Organism("Lynx",false));
+		unacceptedOrganisms.add(new Organism("Purple Loosestrife",false));
+		unacceptedOrganisms.add(new Organism("Narrow-Leaf Cattail",false));
+		unacceptedOrganisms.add(new Organism("Green Crab",false));
 	}//createUnacceptedList
 	
-	public void createOrganismList(){
+	private void createOrganismList(){
 		organismList.addAll(acceptedOrganisms);
 		organismList.addAll(unacceptedOrganisms);
 		Collections.shuffle(organismList);

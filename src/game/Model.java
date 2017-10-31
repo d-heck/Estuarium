@@ -9,7 +9,6 @@ public class Model {
 	 */
 	public static void main(String[] Args) {
 		Level x = new Level();
-		x.createOrganismList();
 		x.play();
 	}
 }//Model
