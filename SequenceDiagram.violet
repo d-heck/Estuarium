@@ -506,7 +506,11 @@
    <object idref="CallNode4"/>
   </void>
   <void method="connect">
-   <object class="com.horstmann.violet.ReturnEdge"/>
+   <object class="com.horstmann.violet.ReturnEdge">
+    <void property="middleLabel">
+     <string>Level L</string>
+    </void>
+   </object>
    <object idref="CallNode4"/>
    <object idref="CallNode2"/>
   </void>
