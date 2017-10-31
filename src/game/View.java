@@ -175,7 +175,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
     	crabPanel.setLocation(200, 350);
     	crabPanel.setVisible(false);
     	crabPanel.setSize(400,400);
-    	
     	//End set up Crab Panel
     	
     	//Set up Kelp Panel
@@ -273,8 +272,4 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
     public View() {
     	MainMenu();
     }
-    
-	public static void main(String[] Args) {
-		View view = new View();
-	}
 }

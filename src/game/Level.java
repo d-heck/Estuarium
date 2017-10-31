@@ -67,9 +67,12 @@ public class Level {
 			}
 			
 			if(organismList.get(i).isDoesBelong() == Answer) {
+				System.out.println(organismList.get(i));
 				System.out.println("Very Good!");
+				
 			}
 			else {
+				System.out.println(organismList.get(i));
 				System.out.println("Wrong!");
 			}
 
