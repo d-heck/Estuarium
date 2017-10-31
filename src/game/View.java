@@ -92,9 +92,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
     	BufferedImage crabImg = null;
     	BufferedImage kelpImg = null;
     	
-    	//Pre Load List
-    	L.createOrganismList();
-    	
     	//Create and set up the window.
         JFrame frame = new JFrame("Estuarium");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

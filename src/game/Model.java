@@ -7,9 +7,11 @@ public class Model {
 	 *  		- Should ask the player if organism belongs or not.
 	 *  		- Should cycle through every organism in the level list.
 	 */
+	
+	
+	
 	public static void main(String[] Args) {
 		Level x = new Level();
-		x.createOrganismList();
 		x.play();
 	}
 }//Model

@@ -8,17 +8,16 @@ package game;
 public class Organism {
 	
 	//Variables
-	private boolean doesBelong = false;
-	boolean canSwim = false;
-	boolean canWalk = false;
+	boolean doesBelong = false;
 	String name;
 	String filepath;
+	String purpose;
+	int xloc;
+	int yloc;
 	
 	//Contructors
 	public Organism() {
 		doesBelong = false;
-		canWalk = false;
-		canSwim = false;
 		name = "Organism";
 	}//Organism
 	
@@ -46,22 +45,6 @@ public class Organism {
 		this.doesBelong = doesBelong;
 	}
 
-	public boolean isCanSwim() {
-		return canSwim;
-	}
-
-	public void setCanSwim(boolean canSwim) {
-		this.canSwim = canSwim;
-	}
-
-	public boolean isCanWalk() {
-		return canWalk;
-	}
-
-	public void setCanWalk(boolean canWalk) {
-		this.canWalk = canWalk;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -70,6 +53,15 @@ public class Organism {
 		this.name = name;
 	}
 	
+	
+	public int getXloc() {
+		return xloc;
+	}
+
+	public int getYloc() {
+		return yloc;
+	}
+
 	public String getFilePath() {
 		return filepath;
 	}
@@ -79,14 +71,12 @@ public class Organism {
 	}
 	
 	
-	//toString
-	public String toString() {
-		if(doesBelong = true) {
-			return "This Organism belongs in the estuary! \n";
-		}//if
-		else {
-			return "This Organism does not belong in the estuary! \n";
-		}//else
-	}//toString
+	public void setToString(String X){
+		purpose = X;
+	}
+	
+	public String toString(){
+		return purpose;
+	}
 	
 }//Class Organism
