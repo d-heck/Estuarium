@@ -28,6 +28,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	//Dimensions
 	final static int frameWidth = 1280;
 	final static int frameHeight = 760;
+	int picture = 1;
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -87,7 +88,9 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
     public void LoadLevel(Level L) {
     	//TODO: This method should "play" the level.
     	//Variables
-    	BufferedImage cardImg = null;
+    	BufferedImage fishImg = null;
+    	BufferedImage crabImg = null;
+    	BufferedImage kelpImg = null;
     	
     	//Pre Load List
     	L.createOrganismList();
@@ -101,17 +104,17 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
         //GridBagConstraints settings = new GridBagConstraints();
         
         //Makes JPanel
-        JPanel backgroundPanel = new JPanel(new GridBagLayout());
+        JPanel promptPanel = new JPanel(new GridBagLayout());
         //Sets background to Opaque so that we don't see the background on Panel
-        backgroundPanel.setOpaque(true);
+        promptPanel.setOpaque(true);
         //Creates color that's black
         Border blackline = BorderFactory.createLineBorder(Color.black);
         //Sets border to blackline
-        backgroundPanel.setBorder(blackline);
+        promptPanel.setBorder(blackline);
         //Sets Panel size
-        backgroundPanel.setSize(frameWidth/4, frameHeight/2);
+        promptPanel.setSize(frameWidth/4, frameHeight/2);
         //Sets Panel location
-        backgroundPanel.setLocation(frameWidth/2 + 150, frameHeight/4);
+        promptPanel.setLocation(frameWidth/2 + 150, frameHeight/4);
         
               
         try {
@@ -119,95 +122,138 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        
-      
-        
-         /*
-        //Show Each Organism
-        for(int i = 0; i < L.organismList.size(); i++) {
-			try {
-				cardImg = ImageIO.read(new File(L.organismList.get(i).getFilePath()));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-        	JLabel picLabel = new JLabel(new ImageIcon(cardImg));
-        	card.add(picLabel);
-        	
-        	JButton yes = new JButton("Yes");
-        	//Yes Listener
-            yes.addActionListener(new ActionListener() {
-
-    			@Override
-    			public void actionPerformed(ActionEvent arg0) {
-    				System.out.print(L.organismList.get(i).toString());		
-    			}
-            	
-            });
-            
-        	JButton no = new JButton("No");
-            no.addActionListener(new ActionListener() {
-
-     			@Override
-     			public void actionPerformed(ActionEvent arg0) {
-     				System.out.print(L.organismList.get(i).toString());		
-     			}
-             	
-             });
-            
-        	card.add(yes);
-        	card.add(no);
-        }
-       
-      	*/
-        
-        
-        //Create Buttons For Card
+   
+    	//Get Image From Organism
+		try {
+			crabImg = ImageIO.read(new File(L.organismList.get(0).getFilePath()));
+			fishImg = ImageIO.read(new File(L.organismList.get(1).getFilePath()));
+			kelpImg = ImageIO.read(new File(L.organismList.get(2).getFilePath()));
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		//Organism Image
+    	JLabel fishLabel = new JLabel(new ImageIcon(fishImg));
+    	JLabel fishLabel2 = new JLabel(new ImageIcon(fishImg)); //Label for background frame NOT prompt
+    	JLabel crabLabel = new JLabel(new ImageIcon(crabImg));
+    	JLabel crabLabel2 = new JLabel(new ImageIcon(crabImg));
+    	JLabel kelpLabel = new JLabel(new ImageIcon(kelpImg));
+    	JLabel kelpLabel2 = new JLabel(new ImageIcon(kelpImg));
+    	
+    	
+ 
+    	
+    	
+    	
+    	
+    	//Create Buttons For Card
     	JButton bYes = new JButton("YES");
     	JButton bNo = new JButton("NO");
+    	
+    	p.add(bYes); 
+    	p.add(bNo);
+    	//Set Up Panel
+    	p.add(fishLabel);
+    	p.setSize(400, 400);
     	
     	bYes.setSize(800, 800);
     	bNo.setSize(800, 800);
     	
-    	//Button Functionality          
+    	//Set up Fish Panel
+    	JPanel fishPanel = new JPanel(new GridBagLayout()); //For fishy on background
+    	fishPanel.add(fishLabel2);
+    	fishPanel.setOpaque(false);
+    	fishPanel.setLocation(100, 250);
+    	fishPanel.setVisible(false);
+    	fishPanel.setSize(400,400);
+    	//End set up Fish Panel
+    	
+    	//Set up Crab Panel
+    	JPanel crabPanel = new JPanel(new GridBagLayout()); //For fishy on background
+    	crabPanel.add(crabLabel2);
+    	crabPanel.setOpaque(false);
+    	crabPanel.setLocation(200, 350);
+    	crabPanel.setVisible(false);
+    	crabPanel.setSize(400,400);
+    	//End set up Crab Panel
+    	
+    	//Set up Kelp Panel
+    	JPanel kelpPanel = new JPanel(new GridBagLayout()); //For fishy on background
+    	kelpPanel.add(kelpLabel2);
+    	kelpPanel.setOpaque(false);
+    	kelpPanel.setLocation(50, 400);
+    	kelpPanel.setVisible(false);
+    	kelpPanel.setSize(400,400);
+    	//End set up Kelp Panel
+    	
+    	//Button Functionality for prompt 
     	bYes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.print(L.organismList.get(1).toString());		
+				switch(picture) {
+				case 1: 
+					System.out.print(L.organismList.get(1).toString());	
+					fishPanel.setVisible(true);
+					p.remove(fishLabel);
+					p.add(crabLabel);
+					picture++;
+					break;
+				case 2: 
+					System.out.print(L.organismList.get(0).toString());	
+					crabPanel.setVisible(true);
+					p.remove(crabLabel);
+					p.add(kelpLabel);
+					picture++;
+					break;
+				case 3:
+					System.out.println(L.organismList.get(2).toString());
+					kelpPanel.setVisible(true);
+					promptPanel.setVisible(false);
+					picture++;
+					break;
+				}
+				
 			}	
         });
     	
     	bNo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.print(L.organismList.get(1).toString());		
+				switch(picture) {
+				case 1: 
+					System.out.print(L.organismList.get(1).toString());	
+					//fishPanel.setVisible(true);
+					p.remove(fishLabel);
+					p.add(crabLabel);
+					picture++;
+					break;
+				case 2: 
+					System.out.print(L.organismList.get(0).toString());	
+					//crabPanel.setVisible(true);
+					p.remove(crabLabel);
+					p.add(kelpLabel);
+					picture++;
+					break;
+				case 3:
+					System.out.println(L.organismList.get(2).toString());
+					//kelpPanel.setVisible(true);
+					promptPanel.setVisible(false);
+					picture++;
+					break;
+				}
 			}	
         });
     	
     	
-    	//Get Image From Organism
-		try {
-			cardImg = ImageIO.read(new File(L.organismList.get(1).getFilePath()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		//Organism Image
-    	JLabel picLabel = new JLabel(new ImageIcon(cardImg));
-    	
-    	picLabel.setSize(800,800);
-    	
-    	//Set Up Panel
-    	p.add(picLabel);
-    	p.add(bYes); 
-    	p.add(bNo);
-    	p.setSize(400, 400);
-    	
-    	
-    	//Set Up Frame
-    	backgroundPanel.add(p);
+ 
         //frame.add(p, BorderLayout.CENTER);
-    	frame.add(backgroundPanel);
+    	frame.add(promptPanel);
+    	//Set Up Frame
+    	promptPanel.add(p);
+    	frame.add(fishPanel);
+    	frame.add(crabPanel);
+    	frame.add(kelpPanel);
         frame.pack();
         frame.setVisible(true);
         frame.setSize(frameWidth, frameHeight);    
