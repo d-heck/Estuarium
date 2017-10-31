@@ -82,10 +82,10 @@ public class Organism {
 	//toString
 	public String toString() {
 		if(doesBelong = true) {
-			return "This Organism belongs in the estuary!";
+			return "This Organism belongs in the estuary! \n";
 		}//if
 		else {
-			return "This Organism does not belong in the estuary!";
+			return "This Organism does not belong in the estuary! \n";
 		}//else
 	}//toString
 	
