@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import javax.swing.JInternalFrame;
 
 public class View extends JFrame implements ActionListener, MouseMotionListener {
@@ -99,10 +100,18 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
         JPanel p = new JPanel(new GridBagLayout());
         //GridBagConstraints settings = new GridBagConstraints();
         
+        //Makes JPanel
         JPanel backgroundPanel = new JPanel(new GridBagLayout());
-        backgroundPanel.setBackground(new Color(0,0,0,0));
-        
-        backgroundPanel.setSize(frameWidth, frameHeight);
+        //Sets background to Opaque so that we don't see the background on Panel
+        backgroundPanel.setOpaque(true);
+        //Creates color that's black
+        Border blackline = BorderFactory.createLineBorder(Color.black);
+        //Sets border to blackline
+        backgroundPanel.setBorder(blackline);
+        //Sets Panel size
+        backgroundPanel.setSize(frameWidth/4, frameHeight/2);
+        //Sets Panel location
+        backgroundPanel.setLocation(frameWidth/2 + 150, frameHeight/4);
         
               
         try {
