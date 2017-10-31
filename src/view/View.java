@@ -1,4 +1,5 @@
-package game;
+package view;
+import model.*;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -22,6 +23,9 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
+
+import model.Level;
+
 import javax.swing.JInternalFrame;
 
 public class View extends JFrame implements ActionListener, MouseMotionListener {

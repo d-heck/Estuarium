@@ -1,4 +1,4 @@
-package game;
+package model;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,9 +18,9 @@ public class Level {
 	 * 		- May want to use this as a superclass and every actual level as a subclass.
 	 */
 	
-	ArrayList<Organism> organismList = new ArrayList<Organism>();
+	public ArrayList<Organism> organismList = new ArrayList<Organism>();
 	String name;
-	String background = "resources/images/Background.png";
+	public String background = "resources/images/Background.png";
 	ArrayList<Organism> acceptedOrganisms; //Holds Organisms with doesBelong = true;
 	ArrayList<Organism> unacceptedOrganisms; //Holds Organisms with doesBelong = false;
 	
@@ -30,7 +30,7 @@ public class Level {
 	}
 	
 	//Create list of all organisms for particular level
-	private void createOrganismList() {
+	public void createOrganismList() {
 		//Manually code in every organism we desire for a level.
 		//exs)
 		Organism Example1 = new Organism("Cooked Crab", false, "resources/images/crab.png");

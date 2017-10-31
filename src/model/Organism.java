@@ -1,4 +1,4 @@
-package game;
+package model;
 
 /* 
  * Parent Class of LandOranism, PlantBasedOrganism, and AquaticOrganisms

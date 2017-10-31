@@ -1,4 +1,4 @@
-package game;
+package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,7 +34,7 @@ public class SaltMarshLevel extends Level{
 		unacceptedOrganisms.add(new Organism("Green Crab",false));
 	}//createUnacceptedList
 	
-	private void createOrganismList(){
+	public void createOrganismList(){
 		organismList.addAll(acceptedOrganisms);
 		organismList.addAll(unacceptedOrganisms);
 		Collections.shuffle(organismList);

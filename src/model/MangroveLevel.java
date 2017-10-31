@@ -1,4 +1,4 @@
-package game;
+package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,7 +33,7 @@ public class MangroveLevel extends Level{
 		unacceptedOrganisms.add(new Organism("Water Lily",false));
 	}
 	
-	private void createOrganismList(){
+	public void createOrganismList(){
 		organismList.addAll(acceptedOrganisms);
 		organismList.addAll(unacceptedOrganisms);
 		Collections.shuffle(organismList);
