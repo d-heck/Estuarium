@@ -53,6 +53,15 @@ public class Organism {
 		this.name = name;
 	}
 	
+	
+	public int getXloc() {
+		return xloc;
+	}
+
+	public int getYloc() {
+		return yloc;
+	}
+
 	public String getFilePath() {
 		return filepath;
 	}
@@ -60,6 +69,7 @@ public class Organism {
 	public void setFilePath(String filepath) {
 		this.filepath = filepath;
 	}
+	
 	
 	public void setToString(String X){
 		purpose = X;
