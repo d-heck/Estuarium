@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.JInternalFrame;
 
@@ -47,7 +48,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	// TODO: View Class
 	
 	//Load Main Menu, Launch Level on Play
-    private void createAndShowGUI() {
+    private void MainMenu() {
         //Create and set up the window.
         JFrame frame = new JFrame("Estuarium");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -138,11 +139,10 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
     	JLabel kelpLabel = new JLabel(new ImageIcon(kelpImg));
     	JLabel kelpLabel2 = new JLabel(new ImageIcon(kelpImg));
     	
-    	
- 
-    	
-    	
-    	
+    	//Organism Labels
+    	JLabel crabLabel_text = new JLabel(L.organismList.get(0).toString());
+    	JLabel fishLabel_text = new JLabel(L.organismList.get(1).toString());
+    	JLabel kelpLabel_text = new JLabel(L.organismList.get(2).toString());
     	
     	//Create Buttons For Card
     	JButton bYes = new JButton("YES");
@@ -159,6 +159,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
     	
     	//Set up Fish Panel
     	JPanel fishPanel = new JPanel(new GridBagLayout()); //For fishy on background
+    	fishPanel.add(fishLabel_text);
     	fishPanel.add(fishLabel2);
     	fishPanel.setOpaque(false);
     	fishPanel.setLocation(100, 250);
@@ -168,18 +169,21 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
     	
     	//Set up Crab Panel
     	JPanel crabPanel = new JPanel(new GridBagLayout()); //For fishy on background
+    	crabPanel.add(crabLabel_text);
     	crabPanel.add(crabLabel2);
     	crabPanel.setOpaque(false);
     	crabPanel.setLocation(200, 350);
     	crabPanel.setVisible(false);
     	crabPanel.setSize(400,400);
+    	
     	//End set up Crab Panel
     	
     	//Set up Kelp Panel
     	JPanel kelpPanel = new JPanel(new GridBagLayout()); //For fishy on background
+    	kelpPanel.add(kelpLabel_text);
     	kelpPanel.add(kelpLabel2);
     	kelpPanel.setOpaque(false);
-    	kelpPanel.setLocation(50, 400);
+    	kelpPanel.setLocation(650, 420);
     	kelpPanel.setVisible(false);
     	kelpPanel.setSize(400,400);
     	//End set up Kelp Panel
@@ -193,20 +197,26 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					System.out.print(L.organismList.get(1).toString());	
 					fishPanel.setVisible(true);
 					p.remove(fishLabel);
-					p.add(crabLabel);
+					p.add(crabLabel);				
+					p.revalidate();
+					p.repaint();
 					picture++;
 					break;
 				case 2: 
 					System.out.print(L.organismList.get(0).toString());	
-					crabPanel.setVisible(true);
+					crabPanel.setVisible(true);					
 					p.remove(crabLabel);
 					p.add(kelpLabel);
+					p.revalidate();
+					p.repaint();
 					picture++;
 					break;
 				case 3:
 					System.out.println(L.organismList.get(2).toString());
 					kelpPanel.setVisible(true);
-					promptPanel.setVisible(false);
+					promptPanel.setVisible(false);				
+					p.revalidate();
+					p.repaint();
 					picture++;
 					break;
 				}
@@ -215,35 +225,38 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
         });
     	
     	bNo.addActionListener(new ActionListener() {
+
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				switch(picture) {
 				case 1: 
 					System.out.print(L.organismList.get(1).toString());	
-					//fishPanel.setVisible(true);
 					p.remove(fishLabel);
-					p.add(crabLabel);
+					p.add(crabLabel);				
+					p.revalidate();
+					p.repaint();
 					picture++;
 					break;
 				case 2: 
 					System.out.print(L.organismList.get(0).toString());	
-					//crabPanel.setVisible(true);
 					p.remove(crabLabel);
 					p.add(kelpLabel);
+					p.revalidate();
+					p.repaint();
 					picture++;
 					break;
 				case 3:
 					System.out.println(L.organismList.get(2).toString());
-					//kelpPanel.setVisible(true);
 					promptPanel.setVisible(false);
+					p.revalidate();
+					p.repaint();
 					picture++;
 					break;
 				}
 			}	
         });
     	
-    	
- 
+  
         //frame.add(p, BorderLayout.CENTER);
     	frame.add(promptPanel);
     	//Set Up Frame
@@ -253,15 +266,12 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
     	frame.add(kelpPanel);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(frameWidth, frameHeight);    
-
-    }
-    public View() {
-    	createAndShowGUI();
+        frame.setSize(frameWidth, frameHeight);
+        
     }
     
-    public void createCard() {
-    	//MyInternalFrame frame = new MyInternalFrame();
+    public View() {
+    	MainMenu();
     }
     
 	public static void main(String[] Args) {
