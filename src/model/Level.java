@@ -24,7 +24,14 @@ public class Level {
 	public String background = "resources/images/Background.png";
 	ArrayList<Organism> acceptedOrganisms; //Holds Organisms with doesBelong = true;
 	ArrayList<Organism> unacceptedOrganisms; //Holds Organisms with doesBelong = false;
+	public int strikes = 0;
 	
+	public int getStrikes() {
+		//Parameters: none
+		//Returns: the value of variable 'strikes'
+		return strikes;
+	}
+
 	//Constuctor
 	public Level() {
 		createOrganismList();
@@ -75,10 +82,20 @@ public class Level {
 			else {
 				System.out.println(organismList.get(i));
 				System.out.println("Wrong!");
+				strikes++;
+				System.out.println("Number of strikes: "+strikes);
+				if(strikes>=3){
+					//Code for game over prompt
+					//Recommend making a gameover method
+					System.out.println("Game Over.");
+					break;
+				}
 			}
 
 		}
 		return;
 	}
+	
+	
 }
 
