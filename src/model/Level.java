@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 /*
  * Model Class for the levels
+ * Positive Sprinkle
  */
 
 public class Level {
