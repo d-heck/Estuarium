@@ -3,8 +3,9 @@ package model;
 import java.util.Scanner;
 
 /**
- * 
+ * The menu class extends level and allows the user the select the level they want to play in.
  * @author Nonso Iwu
+ * @see Level
  *
  */
 public class Menu extends Level {
