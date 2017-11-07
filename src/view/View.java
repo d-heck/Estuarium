@@ -50,7 +50,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	/**
 	 * mouseDragged returns nothing but potentially changes the state of the game if the mouse is 
 	 * dragged.
-	 * @param MouseEvent
+	 * @param MouseEvent A mouse drag
 	 * 
 	 */
 	@Override
@@ -61,7 +61,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	
 	/**
 	 * mouseMoved returns nothing but potentially changes the state of the game if the mouse is moved.
-	 * @param MouseEvent
+	 * @param MouseEvent A mouse move
 	 * 
 	 */
 	@Override
@@ -71,7 +71,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 	/**
 	 * actionPerformed returns nothing but potentially changes the state of the game if an action is done.
-	 * @param ActionEvent
+	 * @param ActionEvent an Action Performed
 	 * 
 	 */
 	@Override
@@ -104,7 +104,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			
 			/**
 			 * actionPerformed returns nothing but disposes the current frame and loads the next level.
-			 * @param ActionEvent
+			 * @param ActionEvent an action performed
 			 */
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -131,8 +131,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	 *LoadLevel returns nothing but loads a level into the game. It initializes the organism list
 	 *and loads a BG image.
 	 * 
-	 * @param L
-	 * @see Organism
+	 * @param L a level
+	 * @see Organism 
 	 */
 	//Loads a Level to play, initializes organism list and loads BG image
 
