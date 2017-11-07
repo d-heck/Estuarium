@@ -2,10 +2,18 @@ package model;
 
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Nonso Iwu
+ *
+ */
 public class Menu extends Level {
 	
-	//Constructor
-	//Everything other than background is set to null in order to free up space
+	/**
+	 *Creates an instance of Menu and sets fields to null because of lack of use
+	 *
+	 */
+	
 	Menu(){
 		organismList = null;
 		name = null;
@@ -14,6 +22,11 @@ public class Menu extends Level {
 		unacceptedOrganisms = null;
 	}
 	
+	/**
+	 * Asks the user for which game they would like to play with the use
+	 * of java.util.Scanner and returns a String indicating what choice was made
+	 * @return input A String that shows which type of Level to run in View or Model
+	 */
 	public String chooseLevel(){
 		System.out.println("Which ennvironment would you like to play in?");
 		System.out.println("l = Level, m = Mangrove, s = SaltMarsh");
