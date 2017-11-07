@@ -4,40 +4,43 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.io.InputStream;
 import java.util.Scanner;
-/*
- * Model Class for the levels
- * Positive Sprinkle
+/**
+ * Superclass for MangroveLevel, SaltMarshLevel, and OysterReefLevel that has
+ * an organismList, number of strikes, background image, and lists for 
+ * accepted and unaccepted organisms
+ * @author David Heck
+ * @author Jason Hickman
  */
-
 public class Level {
-	//TODO: Level's Class
-	/*
-	 * Should have all the functionality of a level.
-	 * 		- Should create an Acceptable Creatures List
-	 * 		- This is where all the organisms should be constructed + added to level.
-	 * 		- Should not load any images (this is model not view)
-	 * 		- May want to use this as a superclass and every actual level as a subclass.
-	 */
 	
 	public ArrayList<Organism> organismList = new ArrayList<Organism>();
-	String name;
 	public String background = "resources/images/Background.png";
+	String name;
 	ArrayList<Organism> acceptedOrganisms; //Holds Organisms with doesBelong = true;
 	ArrayList<Organism> unacceptedOrganisms; //Holds Organisms with doesBelong = false;
 	public int strikes = 0;
 	
+	/**
+	 * getStrikes returns the current value of the strikes attribute, which 
+	 * corresponds to the number of incorrect answers.
+	 * @return int An integer representing the number of incorrect answers so far
+	 */
 	public int getStrikes() {
 		//Parameters: none
 		//Returns: the value of variable 'strikes'
 		return strikes;
 	}
 
-	//Constuctor
+	/**
+	 * Simple constructor that creates a generic Level and calls createOrganismList
+	 */
 	public Level() {
 		createOrganismList();
 	}
 	
-	//Create list of all organisms for particular level
+	/**
+	 * createOrganismList creates a generic organismList used for testing.
+	 */
 	public void createOrganismList() {
 		//Manually code in every organism we desire for a level.
 		//exs)
@@ -56,6 +59,11 @@ public class Level {
 		
 	}
 	
+	/**
+	 * play plays the level, takes user input in the form of y or n to determine
+	 * whether an organism is included or not, increases the number of strikes if
+	 * the answer is wrong, and will terminate if strikes equals 3 after a turn.
+	 */
 	public void play() {
 		//Plays the level.
 		//For now I will just be using string input as Y or N but should be changed to
