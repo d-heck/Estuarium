@@ -1,6 +1,7 @@
 package view;
 import model.*;
 
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -28,6 +29,16 @@ import model.Level;
 
 import javax.swing.JInternalFrame;
 
+/**
+ * View is a public class that extends JFrame and implements ActionListener and MouseMotionListener.
+ * which communicates with the controller to modify the model. It put all images on the screen and allows
+ * for user input for an interactive game experience. It also works on displaying the prompt for placement
+ * of any Estuarium objects.
+ * @author Jeremy Gouveia
+ * @author David Heck
+ * @version 0.6
+ */
+
 public class View extends JFrame implements ActionListener, MouseMotionListener {
 
 	//Dimensions
@@ -35,22 +46,45 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	final static int frameHeight = 760;
 	int picture = 1;
 
+	
+	/**
+	 * mouseDragged returns nothing but potentially changes the state of the game if the mouse is 
+	 * dragged.
+	 * @param MouseEvent
+	 * 
+	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
-
+	
+	
+	/**
+	 * mouseMoved returns nothing but potentially changes the state of the game if the mouse is moved.
+	 * @param MouseEvent
+	 * 
+	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * actionPerformed returns nothing but potentially changes the state of the game if an action is done.
+	 * @param ActionEvent
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 	}
 	// TODO: View Class
 
+	/**
+	 * MainMenu returns nothing but changes the state of the game. It loads the main menu and launches
+	 * the level
+	 * 
+	 */
 	//Load Main Menu, Launch Level on Play
 	private void MainMenu() {
 		//Create and set up the window.
@@ -67,7 +101,11 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 		//Play Button
 		b1.addActionListener(new ActionListener() {
-
+			
+			/**
+			 * actionPerformed returns nothing but disposes the current frame and loads the next level.
+			 * @param ActionEvent
+			 */
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
@@ -88,6 +126,14 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 	}
 
+	
+	/**
+	 *LoadLevel returns nothing but loads a level into the game. It initializes the organism list
+	 *and loads a BG image.
+	 * 
+	 * @param L
+	 * @see Organism
+	 */
 	//Loads a Level to play, initializes organism list and loads BG image
 
 	public void LoadLevel(Level L) {
@@ -286,6 +332,10 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 	}
 
+	/**
+	 * View constructs the class for view and calls function MainMenu
+	 * 
+	 */
 	public View() {
 		MainMenu();
 	}
