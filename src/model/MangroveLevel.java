@@ -11,10 +11,6 @@ import java.util.Collections;
  *
  */
 public class MangroveLevel extends Level{
-
-	ArrayList<Organism> acceptedOrganisms; //Holds Organisms with doesBelong = true;
-	ArrayList<Organism> unacceptedOrganisms; //Holds Organisms with doesBelong = false;
-	
 	/**
 	 * A basic constructor that instantiates a MangroveLevel and produces a 
 	 * randomized organismList. It does this by calling createAcceptedList, 

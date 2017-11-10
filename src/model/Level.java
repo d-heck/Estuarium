@@ -59,6 +59,8 @@ public class Level {
 		
 	}
 	
+	
+	
 	/**
 	 * play plays the level, takes user input in the form of y or n to determine
 	 * whether an organism is included or not, increases the number of strikes if

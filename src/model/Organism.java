@@ -30,10 +30,10 @@ public class Organism {
 		doesBelong = Belongs;
 	}//Organism
 	
-	public Organism(String Name, boolean Belongs, String File) {
+	public Organism(String Name, boolean Belongs, String Pur) {
 		name = Name;
 		doesBelong = Belongs;
-		filepath = File;
+		purpose = Pur;
 	}
 	
 	//Getters + Setters

@@ -11,10 +11,6 @@ import java.util.Collections;
  *
  */
 public class SaltMarshLevel extends Level{
-	
-	ArrayList<Organism> acceptedOrganisms; //Holds Organisms with doesBelong = true;
-	ArrayList<Organism> unacceptedOrganisms; //Holds Organisms with doesBelong = false;
-	
 	/**
 	 * A basic constructor that instantiates a SaltMarshLevel and produces a 
 	 * randomized organismList. It does this by calling createAcceptedList, 
@@ -50,7 +46,7 @@ public class SaltMarshLevel extends Level{
 		unacceptedOrganisms.add(new Organism("Lynx",false));
 		unacceptedOrganisms.add(new Organism("Purple Loosestrife",false));
 		unacceptedOrganisms.add(new Organism("Narrow-Leaf Cattail",false));
-		unacceptedOrganisms.add(new Organism("Green Crab",false));
+		unacceptedOrganisms.add(new Organism("European Green Crab",false));
 	}//createUnacceptedList
 	
 	/**
@@ -62,6 +58,5 @@ public class SaltMarshLevel extends Level{
 		organismList.addAll(unacceptedOrganisms);
 		Collections.shuffle(organismList);
 	}//createOrganismList
-	
 
 }
