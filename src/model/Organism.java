@@ -58,17 +58,13 @@ public class Organism {
 		doesBelong = Belongs;
 	}//Organism
 	
-<<<<<<< HEAD
-	public Organism(String Name, boolean Belongs, String Pur) {
-=======
 	/**
 	 * 
 	 * @param Name The name of the organism	
 	 * @param Belongs the boolean determining if the organism belongs in the level
-	 * @param File The name of the file the organism belongs to
+	 * @param Pur Sets the toString
 	 */
-	public Organism(String Name, boolean Belongs, String File) {
->>>>>>> 5747c962f9d259e7451fbf6c95769a6bb5602f68
+	public Organism(String Name, boolean Belongs, String Pur) {
 		name = Name;
 		doesBelong = Belongs;
 		purpose = Pur;
