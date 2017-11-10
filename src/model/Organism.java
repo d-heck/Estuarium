@@ -70,6 +70,13 @@ public class Organism {
 		purpose = Pur;
 	}
 	
+	public Organism(String Name, boolean Belongs, String Pur, String File){
+		name = Name;
+		doesBelong = Belongs;
+		purpose = Pur;
+		filepath = File;
+	}
+	
 	//Getters + Setters
 	/**
 	 * isDoesBelong() returns the doesBelong field

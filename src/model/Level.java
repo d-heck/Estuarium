@@ -44,17 +44,14 @@ public class Level {
 	public void createOrganismList() {
 		//Manually code in every organism we desire for a level.
 		//exs)
-		Organism Example1 = new Organism("Cooked Crab", false, "resources/images/crab.png");
-		Example1.setToString("This is Cooked Crab's toString, he doesn't belong.");
+		Organism Example1 = new Organism("Cooked Crab", false,"This is Cooked Crab's toString, he doesn't belong.", "resources/images/crab.png");
 		organismList.add(Example1);
 		
-		Organism Example2 = new Organism("Fish", true, "resources/images/fish.png");
-		Example2.setToString("This is Fish's toString, he belongs.");
+		Organism Example2 = new Organism("Fish", true,"This is Fish's toString, he belongs.", "resources/images/fish.png");
 		organismList.add(Example2);
 		
 		
-		Organism Example3 = new Organism("Plant", true, "resources/images/kelp.png");
-		Example3.setToString("This is Plant's toString, he belongs.");
+		Organism Example3 = new Organism("Plant", true,"This is Plant's toString, he belongs.", "resources/images/kelp.png");
 		organismList.add(Example3);
 		
 	}
