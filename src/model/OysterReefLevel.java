@@ -27,12 +27,12 @@ public class OysterReefLevel extends Level{
 	 * is set to true.  These organisms belong in an oyster reef.
 	 */
 	private void createAcceptedList(){
-		acceptedOrganisms.add(new Organism("Eastern Oyster",true));
-		acceptedOrganisms.add(new Organism("Goby",true));
-		acceptedOrganisms.add(new Organism("Black Drum",true));
-		acceptedOrganisms.add(new Organism("Microalgae",true));
-		acceptedOrganisms.add(new Organism("American Eel",true));
-		acceptedOrganisms.add(new Organism("Oyster Toadfish",true));
+		acceptedOrganisms.add(new Organism("Eastern Oyster",true,"I attach myself to others of my kind to form the main part of an oyster reef."));
+		acceptedOrganisms.add(new Organism("Goby",true,"I can hide from larger predators in small crevices in oyster reefs."));
+		acceptedOrganisms.add(new Organism("Black Drum",true,"As an adult, my teeth are large enough to crush oyster shells so I can eat the oyster within."));
+		acceptedOrganisms.add(new Organism("Microalgae",true,"I provide a source of food to the oysters in the roof, who can filter me out of the water."));
+		acceptedOrganisms.add(new Organism("American Eel",true,"I can feed on a variety of organisms that call oyster reefs home."));
+		acceptedOrganisms.add(new Organism("Oyster Toadfish",true,"While I mostly eat small crabs, I can also feed on the oysters and small fish."));
 	}//createAcceptedList
 	
 	/**
@@ -41,12 +41,12 @@ public class OysterReefLevel extends Level{
 	 * invasive species.
 	 */
 	private void createUnacceptedList(){
-		unacceptedOrganisms.add(new Organism("Green Porcelain Crab",false));
-		unacceptedOrganisms.add(new Organism("Striped Barnacle",false));
-		unacceptedOrganisms.add(new Organism("European Green Crab",false));
-		unacceptedOrganisms.add(new Organism("Tube Worms",false));
-		unacceptedOrganisms.add(new Organism("Striped Anemone",false));
-		unacceptedOrganisms.add(new Organism("Charru Mussel",false));
+		unacceptedOrganisms.add(new Organism("Green Porcelain Crab",false,"I am an invasive species."));
+		unacceptedOrganisms.add(new Organism("Striped Barnacle",false,"I am an invasive species."));
+		unacceptedOrganisms.add(new Organism("European Green Crab",false,"I am an invasive species."));
+		unacceptedOrganisms.add(new Organism("Tube Worms",false,"I am invasive and can damage the shell of oysters I burrow into."));
+		unacceptedOrganisms.add(new Organism("Orange-Striped Anemone",false,"I am invasive and can make it difficult for oysters to feed when I cover them."));
+		unacceptedOrganisms.add(new Organism("Charru Mussel",false,"I am invasive and can compete with oysters for food."));
 	}//createUnacceptedList
 	
 	/**
