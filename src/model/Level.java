@@ -18,6 +18,7 @@ public class Level {
 	String name;
 	ArrayList<Organism> acceptedOrganisms; //Holds Organisms with doesBelong = true;
 	ArrayList<Organism> unacceptedOrganisms; //Holds Organisms with doesBelong = false;
+	public static Scanner scanner = new Scanner(System.in);
 	public int strikes = 0;
 	
 	/**
@@ -70,7 +71,6 @@ public class Level {
 		Boolean Answer = true;
 		
 		for(int i = 0; i < organismList.size(); i++) {
-			Scanner scanner = new Scanner(System.in);
 			System.out.println("Does " + organismList.get(i).getName() + " belong in the Level? y/n");
 			String input = scanner.nextLine();
 			
@@ -98,11 +98,23 @@ public class Level {
 					break;
 				}
 			}
-
 		}
 		return;
 	}
 	
-	
+	public static Level getLevel(){
+		String choice = Menu.chooseLevel();
+
+		if(choice.equals("l")){
+			return new Level();
+		}else if(choice.equals("m")){
+			return new MangroveLevel();
+		}else if(choice.equals("o")){
+			return new OysterReefLevel();
+		}else if(choice.equals("s")){
+			return new SaltMarshLevel();
+		}
+		return null;
+	}
 }
 

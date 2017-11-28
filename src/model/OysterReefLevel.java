@@ -54,6 +54,7 @@ public class OysterReefLevel extends Level{
 	 * and uses Collections.shuffle to randomize the order of the list.
 	 */
 	public void createOrganismList(){
+		System.out.println(acceptedOrganisms);
 		organismList.addAll(acceptedOrganisms);
 		organismList.addAll(unacceptedOrganisms);
 		Collections.shuffle(organismList);
