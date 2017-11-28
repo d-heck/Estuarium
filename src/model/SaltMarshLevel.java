@@ -8,6 +8,7 @@ import java.util.Collections;
  * be found in salt marshes, and unacceptedOrganisms, which holds Organisms that do not
  * belong in salt marshes.
  * @author Jason Hickman
+ * @author Kevin Doak
  * @see Level
  */
 public class SaltMarshLevel extends Level{
