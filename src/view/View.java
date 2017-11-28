@@ -347,11 +347,11 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		bYes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if( L.getStrikes() >= 2) {
+				if( L.getStrikes() > 2) {
 					frame.dispose();
 					GameOver();
 				}
-				else if (picture < maxTurns){				
+			else if (picture < maxTurns){				
 					System.out.print(L.organismList.get(picture).toString());
 					
 					if(L.organismList.get(picture).isDoesBelong() == false) {
@@ -389,7 +389,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		bNo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if( L.getStrikes() >= 2) {
+				if( L.getStrikes() > 2) {
 					frame.dispose();
 					GameOver();
 				}
