@@ -9,5 +9,17 @@ public class Model {
 			Level x = new Level();
 			x.play();
 		}
+		else if(choice.equals("s")){
+			SaltMarshLevel x = new SaltMarshLevel();
+			x.play();
+		}
+		else if(choice.equals("m")){
+			MangroveLevel x = new MangroveLevel();
+			x.play();
+		}
+		else if(choice.equals("o")){
+			OysterReefLevel x = new OysterReefLevel();
+			x.play();
+		}
 	}
 }//Model

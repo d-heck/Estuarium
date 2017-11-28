@@ -54,8 +54,6 @@ public class MangroveLevel extends Level{
 	 * and uses Collections.shuffle to randomize the order of the list.
 	 */
 	public void createOrganismList(){
-		organismList.addAll(acceptedOrganisms);
-		organismList.addAll(unacceptedOrganisms);
 		Collections.shuffle(organismList);
 	}//createOrganismList
 	
