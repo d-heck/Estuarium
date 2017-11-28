@@ -71,7 +71,7 @@ public class Level {
 		Boolean Answer = true;
 		
 		for(int i = 0; i < organismList.size(); i++) {
-			System.out.println("Does " + this.organismList.get(i).getName() + " belong in the Level? y/n");
+			System.out.println("\nDoes " + this.organismList.get(i).getName() + " belong in the Level? y/n");
 			String input = scanner.nextLine();
 			
 			if(input.equals("y")) {
@@ -87,10 +87,8 @@ public class Level {
 				
 			}
 			else {
-				System.out.println(organismList.get(i));
-				System.out.println("Wrong!");
+				System.out.println("Wrong! "+organismList.get(i));
 				strikes++;
-				System.out.println("Number of strikes: "+strikes);
 				if(strikes>=3){
 					//Code for game over prompt
 					//Recommend making a gameover method
@@ -98,6 +96,7 @@ public class Level {
 					break;
 				}
 			}
+			System.out.println("Number of strikes: "+strikes);
 		}
 		return;
 	}
