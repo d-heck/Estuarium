@@ -46,6 +46,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	final static int frameWidth = 1280;
 	final static int frameHeight = 760;
 	int picture = 0;
+	int maxTurns;
 
 	
 	/**
@@ -110,7 +111,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				LoadLevel(new Level());		
+				LoadLevel(new Level());	
 			}
 
 		});
@@ -222,37 +223,26 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		bNo.setSize(800, 800);
 
 
+		maxTurns = L.organismList.size()-1;
 		//Button Functionality for prompt 
 		bYes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				switch(picture) {
-				case 0: 
-					System.out.print(L.organismList.get(1).toString());	
+				if (picture < maxTurns){
+					System.out.print(L.organismList.get(picture).toString());	
 					org_panels.get(picture).setVisible(true);					
 					p.remove(img_labels.get(picture));
 					picture++;
 					p.add(img_labels.get(picture));					
 					p.revalidate();
 					p.repaint();
-					break;
-				case 1: 
-					System.out.print(L.organismList.get(0).toString());	
-					org_panels.get(picture).setVisible(true);					
-					p.remove(img_labels.get(picture));
-					picture++;
-					p.add(img_labels.get(picture));					
-					p.revalidate();
-					p.repaint();
-					break;
-				case 2:
+				}
+				else if (picture == maxTurns){
 					System.out.println(L.organismList.get(2).toString());			
 					org_panels.get(picture).setVisible(true);
 					promptPanel.setVisible(false);
 					p.revalidate();
 					p.repaint();
-					picture++;
-					break;
 				}
 
 			}	
@@ -262,32 +252,22 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				switch(picture) {
-				case 0: 
+				if (picture < maxTurns){
 					System.out.print(L.organismList.get(1).toString());	
 					p.remove(img_labels.get(picture));
 					picture++;
 					p.add(img_labels.get(picture));					
 					p.revalidate();
 					p.repaint();
-					break;
-				case 1: 
-					System.out.print(L.organismList.get(0).toString());	
-					p.remove(img_labels.get(picture));
-					picture++;
-					p.add(img_labels.get(picture));	
-					p.revalidate();
-					p.repaint();
-					break;
-				case 2:
+				}
+				else if (picture == maxTurns){
 					System.out.println(L.organismList.get(2).toString());
 					promptPanel.setVisible(false);
 					p.revalidate();
 					p.repaint();
-					picture++;
-					break;
 				}
-			}	
+				
+			}
 		});
 
 
