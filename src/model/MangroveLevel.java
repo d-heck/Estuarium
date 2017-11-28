@@ -33,7 +33,7 @@ public class MangroveLevel extends Level{
 		acceptedOrganisms.add(new Organism("Kingfisher",true,"I nest in the mangroves.","resources/images/kingfisher.png",875,-120));
 		acceptedOrganisms.add(new Organism("Fiddler Crab",true,"I burrow into mud at the mangroves roots.","resources/images/fiddlercrab.png",550,200));
 		acceptedOrganisms.add(new Organism("Barnacle",true,"I attach myself to the roots of mangroves.","resources/images/barnacle.png",800,350));
-		acceptedOrganisms.add(new Organism("Oyster",true,"I attaach myself to mangrove roots.","resources/images/oyster.png",875,400));
+		acceptedOrganisms.add(new Organism("Oyster",true,"I attach myself to mangrove roots.","resources/images/oyster.png",875,400));
 		acceptedOrganisms.add(new Organism("Red Mangrove",true,"My exposed roots provide a nesting habitat.","resources/images/redmangrove.png",1000,350));
 		acceptedOrganisms.add(new Organism("Shore Purslane",true,"I grow well in the always-damp soil.","resources/images/shorepurslane.png",-150,300));
 	}//createAcceptedList

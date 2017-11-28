@@ -10,5 +10,6 @@ import view.View;
 public class Main {
 	public static void main(String[] Args) {
 		View x = new View();
+		x.play();
 	}//main
 }//Class Main

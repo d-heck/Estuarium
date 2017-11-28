@@ -169,7 +169,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		p.setBackground(Color.GRAY);
 
 		//Add Button + Label
-		JButton b1 = new JButton("Main Menu");
+		//JButton b1 = new JButton("Main Menu");
+		JButton b1 = new JButton("Exit");
 		
 		//Reload Main Menu
 		b1.addActionListener(new ActionListener() {		
@@ -180,7 +181,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				MainMenu();
+				//MainMenu();
 			}
 
 		});
@@ -204,8 +205,9 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	//Loads a Level to play, initializes organism list and loads BG image
 
 	public void LoadLevel(Level L) {
-		//TODO: This method should "play" the level.
-
+		//Instantiate Level
+		L.setStrikes(0);
+		
 		//Create and set up the window.
 		JFrame frame = new JFrame("Estuarium");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -348,8 +350,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		bYes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if( L.getStrikes() > 2) {
-					frame.dispose();
+				if( L.getStrikes() >= 2) {
+					frame.dispose();			
 					GameOver();
 				}
 			else if (picture < maxTurns){				
@@ -390,7 +392,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		bNo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if( L.getStrikes() > 2) {
+				if( L.getStrikes() >= 2) {
 					frame.dispose();
 					GameOver();
 				}
@@ -443,10 +445,17 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	}
 
 	/**
-	 * View constructs the class for view and calls function MainMenu
+	 * View constructs the class for view
 	 * 
 	 */
 	public View() {
+	}
+	
+	/**
+	 * Calls function MainMenu
+	 * 
+	 */
+	public void play() {
 		MainMenu();
 	}
 }
