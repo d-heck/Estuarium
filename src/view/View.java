@@ -212,6 +212,14 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Create Panel
 		JPanel p = new JPanel(new GridBagLayout());
 		GridBagConstraints settings = new GridBagConstraints();
+		
+		//Add Card Label
+		JLabel nameTag = new JLabel("Label");
+		nameTag.setText("Test");
+		p.add(nameTag);
+		
+		//Make Strike Panel
+		JPanel strikePanel = new JPanel(new GridBagLayout());
 
 		//Makes JPanel
 		JPanel promptPanel = new JPanel(new GridBagLayout());
@@ -255,7 +263,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			e.printStackTrace();
 		}
 
-
+		
 		//Create Buttons For Card
 		ImageIcon YES = new ImageIcon("resources/images/check_mark_green.png");
 		ImageIcon NO = new ImageIcon("resources/images/x_mark_red.png");
@@ -280,9 +288,25 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 		bYes.setSize(800, 800);
 		bNo.setSize(800, 800);
-
+		
+		//Set Up Strike Panel
+		strikePanel.setSize(300,200);
+		strikePanel.setOpaque(false);
+		ImageIcon strike = new ImageIcon("resources/images/x_mark_red.png");
+		JLabel strikeLabel1 = new JLabel(strike, JLabel.CENTER);
+		JLabel strikeLabel2 = new JLabel(strike, JLabel.CENTER);
+		JLabel strikeLabel3 = new JLabel(strike, JLabel.CENTER);
+		strikePanel.add(strikeLabel1);
+		strikePanel.add(strikeLabel2);
+		strikePanel.add(strikeLabel3);
+		strikePanel.getComponent(0).setVisible(false);
+		strikePanel.getComponent(1).setVisible(false);
+		strikePanel.getComponent(2).setVisible(false);
 
 		maxTurns = L.organismList.size()-1;
+		
+		//Set First Test
+		nameTag.setText(L.organismList.get(0).getName());
 		
 		//Button Functionality for prompt 
 		bYes.addActionListener(new ActionListener() {
@@ -296,12 +320,13 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					System.out.print(L.organismList.get(picture).toString());
 					
 					if(L.organismList.get(picture).isDoesBelong() == false) {
-						//Add Code To Display an X
 						System.out.println("Wrong!");
 						L.setStrikes(L.getStrikes() + 1);
+						strikePanel.getComponent(L.getStrikes()).setVisible(true);
 					}
 					
-					org_panels.get(picture).setVisible(true);					
+					org_panels.get(picture).setVisible(true);
+					nameTag.setText(L.organismList.get(picture + 1).getName());
 					p.remove(img_labels.get(picture));
 					picture++;
 					p.add(img_labels.get(picture));					
@@ -312,9 +337,9 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					System.out.println(L.organismList.get(2).toString());
 					
 					if(L.organismList.get(picture).isDoesBelong() == false) {
-						//Add Code To Display an X
 						System.out.println("Wrong!");
 						L.setStrikes(L.getStrikes() + 1);
+						strikePanel.getComponent(L.getStrikes()).setVisible(true);
 					}
 					
 					org_panels.get(picture).setVisible(true);
@@ -337,11 +362,12 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					System.out.print(L.organismList.get(picture).toString());
 					
 					if(L.organismList.get(picture).isDoesBelong() == true) {
-						//Add Code To Display an X
 						System.out.println(" Wrong!");
 						L.setStrikes(L.getStrikes() + 1);
+						strikePanel.getComponent(L.getStrikes()).setVisible(true);
 					}
 					
+					nameTag.setText(L.organismList.get(picture + 1).getName());;
 					p.remove(img_labels.get(picture));
 					picture++;
 					p.add(img_labels.get(picture));					
@@ -355,6 +381,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 						//Add Code To Display an X
 						System.out.println(" Wrong!");
 						L.setStrikes(L.getStrikes() + 1);
+						strikePanel.getComponent(L.getStrikes()).setVisible(true);
 					}
 					
 					promptPanel.setVisible(false);
@@ -365,7 +392,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			}
 		});
 
-
+		frame.add(strikePanel);
 		//frame.add(p, BorderLayout.CENTER);
 		frame.add(promptPanel);
 		//Set Up Frame

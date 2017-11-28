@@ -48,7 +48,7 @@ public class MangroveLevel extends Level{
 		unacceptedOrganisms.add(new Organism("Spotted Turtle",false,"I live in fresh water.","resources/images/spottedturtle.png",200,200));
 		unacceptedOrganisms.add(new Organism("Rainbow Trout",false,"I live in fresh water.","resources/images/rainbowtrout.png",400,400));
 		unacceptedOrganisms.add(new Organism("Crappie",false,"I live in fresh water","resources/images/crappie.png",100,450));
-		unacceptedOrganisms.add(new Organism("Black Oak",false,"The salt water would damage my trunk and roots.","resources/images/blackoak.png",-150,-100));
+		unacceptedOrganisms.add(new Organism("Black Oak",false,"The salt water would damage my trunk and roots.","resources/images/blackoak.png",-150,0));
 		unacceptedOrganisms.add(new Organism("Water Lily",false,"I grow best in fresh water.","resources/images/waterlily.png",100,300));
 	}//createUnacceptedList
 
