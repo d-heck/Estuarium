@@ -37,6 +37,7 @@ import javax.swing.JInternalFrame;
  * of any Estuarium objects.
  * @author Jeremy Gouveia
  * @author David Heck
+ * @author Jason Hickman
  * @version 0.6
  */
 
@@ -224,6 +225,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 
 		maxTurns = L.organismList.size()-1;
+		
 		//Button Functionality for prompt 
 		bYes.addActionListener(new ActionListener() {
 			@Override

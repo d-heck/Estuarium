@@ -6,10 +6,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-/* 
- * Parent Class of LandOranism, PlantBasedOrganism, and AquaticOrganisms
- * A default type of organism.
- */
 /**
  * Organism is a class that holds the object to be placed in the level.
  * 
@@ -88,6 +84,21 @@ public class Organism {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Organism(String Name, boolean Belongs, String Pur, String File, int x, int y){
+		name = Name;
+		doesBelong = Belongs;
+		purpose = Pur;
+		filepath = File;
+		try {
+			image = ImageIO.read(new File(filepath));
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		xloc = x;
+		yloc = y;
 	}
 	
 	//Getters + Setters
