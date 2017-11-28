@@ -144,9 +144,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				LoadLevel(new OysterReefLevel());	
 			}
 
-		});
-		
-		
+		});		
 		p.add(b1);
 		p.add(b2);
 		p.add(b3);
@@ -157,7 +155,43 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		frame.setVisible(true);
 		frame.setSize(frameWidth, frameHeight);
 	}
+	
+	//Game Over Method
+	private void GameOver() {
+		//Create and set up the window.
+		JFrame frame = new JFrame("Estuarium");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		//Set up panels
+		JPanel p = new JPanel(new GridBagLayout());
+		p.setSize(frameWidth, frameHeight);
+		p.setBackground(Color.GRAY);
+
+		//Add Button + Label
+		JButton b1 = new JButton("Main Menu");
+		
+		//Reload Main Menu
+		b1.addActionListener(new ActionListener() {		
+			/**
+			 * actionPerformed returns nothing but disposes the current frame and loads the next level.
+			 * @param ActionEvent an action performed
+			 */
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				MainMenu();
+			}
+
+		});
+		
+		p.add(b1);
+
+		//Display the window.
+		frame.add(p);
+		frame.pack();
+		frame.setVisible(true);
+		frame.setSize(frameWidth, frameHeight);
+	}
 	
 	/**
 	 *LoadLevel returns nothing but loads a level into the game. It initializes the organism list
@@ -215,7 +249,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		}
 		p.add(img_labels.get(picture));
 
-
 		try {
 			frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.background)))));
 		} catch (IOException e) {
@@ -255,8 +288,19 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		bYes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (picture < maxTurns){
-					System.out.print(L.organismList.get(picture).toString());	
+				if( L.getStrikes() >= 2) {
+					frame.dispose();
+					GameOver();
+				}
+				else if (picture < maxTurns){				
+					System.out.print(L.organismList.get(picture).toString());
+					
+					if(L.organismList.get(picture).isDoesBelong() == false) {
+						//Add Code To Display an X
+						System.out.println("Wrong!");
+						L.setStrikes(L.getStrikes() + 1);
+					}
+					
 					org_panels.get(picture).setVisible(true);					
 					p.remove(img_labels.get(picture));
 					picture++;
@@ -265,7 +309,14 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					p.repaint();
 				}
 				else if (picture == maxTurns){
-					System.out.println(L.organismList.get(2).toString());			
+					System.out.println(L.organismList.get(2).toString());
+					
+					if(L.organismList.get(picture).isDoesBelong() == false) {
+						//Add Code To Display an X
+						System.out.println("Wrong!");
+						L.setStrikes(L.getStrikes() + 1);
+					}
+					
 					org_panels.get(picture).setVisible(true);
 					promptPanel.setVisible(false);
 					p.revalidate();
@@ -276,11 +327,21 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		});
 
 		bNo.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (picture < maxTurns){
-					System.out.print(L.organismList.get(1).toString());	
+				if( L.getStrikes() >= 2) {
+					frame.dispose();
+					GameOver();
+				}
+				else if (picture < maxTurns){
+					System.out.print(L.organismList.get(picture).toString());
+					
+					if(L.organismList.get(picture).isDoesBelong() == true) {
+						//Add Code To Display an X
+						System.out.println(" Wrong!");
+						L.setStrikes(L.getStrikes() + 1);
+					}
+					
 					p.remove(img_labels.get(picture));
 					picture++;
 					p.add(img_labels.get(picture));					
@@ -289,6 +350,13 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				}
 				else if (picture == maxTurns){
 					System.out.println(L.organismList.get(2).toString());
+					
+					if(L.organismList.get(picture).isDoesBelong() == true) {
+						//Add Code To Display an X
+						System.out.println(" Wrong!");
+						L.setStrikes(L.getStrikes() + 1);
+					}
+					
 					promptPanel.setVisible(false);
 					p.revalidate();
 					p.repaint();

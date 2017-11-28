@@ -31,6 +31,10 @@ public class Level {
 		//Returns: the value of variable 'strikes'
 		return strikes;
 	}
+	public void setStrikes(int x) {
+		strikes = x;
+		return;
+	}
 
 	/**
 	 * Simple constructor that creates a generic Level and calls createOrganismList
