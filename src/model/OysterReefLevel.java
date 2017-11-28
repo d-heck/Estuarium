@@ -29,12 +29,12 @@ public class OysterReefLevel extends Level{
 	 * is set to true.  These organisms belong in an oyster reef.
 	 */
 	private void createAcceptedList(){
-		acceptedOrganisms.add(new Organism("Eastern Oyster",true,"I attach myself to others of my kind to form the main part of an oyster reef.","resources/images/easternoyster.png",0,0));
-		acceptedOrganisms.add(new Organism("Goby",true,"I can hide from larger predators in small crevices in oyster reefs.","resources/images/goby.png",0,0));
-		acceptedOrganisms.add(new Organism("Black Drum",true,"As an adult, my teeth are large enough to crush oyster shells so I can eat the oyster within.","resources/images/blackdrum.png",0,0));
-		acceptedOrganisms.add(new Organism("Microalgae",true,"I provide a source of food to the oysters in the roof, who can filter me out of the water.","resources/images/microalgae.png",0,0));
-		acceptedOrganisms.add(new Organism("American Eel",true,"I can feed on a variety of organisms that call oyster reefs home.","resources/images/americaneel.png",0,0));
-		acceptedOrganisms.add(new Organism("Oyster Toadfish",true,"While I mostly eat small crabs, I can also feed on the oysters and small fish.","resources/images/oystertoadfish.png",0,0));
+		acceptedOrganisms.add(new Organism("Eastern Oyster",true,"I attach myself to others of my kind to form the main part of an oyster reef.","resources/images/easternoyster.png",300,180));
+		acceptedOrganisms.add(new Organism("Goby",true,"I can hide from larger predators in small crevices in oyster reefs.","resources/images/goby.png",800,400));
+		acceptedOrganisms.add(new Organism("Black Drum",true,"As an adult, my teeth are large enough to crush oyster shells so I can eat the oyster within.","resources/images/blackdrum.png",100,180));
+		acceptedOrganisms.add(new Organism("Microalgae",true,"I provide a source of food to the oysters in the reef, who can filter me out of the water.","resources/images/microalgae.png",600,250));
+		acceptedOrganisms.add(new Organism("American Eel",true,"I can feed on a variety of organisms that call oyster reefs home.","resources/images/americaneel.png",650,500));
+		acceptedOrganisms.add(new Organism("Oyster Toadfish",true,"While I mostly eat small crabs, I can also feed on the oysters and small fish.","resources/images/oystertoadfish.png",600,100));
 	}//createAcceptedList
 	
 	/**
@@ -43,12 +43,12 @@ public class OysterReefLevel extends Level{
 	 * invasive species.
 	 */
 	private void createUnacceptedList(){
-		unacceptedOrganisms.add(new Organism("Green Porcelain Crab",false,"I am an invasive species.","resources/images/greenporcelaincrab.png",0,0));
-		unacceptedOrganisms.add(new Organism("Striped Barnacle",false,"I am an invasive species.","resources/images/barnacle.png",0,0));
-		unacceptedOrganisms.add(new Organism("European Green Crab",false,"I am an invasive species.","resources/images/europeangreencrab.png",0,0));
-		unacceptedOrganisms.add(new Organism("Tube Worm",false,"I am invasive and can damage the shell of oysters I burrow into.","resources/images/tubeworm.png",0,0));
-		unacceptedOrganisms.add(new Organism("Orange-Striped Anemone",false,"I am invasive and can make it difficult for oysters to feed.","resources/images/anemone.png",0,0));
-		unacceptedOrganisms.add(new Organism("Charru Mussel",false,"I am invasive and can compete with oysters for food.","resources/images/charrumussel.png",0,0));
+		unacceptedOrganisms.add(new Organism("Green Porcelain Crab",false,"I am an invasive species.","resources/images/greenporcelaincrab.png",300,0));
+		unacceptedOrganisms.add(new Organism("Striped Barnacle",false,"I am an invasive species.","resources/images/barnacle.png",200,300));
+		unacceptedOrganisms.add(new Organism("European Green Crab",false,"I am an invasive species.","resources/images/europeangreencrab.png",0,400));
+		unacceptedOrganisms.add(new Organism("Tube Worm",false,"I am invasive and can damage the shell of oysters I burrow into.","resources/images/tubeworm.png",450,350));
+		unacceptedOrganisms.add(new Organism("Orange-Striped Anemone",false,"I am invasive and can make it difficult for oysters to feed.","resources/images/anemone.png",400,120));
+		unacceptedOrganisms.add(new Organism("Charru Mussel",false,"I am invasive and can compete with oysters for food.","resources/images/charrumussel.png",900,150));
 	}//createUnacceptedList
 	
 	/**
