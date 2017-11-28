@@ -16,8 +16,8 @@ public class Level {
 	public ArrayList<Organism> organismList = new ArrayList<Organism>();
 	public String background = "resources/images/Background.png";
 	String name;
-	ArrayList<Organism> acceptedOrganisms; //Holds Organisms with doesBelong = true;
-	ArrayList<Organism> unacceptedOrganisms; //Holds Organisms with doesBelong = false;
+	ArrayList<Organism> acceptedOrganisms = new ArrayList<Organism> ();; //Holds Organisms with doesBelong = true;
+	ArrayList<Organism> unacceptedOrganisms = new ArrayList<Organism> ();; //Holds Organisms with doesBelong = false;
 	public static Scanner scanner = new Scanner(System.in);
 	public int strikes = 0;
 	
@@ -71,7 +71,7 @@ public class Level {
 		Boolean Answer = true;
 		
 		for(int i = 0; i < organismList.size(); i++) {
-			System.out.println("Does " + organismList.get(i).getName() + " belong in the Level? y/n");
+			System.out.println("Does " + this.organismList.get(i).getName() + " belong in the Level? y/n");
 			String input = scanner.nextLine();
 			
 			if(input.equals("y")) {
@@ -81,7 +81,7 @@ public class Level {
 				Answer = false;
 			}
 			
-			if(organismList.get(i).isDoesBelong() == Answer) {
+			if(this.organismList.get(i).isDoesBelong() == Answer) {
 				System.out.println(organismList.get(i));
 				System.out.println("Very Good!");
 				
@@ -102,6 +102,12 @@ public class Level {
 		return;
 	}
 	
+	/**
+	 * Asks the user for a type of habitat (Mangrove, OysterReef, SaltMarsh or tutorial style
+	 * Level)
+	 * @return a {@code MangroveLevel}, {@code OysterReefLevel}, {@code SaltMarshLevel} or
+	 * 			{@code Level} class based on {@code String} entered through Input Stream
+	 */
 	public static Level getLevel(){
 		String choice = Menu.chooseLevel();
 
