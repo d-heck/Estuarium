@@ -241,7 +241,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				switch(picture) {
-				case 1: 
+				case 0: 
 					System.out.print(L.organismList.get(1).toString());	
 					org_panels.get(picture).setVisible(true);					
 					p.remove(img_labels.get(picture));
@@ -250,7 +250,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					p.revalidate();
 					p.repaint();
 					break;
-				case 2: 
+				case 1: 
 					System.out.print(L.organismList.get(0).toString());	
 					org_panels.get(picture).setVisible(true);					
 					p.remove(img_labels.get(picture));
@@ -259,7 +259,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					p.revalidate();
 					p.repaint();
 					break;
-				case 3:
+				case 2:
 					System.out.println(L.organismList.get(2).toString());			
 					org_panels.get(picture).setVisible(true);
 					promptPanel.setVisible(false);
@@ -277,7 +277,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				switch(picture) {
-				case 1: 
+				case 0: 
 					System.out.print(L.organismList.get(1).toString());	
 					p.remove(img_labels.get(picture));
 					picture++;
@@ -285,7 +285,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					p.revalidate();
 					p.repaint();
 					break;
-				case 2: 
+				case 1: 
 					System.out.print(L.organismList.get(0).toString());	
 					p.remove(img_labels.get(picture));
 					picture++;
@@ -293,7 +293,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					p.revalidate();
 					p.repaint();
 					break;
-				case 3:
+				case 2:
 					System.out.println(L.organismList.get(2).toString());
 					promptPanel.setVisible(false);
 					p.revalidate();
