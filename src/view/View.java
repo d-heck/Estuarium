@@ -38,6 +38,7 @@ import javax.swing.JInternalFrame;
  * @author Jeremy Gouveia
  * @author David Heck
  * @author Jason Hickman
+ * @author Kevin Doak
  * @version 0.6
  */
 
