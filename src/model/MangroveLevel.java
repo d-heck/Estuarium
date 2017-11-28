@@ -29,12 +29,12 @@ public class MangroveLevel extends Level{
 	 * is set to true.  These organisms belong in a mangrove environment.
 	 */
 	private void createAcceptedList(){
-		acceptedOrganisms.add(new Organism("Kingfisher",true,"I nest in the mangroves and feed on fish and mollusks.","resources/images/kingfisher.png"));
-		acceptedOrganisms.add(new Organism("Fiddler Crab",true,"I burrow into the deeper mud at the mangroves roots.","resources/images/fiddlercrab.png"));
-		acceptedOrganisms.add(new Organism("Barnacle",true,"I attach myself to any hard surface in the water - like the roots of mangroves.","resources/images/barnacle.png"));
-		acceptedOrganisms.add(new Organism("Oyster",true,"I attaach myself to mangrove roots and filter the water.","resources/images/oyster.png"));
-		acceptedOrganisms.add(new Organism("Red Mangrove",true,"My exposed roots help provide a nesting habitat for a variety of organisms.","resources/images/redmangrove.png"));
-		acceptedOrganisms.add(new Organism("Shore Purslane",true,"I grow well in the always-damp soil found in mangrove environments.","resources/images/shorepurslane.png"));
+		acceptedOrganisms.add(new Organism("Kingfisher",true,"I nest in the mangroves.","resources/images/kingfisher.png",875,-120));
+		acceptedOrganisms.add(new Organism("Fiddler Crab",true,"I burrow into mud at the mangroves roots.","resources/images/fiddlercrab.png",550,200));
+		acceptedOrganisms.add(new Organism("Barnacle",true,"I attach myself to the roots of mangroves.","resources/images/barnacle.png",875,600));
+		acceptedOrganisms.add(new Organism("Oyster",true,"I attaach myself to mangrove roots.","resources/images/oyster.png",875,400));
+		acceptedOrganisms.add(new Organism("Red Mangrove",true,"My exposed roots provide a nesting habitat.","resources/images/redmangrove.png",900,300));
+		acceptedOrganisms.add(new Organism("Shore Purslane",true,"I grow well in the always-damp soil.","resources/images/shorepurslane.png",0,0));
 	}//createAcceptedList
 
 	/**
@@ -43,12 +43,12 @@ public class MangroveLevel extends Level{
 	 * are invasive species.
 	 */
 	private void createUnacceptedList(){
-		unacceptedOrganisms.add(new Organism("Gopher",false,"I can't tunnel well here, since there's too much water.","resources/images/gopher.png"));
-		unacceptedOrganisms.add(new Organism("Spotted Turtle",false,"I live in fresh water.","resources/images/spottedturtle.png"));
-		unacceptedOrganisms.add(new Organism("Rainbow Trout",false,"I live in fresh water.","resources/images/rainbowtrout.png"));
-		unacceptedOrganisms.add(new Organism("Crappie",false,"I live in fresh water","resources/images/crappie.png"));
-		unacceptedOrganisms.add(new Organism("Black Oak",false,"The salt in the water would damage my trunk and roots.","resources/images/blackoak.png"));
-		unacceptedOrganisms.add(new Organism("Water Lily",false,"I grow best in fresh water.","resources/images/waterlily.png"));
+		unacceptedOrganisms.add(new Organism("Gopher",false,"I can't tunnel since there's too much water.","resources/images/gopher.png",0,0));
+		unacceptedOrganisms.add(new Organism("Spotted Turtle",false,"I live in fresh water.","resources/images/spottedturtle.png",0,0));
+		unacceptedOrganisms.add(new Organism("Rainbow Trout",false,"I live in fresh water.","resources/images/rainbowtrout.png",0,0));
+		unacceptedOrganisms.add(new Organism("Crappie",false,"I live in fresh water","resources/images/crappie.png",0,0));
+		unacceptedOrganisms.add(new Organism("Black Oak",false,"The salt water would damage my trunk and roots.","resources/images/blackoak.png",0,0));
+		unacceptedOrganisms.add(new Organism("Water Lily",false,"I grow best in fresh water.","resources/images/waterlily.png",0,0));
 	}//createUnacceptedList
 
 	/**

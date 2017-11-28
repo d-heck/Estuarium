@@ -167,26 +167,22 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		ArrayList<JPanel> org_panels = new ArrayList<JPanel>(); //JLabels for Organisms
 		//Makes JLabel of ArrayLists in images
 		System.out.println("img_labels ArrayList made");
-		int counter = 70; //used in placement of images
 		//Iterates through organism list
 		for(Organism o : L.organismList) {
 			img_labels.add(new JLabel(new ImageIcon(o.image))); //adds organism image to img_labels
 			JLabel tempimg_label = new JLabel(new ImageIcon(o.image)); //adds organism img to tempimg_label
-			JLabel temptext_label = new JLabel(o.toString()); //adds organism to string to temptext_label
 			
 			//Makes Panel for background
 			JPanel temp_panel = new JPanel(new GridBagLayout()); //Temp_panel to be added to org_panels
-			temp_panel.add(temptext_label); //Adds temptext label
 			temp_panel.add(tempimg_label); //Adds tempimg_label
 			temp_panel.setOpaque(false); 
-			temp_panel.setLocation((100 + counter) % (frameWidth - 100), (250 + counter) % (frameHeight - 100)); //sets location for organism
+			temp_panel.setLocation(o.getXloc(), o.getYloc()); //sets location for organism
 			temp_panel.setVisible(false); //sets visibility to false
 			temp_panel.setSize(400,400); // sets size of organism
 			
 			org_panels.add(temp_panel); //Adds temp_panel to org_panels
 			
 			System.out.println("JLabel for organism made:" + o.toString());
-			counter = (counter * 2) % 200; //Modifies the counter for a unique placement
 		}
 		p.add(img_labels.get(picture));
 
