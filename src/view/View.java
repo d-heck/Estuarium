@@ -251,8 +251,43 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			temp_panel.setVisible(false); //sets visibility to false
 			temp_panel.setSize(400,400); // sets size of organism
 			
-			org_panels.add(temp_panel); //Adds temp_panel to org_panels
+			JPanel txtpanel = new JPanel(new GridBagLayout());
+			JLabel txtlabel = new JLabel(o.toString());
 			
+			tempimg_label.addMouseListener(new java.awt.event.MouseAdapter() {
+				
+			    public void mouseEntered(java.awt.event.MouseEvent evt) {
+			    	txtlabel.setOpaque(true);
+			    	txtpanel.setOpaque(true);
+			    	txtlabel.setVisible(true);
+			    	txtpanel.setSize(txtlabel.getWidth()+25,txtlabel.getHeight()+25);
+			    	//txtlabel.setSize(txtlabel.getWidth()+25,txtlabel.getHeight()+25);
+			    	
+					int x = o.getXloc()+200;
+					
+			    	if(x<=frameWidth/2) {
+			    		//Show label to the right
+			    		txtpanel.setLocation(o.getXloc()+250, o.getYloc()+175);
+			    		//txtlabel.setLocation(o.getXloc()+250, o.getYloc()+175);
+			    	}else{
+			    		//Show label to the left
+			    		txtpanel.setLocation(o.getXloc()-txtlabel.getWidth()+125, o.getYloc()+175);
+			    		//txtlabel.setLocation(o.getXloc()-txtlabel.getWidth()+125, o.getYloc()+175);
+			    	}
+			    	
+			    	txtpanel.add(txtlabel);
+			    	txtpanel.setVisible(true);
+			    	frame.add(txtpanel);
+			    	//txtlabel.setVisible(true);
+			    }
+			    
+			    public void mouseExited(java.awt.event.MouseEvent evt) {
+			    	txtlabel.setVisible(false);
+			    	txtpanel.setVisible(false);
+			    }
+			});
+			
+			org_panels.add(temp_panel); //Adds temp_panel to org_panels
 			System.out.println("JLabel for organism made:" + o.toString());
 		}
 		p.add(img_labels.get(picture));
