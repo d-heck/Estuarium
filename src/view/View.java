@@ -112,7 +112,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				LoadLevel(new Level());	
+				LoadLevel(new MangroveLevel());	
 			}
 
 		});
