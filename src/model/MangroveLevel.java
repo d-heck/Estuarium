@@ -29,9 +29,9 @@ public class MangroveLevel extends Level{
 	private void createAcceptedList(){
 		acceptedOrganisms.add(new Organism("Kingfisher",true,"I nest in the mangroves and feed on fish and mollusks."));
 		acceptedOrganisms.add(new Organism("Fiddler Crab",true,"I burrow into the deeper mud at the mangroves roots."));
-		acceptedOrganisms.add(new Organism("Barnacles",true,"I attach myself to any hard surface in the water - like the roots of mangroves."));
-		acceptedOrganisms.add(new Organism("Oysters",true,"I attaach myself to mangrove roots and filter the water."));
-		acceptedOrganisms.add(new Organism("Red Mangroves",true,"My exposed roots help provide a nesting habitat for a variety of organisms."));
+		acceptedOrganisms.add(new Organism("Barnacle",true,"I attach myself to any hard surface in the water - like the roots of mangroves."));
+		acceptedOrganisms.add(new Organism("Oyster",true,"I attaach myself to mangrove roots and filter the water."));
+		acceptedOrganisms.add(new Organism("Red Mangrove",true,"My exposed roots help provide a nesting habitat for a variety of organisms."));
 		acceptedOrganisms.add(new Organism("Shore Purslane",true,"I grow well in the always-damp soil found in mangrove environments."));
 	}//createAcceptedList
 	
@@ -44,7 +44,7 @@ public class MangroveLevel extends Level{
 		unacceptedOrganisms.add(new Organism("Gopher",false,"I can't tunnel well here, since there's too much water."));
 		unacceptedOrganisms.add(new Organism("Spotted Turtle",false,"I live in fresh water."));
 		unacceptedOrganisms.add(new Organism("Rainbow Trout",false,"I live in fresh water."));
-		unacceptedOrganisms.add(new Organism("Crappies",false,"I live in fresh water"));
+		unacceptedOrganisms.add(new Organism("Crappie",false,"I live in fresh water"));
 		unacceptedOrganisms.add(new Organism("Black Oak",false,"The salt in the water would damage my trunk and roots."));
 		unacceptedOrganisms.add(new Organism("Water Lily",false,"I grow best in fresh water."));
 	}//createUnacceptedList
