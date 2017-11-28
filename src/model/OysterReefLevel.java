@@ -44,7 +44,7 @@ public class OysterReefLevel extends Level{
 		unacceptedOrganisms.add(new Organism("Green Porcelain Crab",false,"I am an invasive species."));
 		unacceptedOrganisms.add(new Organism("Striped Barnacle",false,"I am an invasive species."));
 		unacceptedOrganisms.add(new Organism("European Green Crab",false,"I am an invasive species."));
-		unacceptedOrganisms.add(new Organism("Tube Worms",false,"I am invasive and can damage the shell of oysters I burrow into."));
+		unacceptedOrganisms.add(new Organism("Tube Worm",false,"I am invasive and can damage the shell of oysters I burrow into."));
 		unacceptedOrganisms.add(new Organism("Orange-Striped Anemone",false,"I am invasive and can make it difficult for oysters to feed when I cover them."));
 		unacceptedOrganisms.add(new Organism("Charru Mussel",false,"I am invasive and can compete with oysters for food."));
 	}//createUnacceptedList
