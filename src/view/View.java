@@ -7,6 +7,7 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -44,7 +45,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	//Dimensions
 	final static int frameWidth = 1280;
 	final static int frameHeight = 760;
-	int picture = 1;
+	int picture = 0;
 
 	
 	/**
@@ -163,6 +164,32 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		promptPanel.setSize(frameWidth/4, frameHeight/2);
 		//Sets Panel location
 		promptPanel.setLocation(frameWidth/2 + 150, frameHeight/4);
+		
+		ArrayList<JLabel> img_labels = new ArrayList<JLabel>(); //JLabels for Prompt
+		ArrayList<JPanel> org_panels = new ArrayList<JPanel>(); //JLabels for Organisms
+		//Makes JLabel of ArrayLists in images
+		System.out.println("img_labels ArrayList made");
+		int counter = 70;
+		for(Organism o : L.organismList) {
+			img_labels.add(new JLabel(new ImageIcon(o.image)));
+			JLabel tempimg_label = new JLabel(new ImageIcon(o.image));
+			JLabel temptext_label = new JLabel(o.toString());
+			
+			//Makes Panel for background
+			JPanel temp_panel = new JPanel(new GridBagLayout());
+			temp_panel.add(temptext_label);
+			temp_panel.add(tempimg_label);
+			temp_panel.setOpaque(false);
+			temp_panel.setLocation((100 + counter) % frameWidth, (250 + counter) % frameHeight);
+			temp_panel.setVisible(false);
+			temp_panel.setSize(400,400);
+			
+			org_panels.add(temp_panel); //Adds temp_panel to org_panels
+			
+			System.out.println("JLabel for organism made:" + o.toString());
+			counter = (counter * 2) % 300;
+		}
+		p.add(img_labels.get(picture));
 
 
 		try {
@@ -171,7 +198,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			e.printStackTrace();
 		}
 
-		//Get Image From Organism
+		/*Get Image From Organism
 		try {
 			crabImg = ImageIO.read(new File(L.organismList.get(0).getFilePath()));
 			fishImg = ImageIO.read(new File(L.organismList.get(1).getFilePath()));
@@ -180,19 +207,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		*/
 
-		//Organism Image
-		JLabel fishLabel = new JLabel(new ImageIcon(fishImg));
-		JLabel fishLabel2 = new JLabel(new ImageIcon(fishImg)); //Label for background frame NOT prompt
-		JLabel crabLabel = new JLabel(new ImageIcon(crabImg));
-		JLabel crabLabel2 = new JLabel(new ImageIcon(crabImg));
-		JLabel kelpLabel = new JLabel(new ImageIcon(kelpImg));
-		JLabel kelpLabel2 = new JLabel(new ImageIcon(kelpImg));
-
-		//Organism Labels
-		JLabel crabLabel_text = new JLabel(L.organismList.get(0).toString());
-		JLabel fishLabel_text = new JLabel(L.organismList.get(1).toString());
-		JLabel kelpLabel_text = new JLabel(L.organismList.get(2).toString());
 
 		//Create Buttons For Card
 		ImageIcon YES = new ImageIcon("resources/images/check_mark_green.png");
@@ -214,41 +230,11 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		p.add(bNo, settings);
 		
 		//Set Up Panel
-		p.add(fishLabel);
 		p.setSize(400, 400);
 
 		bYes.setSize(800, 800);
 		bNo.setSize(800, 800);
 
-		//Set up Fish Panel
-		JPanel fishPanel = new JPanel(new GridBagLayout()); //For fishy on background
-		fishPanel.add(fishLabel_text);
-		fishPanel.add(fishLabel2);
-		fishPanel.setOpaque(false);
-		fishPanel.setLocation(100, 250);
-		fishPanel.setVisible(false);
-		fishPanel.setSize(400,400);
-		//End set up Fish Panel
-
-		//Set up Crab Panel
-		JPanel crabPanel = new JPanel(new GridBagLayout()); //For fishy on background
-		crabPanel.add(crabLabel_text);
-		crabPanel.add(crabLabel2);
-		crabPanel.setOpaque(false);
-		crabPanel.setLocation(200, 350);
-		crabPanel.setVisible(false);
-		crabPanel.setSize(400,400);
-		//End set up Crab Panel
-
-		//Set up Kelp Panel
-		JPanel kelpPanel = new JPanel(new GridBagLayout()); //For fishy on background
-		kelpPanel.add(kelpLabel_text);
-		kelpPanel.add(kelpLabel2);
-		kelpPanel.setOpaque(false);
-		kelpPanel.setLocation(650, 420);
-		kelpPanel.setVisible(false);
-		kelpPanel.setSize(400,400);
-		//End set up Kelp Panel
 
 		//Button Functionality for prompt 
 		bYes.addActionListener(new ActionListener() {
@@ -257,26 +243,26 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				switch(picture) {
 				case 1: 
 					System.out.print(L.organismList.get(1).toString());	
-					fishPanel.setVisible(true);
-					p.remove(fishLabel);
-					p.add(crabLabel);				
+					org_panels.get(picture).setVisible(true);					
+					p.remove(img_labels.get(picture));
+					picture++;
+					p.add(img_labels.get(picture));					
 					p.revalidate();
 					p.repaint();
-					picture++;
 					break;
 				case 2: 
 					System.out.print(L.organismList.get(0).toString());	
-					crabPanel.setVisible(true);					
-					p.remove(crabLabel);
-					p.add(kelpLabel);
+					org_panels.get(picture).setVisible(true);					
+					p.remove(img_labels.get(picture));
+					picture++;
+					p.add(img_labels.get(picture));					
 					p.revalidate();
 					p.repaint();
-					picture++;
 					break;
 				case 3:
-					System.out.println(L.organismList.get(2).toString());
-					kelpPanel.setVisible(true);
-					promptPanel.setVisible(false);				
+					System.out.println(L.organismList.get(2).toString());			
+					org_panels.get(picture).setVisible(true);
+					promptPanel.setVisible(false);
 					p.revalidate();
 					p.repaint();
 					picture++;
@@ -293,19 +279,19 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				switch(picture) {
 				case 1: 
 					System.out.print(L.organismList.get(1).toString());	
-					p.remove(fishLabel);
-					p.add(crabLabel);				
+					p.remove(img_labels.get(picture));
+					picture++;
+					p.add(img_labels.get(picture));					
 					p.revalidate();
 					p.repaint();
-					picture++;
 					break;
 				case 2: 
 					System.out.print(L.organismList.get(0).toString());	
-					p.remove(crabLabel);
-					p.add(kelpLabel);
+					p.remove(img_labels.get(picture));
+					picture++;
+					p.add(img_labels.get(picture));	
 					p.revalidate();
 					p.repaint();
-					picture++;
 					break;
 				case 3:
 					System.out.println(L.organismList.get(2).toString());
@@ -323,9 +309,9 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		frame.add(promptPanel);
 		//Set Up Frame
 		promptPanel.add(p);
-		frame.add(fishPanel);
-		frame.add(crabPanel);
-		frame.add(kelpPanel);
+		for(JPanel panel : org_panels) {
+			frame.add(panel);
+		}
 		frame.pack();
 		frame.setVisible(true);
 		frame.setSize(frameWidth, frameHeight);

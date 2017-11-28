@@ -1,5 +1,11 @@
 package model;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 /* 
  * Parent Class of LandOranism, PlantBasedOrganism, and AquaticOrganisms
  * A default type of organism.
@@ -24,6 +30,7 @@ public class Organism {
 	String purpose;
 	int xloc;
 	int yloc;
+	public BufferedImage image;
 	
 	//Contructors
 	
@@ -75,6 +82,12 @@ public class Organism {
 		doesBelong = Belongs;
 		purpose = Pur;
 		filepath = File;
+		try {
+			image = ImageIO.read(new File(filepath));
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	//Getters + Setters
