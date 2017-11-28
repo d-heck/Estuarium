@@ -21,6 +21,7 @@ public class SaltMarshLevel extends Level{
 		createAcceptedList(); //Generates things that belong
 		createUnacceptedList(); //Generates things that don't belong
 		createOrganismList(); //Combines above two lists in a random order
+		background = "resources/images/saltmarsh.png";
 	}//SaltMarshLevel
 	
 	/**
@@ -28,12 +29,12 @@ public class SaltMarshLevel extends Level{
 	 * is set to true.  These organisms belong in a salt marsh.
 	 */
 	private void createAcceptedList(){
-		acceptedOrganisms.add(new Organism("Muskrat",true,"I nest using the vegetation and mud of salt marshes."));
-		acceptedOrganisms.add(new Organism("Ribbed Mussel", true,"I live in areas flooded with the tides and attach myself to marsh grass roots."));
-		acceptedOrganisms.add(new Organism("Whelk", true,"I feed on marsh detritus and provide food for wading and shore birds."));
-		acceptedOrganisms.add(new Organism("Fiddler Crab", true,"I burrow into the mud of the marsh, which actually helps new plants grow."));
-		acceptedOrganisms.add(new Organism("Great Blue Heron",true,"I stand very still in the water before striking at fish or crabs."));
-		acceptedOrganisms.add(new Organism("Cordgrass",true,"I hold sediment in place which gives many creatures a place to nest and burrow."));
+		acceptedOrganisms.add(new Organism("Muskrat",true,"I nest using the vegetation and mud of salt marshes.","resources/images/crab.png",0,0));
+		acceptedOrganisms.add(new Organism("Ribbed Mussel", true,"I live in areas flooded with the tides and attach myself to marsh grass roots.","resources/images/crab.png",0,0));
+		acceptedOrganisms.add(new Organism("Whelk", true,"I feed on marsh detritus and provide food for wading and shore birds.","resources/images/crab.png",0,0));
+		acceptedOrganisms.add(new Organism("Fiddler Crab", true,"I burrow into the mud of the marsh, which actually helps new plants grow.","resources/images/crab.png",0,0));
+		acceptedOrganisms.add(new Organism("Great Blue Heron",true,"I stand very still in the water before striking at fish or crabs.","resources/images/crab.png",0,0));
+		acceptedOrganisms.add(new Organism("Cordgrass",true,"I hold sediment in place which gives many creatures a place to nest and burrow.","resources/images/crab.png",0,0));
 	}//createAcceptedList
 	
 	/**
@@ -42,12 +43,12 @@ public class SaltMarshLevel extends Level{
 	 * invasive species.
 	 */
 	private void createUnacceptedList(){
-		unacceptedOrganisms.add(new Organism("Phragmites Reed",false,"I am an invasive species."));
-		unacceptedOrganisms.add(new Organism("Anglerfish",false,"I live further out in the ocean."));
-		unacceptedOrganisms.add(new Organism("Lynx",false,"I live in forest, mountain, or desert regions."));
-		unacceptedOrganisms.add(new Organism("Purple Loosestrife",false,"I am an invasive species."));
-		unacceptedOrganisms.add(new Organism("Narrow-Leaf Cattail",false,"I am an invasive species."));
-		unacceptedOrganisms.add(new Organism("European Green Crab",false,"I am an invasive species."));
+		unacceptedOrganisms.add(new Organism("Phragmites Reed",false,"I am an invasive species.","resources/images/crab.png",0,0));
+		unacceptedOrganisms.add(new Organism("Anglerfish",false,"I live further out in the ocean.","resources/images/crab.png",0,0));
+		unacceptedOrganisms.add(new Organism("Lynx",false,"I live in forest, mountain, or desert regions.","resources/images/crab.png",0,0));
+		unacceptedOrganisms.add(new Organism("Purple Loosestrife",false,"I am an invasive species.","resources/images/crab.png",0,0));
+		unacceptedOrganisms.add(new Organism("Narrow-Leaf Cattail",false,"I am an invasive species.","resources/images/crab.png",0,0));
+		unacceptedOrganisms.add(new Organism("European Green Crab",false,"I am an invasive species.","resources/images/crab.png",0,0));
 	}//createUnacceptedList
 	
 	/**
