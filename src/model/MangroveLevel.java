@@ -8,6 +8,7 @@ import java.util.Collections;
  * be found in mangroves, and unacceptedOrganisms, which holds Organisms that do not
  * belong in mangroves.
  * @author Jason Hickman
+ * @author Kevin Doak
  * @see Level
  *
  */
