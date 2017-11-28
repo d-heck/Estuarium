@@ -177,14 +177,14 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			temp_panel.add(temptext_label); //Adds temptext label
 			temp_panel.add(tempimg_label); //Adds tempimg_label
 			temp_panel.setOpaque(false); 
-			temp_panel.setLocation((100 + counter) % frameWidth, (250 + counter) % frameHeight); //sets location for organism
+			temp_panel.setLocation((100 + counter) % (frameWidth - 100), (250 + counter) % (frameHeight - 100)); //sets location for organism
 			temp_panel.setVisible(false); //sets visibility to false
 			temp_panel.setSize(400,400); // sets size of organism
 			
 			org_panels.add(temp_panel); //Adds temp_panel to org_panels
 			
 			System.out.println("JLabel for organism made:" + o.toString());
-			counter = (counter * 2) % 300; //Modifies the counter for a unique placement
+			counter = (counter * 2) % 200; //Modifies the counter for a unique placement
 		}
 		p.add(img_labels.get(picture));
 
