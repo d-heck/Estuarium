@@ -100,11 +100,26 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		p.setBackground(Color.GRAY);
 
 		//Add Button + Label
-		JButton b1 = new JButton("Play");
+		JButton b1 = new JButton("Salt Marsh");
+		JButton b2 = new JButton("Mangrove");
+		JButton b3 = new JButton("Oyster Reef");
 
-		//Play Button
-		b1.addActionListener(new ActionListener() {
-			
+		//Salt Marsh Loader
+		b1.addActionListener(new ActionListener() {		
+			/**
+			 * actionPerformed returns nothing but disposes the current frame and loads the next level.
+			 * @param ActionEvent an action performed
+			 */
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				LoadLevel(new SaltMarshLevel());	
+			}
+
+		});
+		
+		//Mangrove Loader
+		b2.addActionListener(new ActionListener() {		
 			/**
 			 * actionPerformed returns nothing but disposes the current frame and loads the next level.
 			 * @param ActionEvent an action performed
@@ -116,17 +131,31 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			}
 
 		});
-		JLabel l1 = new JLabel("Click here to play!");
+		
+		//Mangrove Loader
+		b3.addActionListener(new ActionListener() {		
+			/**
+			 * actionPerformed returns nothing but disposes the current frame and loads the next level.
+			 * @param ActionEvent an action performed
+			 */
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				LoadLevel(new OysterReefLevel());	
+			}
 
+		});
+		
+		
 		p.add(b1);
-		p.add(l1);
+		p.add(b2);
+		p.add(b3);
 
 		//Display the window.
 		frame.add(p);
 		frame.pack();
 		frame.setVisible(true);
 		frame.setSize(frameWidth, frameHeight);
-
 	}
 
 	
