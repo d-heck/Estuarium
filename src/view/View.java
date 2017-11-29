@@ -92,10 +92,21 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	 */
 	//Load Main Menu, Launch Level on Play
 	private void MainMenu() {
+
+		//Create and set up the window.
+		JFrame frame = new JFrame("Estuarium");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		try {
+			frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/images/Background.png")))));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		//Set up panels
 		JPanel p = new JPanel(new GridBagLayout());
 		p.setSize(frameWidth, frameHeight);
-		p.setBackground(Color.GRAY);
+		p.setOpaque(false);
 
 		//Add Button + Label
 		JButton b = new JButton("Tutorial");
@@ -123,7 +134,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				frame.dispose();
 				LoadLevel(new SaltMarshLevel());	
 			}
-
 		});
 		
 		//Mangrove Loader
@@ -151,7 +161,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				frame.dispose();
 				LoadLevel(new OysterReefLevel());	
 			}
-
 		});		
 		p.add(b);
 		p.add(b1);
@@ -414,7 +423,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 		//Add Button + Label
 		//JButton b1 = new JButton("Main Menu");
-		JButton b1 = new JButton("Exit");
+		JButton b1 = new JButton("Return to Menu");
 		
 		//Reload Main Menu
 		b1.addActionListener(new ActionListener() {		
@@ -425,7 +434,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				//MainMenu();
+				MainMenu();
 			}
 
 		});
