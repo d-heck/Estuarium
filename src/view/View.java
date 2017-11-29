@@ -214,7 +214,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		instructions.add(new JLabel("This guy doesn't belong. Choose the X."));
 		instructions.add(new JLabel("Good Job. This one does belong. Choose the check."));
 		instructions.add(new JLabel("Now get one wrong. Choose the X."));
-		instructions.add(new JLabel("Get three wrong and you lose!"));
+		instructions.add(new JLabel("A strike! Get three wrong and you lose!"));
 		tutorialPanel.add(instructions.get(picture));
 		tutorialPanel.setLocation(frameWidth/2 - 150, 3 * frameHeight/8 + 50);
 		tutorialPanel.setVisible(true);
@@ -362,6 +362,14 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		bNo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
+				if(L.organismList.get(picture).isDoesBelong() == true) {
+					//Add Code To Display an X
+					System.out.println(" Wrong!");
+					L.setStrikes(L.getStrikes() + 1);
+					strikePanel.getComponent(L.getStrikes()).setVisible(true);
+				}
+				
 				if (picture==0){
 					System.out.print(L.organismList.get(picture).toString());
 					nameTag.setText(L.organismList.get(picture + 1).getName());
