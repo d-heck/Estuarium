@@ -52,13 +52,14 @@ public class Level {
 		Organism Example1 = new Organism("Cooked Crab", false,"This is Cooked Crab's toString, he doesn't belong.", "resources/images/crab.png");
 		organismList.add(Example1);
 		
-		Organism Example2 = new Organism("Fish", true,"This is Fish's toString, he belongs.", "resources/images/fish.png");
+		Organism Example2 = new Organism("Fish", true,"This is Fish's toString, he belongs.", "resources/images/fish.png",300,400);
 		organismList.add(Example2);
-		
 		
 		Organism Example3 = new Organism("Plant", true,"This is Plant's toString, he belongs.", "resources/images/kelp.png");
 		organismList.add(Example3);
 		
+		Organism Example4 = new Organism("Oyster",true,"This is Oyster's toString, he belongs", "resources/images/oyster.png");
+		organismList.add(Example4);
 	}
 	
 	
