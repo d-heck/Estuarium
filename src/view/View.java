@@ -416,42 +416,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 	}
 	
-	//Game Over Method
-	private void GameOver() {
-		frame.removeAll();
-
-		//Set up panels
-		JPanel p = new JPanel(new GridBagLayout());
-		p.setSize(frameWidth, frameHeight);
-		p.setBackground(Color.GRAY);
-
-		//Add Button + Label
-		//JButton b1 = new JButton("Main Menu");
-		JButton b1 = new JButton("Return to Menu");
-		
-		//Reload Main Menu
-		b1.addActionListener(new ActionListener() {		
-			/**
-			 * actionPerformed returns nothing but disposes the current frame and loads the next level.
-			 * @param ActionEvent an action performed
-			 */
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
-				MainMenu();
-			}
-
-		});
-		
-		p.add(b1);
-
-		//Display the window.
-		frame.add(p);
-		frame.pack();
-		frame.setVisible(true);
-		frame.setSize(frameWidth, frameHeight);
-	}
-	
 	/**
 	 *LoadLevel returns nothing but loads a level into the game. It initializes the organism list
 	 *and loads a BG image.
@@ -477,6 +441,9 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		JLabel nameTag = new JLabel("Label");
 		nameTag.setText("Test");
 		p.add(nameTag);
+		
+		//Make Game Over Panel
+		JPanel endPanel = new JPanel(new GridBagLayout());
 		
 		//Make Strike Panel
 		JPanel strikePanel = new JPanel(new GridBagLayout());
@@ -597,6 +564,34 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		strikePanel.getComponent(0).setVisible(false);
 		strikePanel.getComponent(1).setVisible(false);
 		strikePanel.getComponent(2).setVisible(false);
+		
+		//Set Up End Panel
+		endPanel.setSize(400,300);
+		JLabel endLabel1 = new JLabel("Game Over", JLabel.CENTER);
+		JLabel endLabel2 = new JLabel("You Scored: " + "NUMBER" + " out of " + "NUMBER" + "!");
+		JButton restartButton = new JButton("Retry?");
+		JButton quitButton = new JButton("Quit");
+		endPanel.add(endLabel1);
+		endPanel.add(endLabel2);
+		endPanel.add(restartButton);
+		endPanel.add(quitButton);
+		endPanel.setLocation(3 * frameWidth/4 - 500, frameHeight/4 + 20);
+		//Set up endpanel restartbutton
+		restartButton.addActionListener(new ActionListener() {
+		@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				MainMenu();
+			}
+		});
+		//Set up endpanel quit button
+		quitButton.addActionListener(new ActionListener() {
+		@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();			
+			}
+		});
+		
 
 		maxTurns = L.organismList.size()-1;
 		
@@ -608,8 +603,12 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if( L.getStrikes() >= 2) {
-					frame.dispose();			
-					GameOver();
+					strikePanel.getComponent(L.getStrikes()).setVisible(true);
+					endPanel.setVisible(true);
+					promptPanel.setVisible(false);
+					//frame.add(endPanel);
+					//frame.dispose();			
+					//GameOver();
 				}
 			else if (picture < maxTurns){				
 					System.out.print(L.organismList.get(picture).toString());
@@ -617,7 +616,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					if(L.organismList.get(picture).isDoesBelong() == false) {
 						System.out.println("Wrong!");
 						L.setStrikes(L.getStrikes() + 1);
-						strikePanel.getComponent(L.getStrikes()).setVisible(true);
+						strikePanel.getComponent(L.getStrikes()-1).setVisible(true);
 					}
 					
 					org_panels.get(picture).setVisible(true);
@@ -634,7 +633,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					if(L.organismList.get(picture).isDoesBelong() == false) {
 						System.out.println("Wrong!");
 						L.setStrikes(L.getStrikes() + 1);
-						strikePanel.getComponent(L.getStrikes()).setVisible(true);
+						strikePanel.getComponent(L.getStrikes()-1).setVisible(true);
 					}
 					
 					org_panels.get(picture).setVisible(true);
@@ -650,8 +649,12 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if( L.getStrikes() >= 2) {
-					frame.dispose();
-					GameOver();
+					strikePanel.getComponent(L.getStrikes()).setVisible(true);
+					endPanel.setVisible(true);
+					promptPanel.setVisible(false);
+					//frame.add(endPanel);
+					//frame.dispose();
+					//GameOver();
 				}
 				else if (picture < maxTurns){
 					System.out.print(L.organismList.get(picture).toString());
@@ -686,7 +689,9 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				
 			}
 		});
-
+		
+		frame.add(endPanel);
+		endPanel.setVisible(false);
 		frame.add(strikePanel);
 		//frame.add(p, BorderLayout.CENTER);
 		frame.add(promptPanel);
