@@ -19,6 +19,7 @@ public class Level {
 	ArrayList<Organism> acceptedOrganisms = new ArrayList<Organism> ();; //Holds Organisms with doesBelong = true;
 	ArrayList<Organism> unacceptedOrganisms = new ArrayList<Organism> ();; //Holds Organisms with doesBelong = false;
 	public static Scanner scanner = new Scanner(System.in);
+	public int score = 0;
 	public int strikes = 0;
 	
 	/**
@@ -33,6 +34,16 @@ public class Level {
 	}
 	public void setStrikes(int x) {
 		strikes = x;
+		return;
+	}
+	
+	public int getScore() {
+		//Parameters: none
+		//Returns: the value of variable 'score'
+		return score;
+	}
+	public void setScore(int x) {
+		score = x;
 		return;
 	}
 

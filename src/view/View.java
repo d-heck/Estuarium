@@ -428,6 +428,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	public void LoadLevel(Level L) {
 		//Instantiate Level
 		L.setStrikes(0);
+		L.setScore(0);
+		picture = 0;
 		
 		//Create and set up the window.
 		JFrame frame = new JFrame("Estuarium");
@@ -547,7 +549,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		
 		//Set Up Panel
 		p.setSize(400, 400);
-
 		bYes.setSize(800, 800);
 		bNo.setSize(800, 800);
 		
@@ -568,7 +569,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Set Up End Panel
 		endPanel.setSize(400,300);
 		JLabel endLabel1 = new JLabel("Game Over", JLabel.CENTER);
-		JLabel endLabel2 = new JLabel("You Scored: " + "NUMBER" + " out of " + "NUMBER" + "!");
+		JLabel endLabel2 = new JLabel("You Scored: " + L.getScore() + " out of " + "12" + "!");
 		JButton restartButton = new JButton("Retry?");
 		JButton quitButton = new JButton("Quit");
 		endPanel.add(endLabel1);
@@ -591,7 +592,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				frame.dispose();			
 			}
 		});
-		
 
 		maxTurns = L.organismList.size()-1;
 		
@@ -610,13 +610,17 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					//frame.dispose();			
 					//GameOver();
 				}
-			else if (picture < maxTurns){				
+				if (picture < maxTurns){				
 					System.out.print(L.organismList.get(picture).toString());
 					
 					if(L.organismList.get(picture).isDoesBelong() == false) {
-						System.out.println("Wrong!");
+						System.out.println(" Wrong! \n");
 						L.setStrikes(L.getStrikes() + 1);
 						strikePanel.getComponent(L.getStrikes()-1).setVisible(true);
+					}
+					else {
+						L.setScore(L.getScore()+1);
+						System.out.println(" Right! \n");
 					}
 					
 					org_panels.get(picture).setVisible(true);
@@ -656,13 +660,17 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					//frame.dispose();
 					//GameOver();
 				}
-				else if (picture < maxTurns){
+				if (picture < maxTurns){
 					System.out.print(L.organismList.get(picture).toString());
 					
 					if(L.organismList.get(picture).isDoesBelong() == true) {
-						System.out.println(" Wrong!");
+						System.out.println(" Wrong! \n");
 						L.setStrikes(L.getStrikes() + 1);
 						strikePanel.getComponent(L.getStrikes()).setVisible(true);
+					}
+					else {
+						L.setScore(L.getScore() + 1);
+						System.out.println(" Right! \n");
 					}
 					
 					nameTag.setText(L.organismList.get(picture + 1).getName());;
