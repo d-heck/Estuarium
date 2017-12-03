@@ -252,37 +252,34 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 			tempimg_label.addMouseListener(new java.awt.event.MouseAdapter() {			
 
-				public void mouseEntered(java.awt.event.MouseEvent evt) {	
-					txtpanel.setSize(txtlabel.getWidth()+25,txtlabel.getHeight()+25);
-					txtpanel.setOpaque(true);
-					txtlabel.setOpaque(true);
-					txtlabel.setVisible(true);
-					//txtlabel.setSize(txtlabel.getWidth()+25,txtlabel.getHeight()+25);
+				 public void mouseEntered(java.awt.event.MouseEvent evt) {	
+				    	//Set Panel Size + Location
+				    	txtpanel.setVisible(false);
+				    	txtpanel.setSize(o.toString().length() * 6, 50); //Sets size based on toString Length, fixes bugs.
+				    	
+				    	if(o.getXloc()+200 <=frameWidth/2) {
+				    		//Show label to the right
+				    		txtpanel.setLocation(o.getXloc()+250, o.getYloc()+175);
+				    	}else{
+				    		//Show label to the left
+				    		txtpanel.setLocation(o.getXloc()-o.toString().length() * 3, o.getYloc()+175);			    		
+				    	}	
 
-					int x = o.getXloc()+200;
-
-					if(x<=frameWidth/2) {
-						//Show label to the right
-						txtpanel.setLocation(o.getXloc()+250, o.getYloc()+175);
-						//txtlabel.setLocation(o.getXloc()+250, o.getYloc()+175);
-					}else{
-						//Show label to the left
-						txtpanel.setLocation(o.getXloc()-txtlabel.getWidth()+125, o.getYloc()+175);
-						//txtlabel.setLocation(o.getXloc()-txtlabel.getWidth()+125, o.getYloc()+175);
-					}
-
-					txtpanel.add(txtlabel);
-					txtpanel.setVisible(true);
-					frame.add(txtpanel);
-					//txtlabel.setVisible(true);
-				}
-
-				public void mouseExited(java.awt.event.MouseEvent evt) {
-					txtlabel.setVisible(false);
-					txtpanel.setVisible(false);
-				}
-			});
-
+				    	//Add + Show Panel
+				    	txtlabel.setOpaque(true);
+				    	txtpanel.setOpaque(true);
+				    	txtlabel.setVisible(true);		  
+				    	txtpanel.add(txtlabel);	
+				    	
+				    	frame.add(txtpanel);
+				    	txtpanel.setVisible(true);
+				    }
+				    
+				    public void mouseExited(java.awt.event.MouseEvent evt) {
+				    	//Hide Panel on Exit
+				    	txtpanel.setVisible(false);
+				    }
+				});
 			org_panels.add(temp_panel); //Adds temp_panel to org_panels
 			System.out.println("JLabel for organism made:" + o.toString());
 		}
@@ -491,33 +488,31 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			
 			tempimg_label.addMouseListener(new java.awt.event.MouseAdapter() {
 				
-			    public void mouseEntered(java.awt.event.MouseEvent evt) {
-			    	txtlabel.setOpaque(true);
-			    	txtpanel.setOpaque(true);
-			    	txtlabel.setVisible(true);
-			    	txtpanel.setSize(txtlabel.getWidth()+25,txtlabel.getHeight()+25);
-			    	//txtlabel.setSize(txtlabel.getWidth()+25,txtlabel.getHeight()+25);
+			    public void mouseEntered(java.awt.event.MouseEvent evt) {	
+			    	//Set Panel Size + Location
+			    	txtpanel.setVisible(false);
+			    	txtpanel.setSize(o.toString().length() * 6, 50); //Sets size based on toString Length, fixes bugs.
 			    	
-					int x = o.getXloc()+200;
-					
-			    	if(x<=frameWidth/2) {
+			    	if(o.getXloc()+200 <=frameWidth/2) {
 			    		//Show label to the right
 			    		txtpanel.setLocation(o.getXloc()+250, o.getYloc()+175);
-			    		//txtlabel.setLocation(o.getXloc()+250, o.getYloc()+175);
 			    	}else{
 			    		//Show label to the left
-			    		txtpanel.setLocation(o.getXloc()-txtlabel.getWidth()+125, o.getYloc()+175);
-			    		//txtlabel.setLocation(o.getXloc()-txtlabel.getWidth()+125, o.getYloc()+175);
-			    	}
+			    		txtpanel.setLocation(o.getXloc()-o.toString().length() * 3, o.getYloc()+175);			    		
+			    	}	
+
+			    	//Add + Show Panel
+			    	txtlabel.setOpaque(true);
+			    	txtpanel.setOpaque(true);
+			    	txtlabel.setVisible(true);		  
+			    	txtpanel.add(txtlabel);	
 			    	
-			    	txtpanel.add(txtlabel);
-			    	txtpanel.setVisible(true);
 			    	frame.add(txtpanel);
-			    	//txtlabel.setVisible(true);
+			    	txtpanel.setVisible(true);
 			    }
 			    
 			    public void mouseExited(java.awt.event.MouseEvent evt) {
-			    	txtlabel.setVisible(false);
+			    	//Hide Panel on Exit
 			    	txtpanel.setVisible(false);
 			    }
 			});
