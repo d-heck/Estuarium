@@ -262,7 +262,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				    		txtpanel.setLocation(o.getXloc()+250, o.getYloc()+175);
 				    	}else{
 				    		//Show label to the left
-				    		txtpanel.setLocation(o.getXloc()-o.toString().length() * 3, o.getYloc()+175);			    		
+				    		txtpanel.setLocation((int) (o.getXloc() - txtpanel.getSize().getWidth() + 150), o.getYloc()+175);		    		
 				    	}	
 
 				    	//Add + Show Panel
@@ -498,7 +498,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			    		txtpanel.setLocation(o.getXloc()+250, o.getYloc()+175);
 			    	}else{
 			    		//Show label to the left
-			    		txtpanel.setLocation(o.getXloc()-o.toString().length() * 3, o.getYloc()+175);			    		
+			    		txtpanel.setLocation((int) (o.getXloc() - txtpanel.getSize().getWidth() + 150), o.getYloc()+175);		    		
 			    	}	
 
 			    	//Add + Show Panel
@@ -568,16 +568,13 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		strikePanel.getComponent(2).setVisible(false);
 		
 		//Set Up End Panel
-		endPanel.setSize(400,300);
-		JLabel endLabel1 = new JLabel("Game Over", JLabel.CENTER);
-		JLabel endLabel2 = new JLabel("You Scored: " + L.getScore() + " out of " + "12" + "!");
+		endPanel.setSize(400,150);
+		JLabel endLabel1 = new JLabel("Game Over! ", JLabel.CENTER);
+		JLabel endLabel2 = new JLabel();
 		JButton restartButton = new JButton("Retry?");
 		JButton quitButton = new JButton("Quit");
-		endPanel.add(endLabel1);
-		endPanel.add(endLabel2);
-		endPanel.add(restartButton);
-		endPanel.add(quitButton);
 		endPanel.setLocation(3 * frameWidth/4 - 500, frameHeight/4 + 20);
+		
 		//Set up endpanel restartbutton
 		restartButton.addActionListener(new ActionListener() {
 		@Override
@@ -604,12 +601,18 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if( L.getStrikes() >= 2) {
-					strikePanel.getComponent(L.getStrikes()).setVisible(true);
+					strikePanel.getComponent(L.getStrikes()).setVisible(true); 
+					
+					//Add all elements to end-card
+					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
+					endPanel.add(endLabel1);
+					endPanel.add(endLabel2);
+					endPanel.add(restartButton);
+					endPanel.add(quitButton);
+					
 					endPanel.setVisible(true);
 					promptPanel.setVisible(false);
-					//frame.add(endPanel);
-					//frame.dispose();			
-					//GameOver();
+
 				}
 				if (picture < maxTurns){				
 					System.out.print(L.organismList.get(picture).toString());
@@ -655,11 +658,16 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			public void actionPerformed(ActionEvent e) {
 				if( L.getStrikes() >= 2) {
 					strikePanel.getComponent(L.getStrikes()).setVisible(true);
+					
+					//Add all elements to end-card
+					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
+					endPanel.add(endLabel1);
+					endPanel.add(endLabel2);
+					endPanel.add(restartButton);
+					endPanel.add(quitButton);
+					
 					endPanel.setVisible(true);
 					promptPanel.setVisible(false);
-					//frame.add(endPanel);
-					//frame.dispose();
-					//GameOver();
 				}
 				if (picture < maxTurns){
 					System.out.print(L.organismList.get(picture).toString());
