@@ -175,6 +175,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Instantiate Level
 		Level L = new Level();
 		L.setStrikes(0);
+		L.setScore(0);
+		picture = 0;
 				
 		//Create and set up the window.
 		JFrame frame = new JFrame("Estuarium");
@@ -218,11 +220,12 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		tutorialPanel.add(instructions.get(picture));
 		tutorialPanel.setLocation(frameWidth/2 - 150, 3 * frameHeight/8 + 50);
 		tutorialPanel.setVisible(true);
-
+		
 		JButton mainButton = new JButton("Main Menu");
 		mainButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
+				frame.dispose();
 				MainMenu();
 			}
 		});
@@ -247,13 +250,13 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			JPanel txtpanel = new JPanel(new GridBagLayout());
 			JLabel txtlabel = new JLabel(o.toString());
 
-			tempimg_label.addMouseListener(new java.awt.event.MouseAdapter() {
+			tempimg_label.addMouseListener(new java.awt.event.MouseAdapter() {			
 
-				public void mouseEntered(java.awt.event.MouseEvent evt) {
-					txtlabel.setOpaque(true);
-					txtpanel.setOpaque(true);
-					txtlabel.setVisible(true);
+				public void mouseEntered(java.awt.event.MouseEvent evt) {	
 					txtpanel.setSize(txtlabel.getWidth()+25,txtlabel.getHeight()+25);
+					txtpanel.setOpaque(true);
+					txtlabel.setOpaque(true);
+					txtlabel.setVisible(true);
 					//txtlabel.setSize(txtlabel.getWidth()+25,txtlabel.getHeight()+25);
 
 					int x = o.getXloc()+200;
@@ -290,7 +293,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 
 		//Create Buttons For Card
 		ImageIcon YES = new ImageIcon("resources/images/check_mark_green.png");
@@ -362,7 +364,10 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		bNo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				if(picture == 1) {
+					System.out.println("Select YES");
+					return;
+				}
 				if(L.organismList.get(picture).isDoesBelong() == true) {
 					//Add Code To Display an X
 					System.out.println(" Wrong!");
@@ -390,7 +395,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					picture++;
 					tutorialPanel.add(instructions.get(3));
 					tutorialPanel.add(mainButton);
-					p.add(img_labels.get(picture));					
+					p.add(img_labels.get(picture));
+					promptPanel.setVisible(false);
 					p.revalidate();
 					p.repaint();
 				}
@@ -666,7 +672,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					if(L.organismList.get(picture).isDoesBelong() == true) {
 						System.out.println(" Wrong! \n");
 						L.setStrikes(L.getStrikes() + 1);
-						strikePanel.getComponent(L.getStrikes()).setVisible(true);
+						strikePanel.getComponent(L.getStrikes()-1).setVisible(true);
 					}
 					else {
 						L.setScore(L.getScore() + 1);
@@ -687,7 +693,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 						//Add Code To Display an X
 						System.out.println(" Wrong!");
 						L.setStrikes(L.getStrikes() + 1);
-						strikePanel.getComponent(L.getStrikes()).setVisible(true);
+						strikePanel.getComponent(L.getStrikes()-1).setVisible(true);
 					}
 					
 					promptPanel.setVisible(false);
