@@ -22,6 +22,7 @@ public class OysterReefLevel extends Level{
 		createUnacceptedList();
 		createOrganismList();
 		background = "resources/images/oysterreef.png";
+		backgroundFull = "resources/images/oysterreeffull.png";
 	}//OysterReefLevel
 	
 	/**

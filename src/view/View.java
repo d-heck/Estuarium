@@ -43,10 +43,20 @@ import javax.swing.JInternalFrame;
  */
 
 public class View extends JFrame implements ActionListener, MouseMotionListener {
+	public View(double Scale){
+		//Create and set up the window.
+		this.scale = Scale;
+		frame = new JFrame("Estuarium");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
 
 	//Dimensions
-	final static int frameWidth = 1280;
-	final static int frameHeight = 760;
+	double scale = 1.0;
+	
+	int frameWidth = (int) (1280 * scale);
+	int frameHeight = (int) (760 * scale);
+	
+	
 	int picture = 0;
 	int maxTurns;
 	JFrame frame;
@@ -109,6 +119,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		JButton b1 = new JButton("Salt Marsh");
 		JButton b2 = new JButton("Mangrove");
 		JButton b3 = new JButton("Oyster Reef");
+		JButton b4 = new JButton("Full Screen");
+		
 		
 		//Tutorial Loader
 		b.addActionListener(new ActionListener() {
@@ -157,11 +169,34 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				frame.dispose();
 				LoadLevel(new OysterReefLevel());	
 			}
-		});		
+		});	
+		
+		//Toggle FullScreen
+		b4.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				System.out.println(scale);
+				if (scale > 1.0) {
+					frame.dispose();
+					View x = new View(1.5);
+					x.MainMenu();
+					
+				}
+				else {
+					frame.dispose();
+					View x = new View(1.5);
+					x.setScale(1);
+					x.MainMenu();
+				}						
+			}		
+		});
+		
 		p.add(b);
 		p.add(b1);
 		p.add(b2);
 		p.add(b3);
+		p.add(b4);
 
 		//Display the window.
 		frame.add(p);
@@ -203,7 +238,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Sets border to blackline
 		promptPanel.setBorder(blackline);
 		//Sets Panel size
-		promptPanel.setSize(frameWidth/4, frameHeight/2);
+		promptPanel.setSize((int) (frameWidth/ scale /4), (int) (frameHeight / scale/2));
 		//Sets Panel location
 		promptPanel.setLocation(3 * frameWidth/4 - 50, frameHeight/4);
 		
@@ -243,7 +278,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			JPanel temp_panel = new JPanel(new GridBagLayout()); //Temp_panel to be added to org_panels
 			temp_panel.add(tempimg_label); //Adds tempimg_label
 			temp_panel.setOpaque(false); 
-			temp_panel.setLocation(o.getXloc(), o.getYloc()); //sets location for organism
+			temp_panel.setLocation((int) (o.getXloc() * scale), (int) (o.getYloc() * scale)); //sets location for organism
 			temp_panel.setVisible(false); //sets visibility to false
 			temp_panel.setSize(400,400); // sets size of organism
 
@@ -257,12 +292,12 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				    	txtpanel.setVisible(false);
 				    	txtpanel.setSize(o.toString().length() * 6, 50); //Sets size based on toString Length, fixes bugs.
 				    	
-				    	if(o.getXloc()+200 <=frameWidth/2) {
+				    	if((o.getXloc()  * scale )+200 <=frameWidth/2) {
 				    		//Show label to the right
-				    		txtpanel.setLocation(o.getXloc()+250, o.getYloc()+175);
+				    		txtpanel.setLocation((int) (o.getXloc() * scale)+250, (int) (o.getYloc() * scale)+175);
 				    	}else{
 				    		//Show label to the left
-				    		txtpanel.setLocation((int) (o.getXloc() - txtpanel.getSize().getWidth() + 150), o.getYloc()+175);		    		
+				    		txtpanel.setLocation((int) ((o.getXloc() * scale) - txtpanel.getSize().getWidth() + 150), (int) ((o.getYloc() * scale)+175));		    		
 				    	}	
 
 				    	//Add + Show Panel
@@ -462,9 +497,9 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Sets border to blackline
 		promptPanel.setBorder(blackline);
 		//Sets Panel size
-		promptPanel.setSize(frameWidth/4, frameHeight/2);
+		promptPanel.setSize((int) (frameWidth/ scale /4), (int) (frameHeight / scale/2));
 		//Sets Panel location
-		promptPanel.setLocation(frameWidth/2 + 150, frameHeight/4);
+		promptPanel.setLocation(frameWidth/2 + (int) (150 * scale), frameHeight/4);
 		
 		ArrayList<JLabel> img_labels = new ArrayList<JLabel>(); //JLabels for Prompt
 		ArrayList<JPanel> org_panels = new ArrayList<JPanel>(); //JLabels for Organisms
@@ -479,7 +514,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			JPanel temp_panel = new JPanel(new GridBagLayout()); //Temp_panel to be added to org_panels
 			temp_panel.add(tempimg_label); //Adds tempimg_label
 			temp_panel.setOpaque(false); 
-			temp_panel.setLocation(o.getXloc(), o.getYloc()); //sets location for organism
+			temp_panel.setLocation((int) (o.getXloc() * scale), (int) (o.getYloc() * scale)); //sets location for organism
 			temp_panel.setVisible(false); //sets visibility to false
 			temp_panel.setSize(400,400); // sets size of organism
 			
@@ -493,12 +528,12 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			    	txtpanel.setVisible(false);
 			    	txtpanel.setSize(o.toString().length() * 6, 50); //Sets size based on toString Length, fixes bugs.
 			    	
-			    	if(o.getXloc()+200 <=frameWidth/2) {
+			    	if((o.getXloc() * scale)+200 <=frameWidth/2) {
 			    		//Show label to the right
-			    		txtpanel.setLocation(o.getXloc()+250, o.getYloc()+175);
+			    		txtpanel.setLocation((int) (o.getXloc() * scale)+250, (int) (o.getYloc() * scale)+175);
 			    	}else{
 			    		//Show label to the left
-			    		txtpanel.setLocation((int) (o.getXloc() - txtpanel.getSize().getWidth() + 150), o.getYloc()+175);		    		
+			    		txtpanel.setLocation((int) (o.getXloc() * scale - txtpanel.getSize().getWidth() + 150), (int) (o.getYloc() * scale+175));		    		
 			    	}	
 
 			    	//Add + Show Panel
@@ -521,13 +556,26 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			System.out.println("JLabel for organism made:" + o.toString());
 		}
 		p.add(img_labels.get(picture));
-
-		try {
-			frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.background)))));
-		} catch (IOException e) {
-			e.printStackTrace();
+		
+		
+		//Full Screen Or Windowed
+		if (scale > 1) {
+			try {
+				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.backgroundFull)))));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 		}
-
+		else {
+			try {
+				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.background)))));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
 		
 		//Create Buttons For Card
 		ImageIcon YES = new ImageIcon("resources/images/check_mark_green.png");
@@ -573,7 +621,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		JLabel endLabel2 = new JLabel();
 		JButton restartButton = new JButton("Retry?");
 		JButton quitButton = new JButton("Quit");
-		endPanel.setLocation(3 * frameWidth/4 - 500, frameHeight/4 + 20);
+		//Keep default location, covers up the X's allows user to view estuary
+		//endPanel.setLocation(3 * frameWidth/4 - 500, frameHeight/4 + 20);
 		
 		//Set up endpanel restartbutton
 		restartButton.addActionListener(new ActionListener() {
@@ -727,6 +776,16 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Create and set up the window.
 		frame = new JFrame("Estuarium");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+
+	
+	public double getScale() {
+		return scale;
+	}
+	
+	public void setScale(double x) {
+		this.scale = x;
 	}
 	
 	/**

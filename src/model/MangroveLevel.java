@@ -23,6 +23,7 @@ public class MangroveLevel extends Level{
 		createUnacceptedList();
 		createOrganismList();
 		background = "resources/images/mangrove.png";
+		backgroundFull = "resources/images/mangrovefull.png";
 	}//MangroveLevel
 
 	/**

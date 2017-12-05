@@ -22,6 +22,7 @@ public class SaltMarshLevel extends Level{
 		createUnacceptedList(); //Generates things that don't belong
 		createOrganismList(); //Combines above two lists in a random order
 		background = "resources/images/saltmarsh.png";
+		backgroundFull = "resources/images/saltmarshfull.png";
 	}//SaltMarshLevel
 	
 	/**
