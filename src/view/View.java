@@ -212,7 +212,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		frame.pack();
 		frame.setVisible(true);
 		frame.setSize(frameWidth, frameHeight);
-		if(scale>1.0) frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		if(scale>1.0) frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
 	//Tutorial
@@ -549,7 +549,12 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			    	//Add + Show Panel
 			    	txtlabel.setOpaque(true);
 			    	txtpanel.setOpaque(true);
-			    	txtlabel.setVisible(true);		  
+			    	txtlabel.setVisible(true);
+			    	if(o.isDoesBelong()) {
+			    		txtlabel.setForeground(new Color(0,168,17)); //That is a custom green because the green they give you stabs your eyes
+			    	}else {
+			    		txtlabel.setForeground(Color.red);
+			    	}
 			    	txtpanel.add(txtlabel);	
 			    	
 			    	frame.add(txtpanel);
