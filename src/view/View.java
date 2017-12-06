@@ -184,9 +184,10 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			public void actionPerformed(ActionEvent arg0) {
 
 				System.out.println(scale);
-				if (scale > 1.0) {
+				if (scale <= 1.0) {
 					frame.dispose();
 					View x = new View(1.5);
+					x.frame.setUndecorated(true);
 					x.MainMenu();
 					
 				}
@@ -194,6 +195,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					frame.dispose();
 					View x = new View(1.5);
 					x.setScale(1);
+					x.frame.setUndecorated(false);
 					x.MainMenu();
 				}						
 			}		
@@ -210,6 +212,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		frame.pack();
 		frame.setVisible(true);
 		frame.setSize(frameWidth, frameHeight);
+		if(scale>1.0) frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 	}
 	
 	//Tutorial
