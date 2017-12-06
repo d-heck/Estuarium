@@ -14,11 +14,11 @@ import java.util.Scanner;
 public class Level {
 	
 	public ArrayList<Organism> organismList = new ArrayList<Organism>();
-	public String background = "resources/images/Background.png";
+	public String background = "resources/images/tutorial.png";
 	String name;
 	ArrayList<Organism> acceptedOrganisms = new ArrayList<Organism> ();; //Holds Organisms with doesBelong = true;
 	ArrayList<Organism> unacceptedOrganisms = new ArrayList<Organism> ();; //Holds Organisms with doesBelong = false;
-	public String backgroundFull = "resources/images/Background.png";
+	public String backgroundFull = "resources/images/tutorialfull.png";
 	public static Scanner scanner = new Scanner(System.in);
 	public int score = 0;
 	public int strikes = 0;

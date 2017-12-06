@@ -104,7 +104,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	private void MainMenu() {
 
 		try {
-			frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/images/Background.png")))));
+			frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/images/menu.png")))));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -115,10 +115,17 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		p.setOpaque(false);
 
 		//Add Button + Label
-		JButton b = new JButton("Tutorial");
-		JButton b1 = new JButton("Salt Marsh");
-		JButton b2 = new JButton("Mangrove");
-		JButton b3 = new JButton("Oyster Reef");
+		
+		ImageIcon tutorial = new ImageIcon("resources/images/tutorialbutton.png");
+		ImageIcon saltmarsh = new ImageIcon("resources/images/saltmarshbutton.png");
+		ImageIcon mangrove = new ImageIcon("resources/images/mangrovebutton.png");
+		ImageIcon oysterreef = new ImageIcon("resources/images/oysterreefbutton.png");
+		
+
+		JButton b = new JButton(tutorial);
+		JButton b1 = new JButton(saltmarsh);
+		JButton b2 = new JButton(mangrove);
+		JButton b3 = new JButton(oysterreef);
 		JButton b4 = new JButton("Full Screen");
 		
 		
