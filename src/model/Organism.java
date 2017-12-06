@@ -23,6 +23,7 @@ public class Organism {
 	boolean doesBelong = false;
 	String name;
 	String filepath;
+	String filepathFull;
 	String purpose;
 	int xloc;
 	int yloc;

@@ -51,16 +51,14 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	}
 
 	//Dimensions
-	double scale = 1.0;
+	double scale = 1.5; // 1.0 = Windowed 1.5 = Full Screen
 	
 	int frameWidth = (int) (1280 * scale);
 	int frameHeight = (int) (760 * scale);
 	
-	
 	int picture = 0;
 	int maxTurns;
 	JFrame frame;
-
 	
 	/**
 	 * mouseDragged returns nothing but potentially changes the state of the game if the mouse is 
@@ -102,11 +100,20 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	 */
 	//Load Main Menu, Launch Level on Play
 	private void MainMenu() {
-
-		try {
-			frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/images/menu.png")))));
-		} catch (IOException e) {
-			e.printStackTrace();
+		frame.setUndecorated(true);
+		if (scale > 1) {
+			try {
+				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/images/menufull.png")))));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+			try {
+				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/images/menu.png")))));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}			
 		}
 
 		//Set up panels
@@ -125,9 +132,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		JButton b = new JButton(tutorial);
 		JButton b1 = new JButton(saltmarsh);
 		JButton b2 = new JButton(mangrove);
-		JButton b3 = new JButton(oysterreef);
-		JButton b4 = new JButton("Full Screen");
-		
+		JButton b3 = new JButton(oysterreef);	
 		
 		//Tutorial Loader
 		b.addActionListener(new ActionListener() {
@@ -146,8 +151,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			 */
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
-				LoadLevel(new SaltMarshLevel());	
+				LoadLevel(new SaltMarshLevel());
+				frame.dispose();					
 			}
 		});
 		
@@ -159,8 +164,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			 */
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
 				LoadLevel(new MangroveLevel());	
+				frame.dispose();			
 			}
 
 		});
@@ -173,39 +178,15 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			 */
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
 				LoadLevel(new OysterReefLevel());	
+				frame.dispose();			
 			}
 		});	
-		
-		//Toggle FullScreen
-		b4.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-				System.out.println(scale);
-				if (scale <= 1.0) {
-					frame.dispose();
-					View x = new View(1.5);
-					x.frame.setUndecorated(true);
-					x.MainMenu();
-					
-				}
-				else {
-					frame.dispose();
-					View x = new View(1.5);
-					x.setScale(1);
-					x.frame.setUndecorated(false);
-					x.MainMenu();
-				}						
-			}		
-		});
 		
 		p.add(b);
 		p.add(b1);
 		p.add(b2);
 		p.add(b3);
-		p.add(b4);
 
 		//Display the window.
 		frame.add(p);
@@ -218,15 +199,17 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	//Tutorial
 	private void tutorial(){
 		//Instantiate Level
+		
 		Level L = new Level();
 		L.setStrikes(0);
 		L.setScore(0);
 		picture = 0;
-				
+		
 		//Create and set up the window.
 		JFrame frame = new JFrame("Estuarium");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		frame.setUndecorated(true);		
+		
 		//Create Panel
 		JPanel p = new JPanel(new GridBagLayout());
 		GridBagConstraints settings = new GridBagConstraints();
@@ -256,22 +239,29 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		JPanel tutorialPanel = new JPanel(new GridBagLayout());
 		tutorialPanel.setOpaque(true);
 		tutorialPanel.setBorder(blackline);
-		tutorialPanel.setSize(frameWidth/4 +100,frameHeight/4-100);
+		tutorialPanel.setSize(frameWidth/4 +100,frameHeight/4 -100);
 		ArrayList<JLabel> instructions = new ArrayList<JLabel>();
 		instructions.add(new JLabel("This guy doesn't belong. Choose the X."));
 		instructions.add(new JLabel("Good Job. This one does belong. Choose the check."));
 		instructions.add(new JLabel("Now get one wrong. Choose the X."));
 		instructions.add(new JLabel("A strike! Get three wrong and you lose!"));
 		tutorialPanel.add(instructions.get(picture));
-		tutorialPanel.setLocation(frameWidth/2 - 150, 3 * frameHeight/8 + 50);
+		if (scale > 1){
+			tutorialPanel.setLocation(frameWidth/2 - 300, frameHeight/4 + 100);
+		}
+		else{
+			tutorialPanel.setLocation(frameWidth/2 - 300, frameHeight/4 + 100);
+			tutorialPanel.setLocation(frameWidth/2 - 150, 3 * frameHeight/4+ 50);
+		}
+		
 		tutorialPanel.setVisible(true);
 		
 		JButton mainButton = new JButton("Main Menu");
 		mainButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				frame.dispose();
 				MainMenu();
+				frame.dispose();				
 			}
 		});
 		
@@ -330,11 +320,22 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		}
 		p.add(img_labels.get(picture));
 
-		try {
-			frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.background)))));
-		} catch (IOException e) {
-			e.printStackTrace();
+		frame.setUndecorated(true);
+		if (scale > 1) {
+			try {
+				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.backgroundFull)))));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+		else {
+			try {
+				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.background)))));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}			
+		}
+
 
 		//Create Buttons For Card
 		ImageIcon YES = new ImageIcon("resources/images/check_mark_green.png");
@@ -461,7 +462,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		frame.pack();
 		frame.setVisible(true);
 		frame.setSize(frameWidth, frameHeight);
-
+		if(scale>1.0) frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
 	/**
@@ -474,6 +475,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	//Loads a Level to play, initializes organism list and loads BG image
 
 	public void LoadLevel(Level L) {
+		
 		//Instantiate Level
 		L.setStrikes(0);
 		L.setScore(0);
@@ -482,6 +484,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Create and set up the window.
 		JFrame frame = new JFrame("Estuarium");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setUndecorated(true);
 
 		//Create Panel
 		JPanel p = new JPanel(new GridBagLayout());
@@ -530,6 +533,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			
 			JPanel txtpanel = new JPanel(new GridBagLayout());
 			JLabel txtlabel = new JLabel(o.toString());
+			
 			
 			tempimg_label.addMouseListener(new java.awt.event.MouseAdapter() {
 				
@@ -643,8 +647,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		restartButton.addActionListener(new ActionListener() {
 		@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
 				MainMenu();
+				frame.dispose();				
 			}
 		});
 		//Set up endpanel quit button
@@ -664,8 +668,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		bYes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if( L.getStrikes() >= 2) {
-					strikePanel.getComponent(L.getStrikes()).setVisible(true); 
+				if( L.getStrikes() >= 2 && L.organismList.get(picture).isDoesBelong() == false) {
+					strikePanel.getComponent(L.getStrikes()-1).setVisible(true); 
 					
 					//Add all elements to end-card
 					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
@@ -720,8 +724,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		bNo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if( L.getStrikes() >= 2) {
-					strikePanel.getComponent(L.getStrikes()).setVisible(true);
+				if( L.getStrikes() >= 2 && L.organismList.get(picture).isDoesBelong() == true) {
+					strikePanel.getComponent(L.getStrikes()-1).setVisible(true);
 					
 					//Add all elements to end-card
 					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
@@ -784,7 +788,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		frame.pack();
 		frame.setVisible(true);
 		frame.setSize(frameWidth, frameHeight);
-
+		if(scale>1.0) frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
 	public View(){
