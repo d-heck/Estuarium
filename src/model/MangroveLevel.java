@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import view.*;
 /**
  * MangroveLevel is a subclass of level that is associated with Mangrove environments. 
  * It contains two lists of organisms, acceptedOrganisms, which holds Organisms that can
@@ -31,12 +32,12 @@ public class MangroveLevel extends Level{
 	 * is set to true.  These organisms belong in a mangrove environment.
 	 */
 	private void createAcceptedList(){
-		acceptedOrganisms.add(new Organism("Kingfisher",true,"I nest in the mangroves.","resources/images/kingfisher.png",875,-120));
-		acceptedOrganisms.add(new Organism("Fiddler Crab",true,"I burrow into mud at the mangroves roots.","resources/images/fiddlercrab.png",550,200));
-		acceptedOrganisms.add(new Organism("Barnacle",true,"I attach myself to the roots of mangroves.","resources/images/barnacle.png",800,350));
-		acceptedOrganisms.add(new Organism("Oyster",true,"I attach myself to mangrove roots.","resources/images/oyster.png",875,400));
-		acceptedOrganisms.add(new Organism("Red Mangrove",true,"My exposed roots provide a nesting habitat.","resources/images/redmangrove.png",1000,350));
-		acceptedOrganisms.add(new Organism("Shore Purslane",true,"I grow well in the always-damp soil.","resources/images/shorepurslane.png",-150,300));
+		acceptedOrganisms.add(new Organism("Kingfisher",true,"I nest in the mangroves.","resources/images/kingfisher.png",(int)(.684*View.getFrameWidth()),(int)(-.164*View.getFrameHeight())));
+		acceptedOrganisms.add(new Organism("Fiddler Crab",true,"I burrow into mud at the mangroves roots.","resources/images/fiddlercrab.png",(int)(.43*View.getFrameWidth()),(int)(.263*View.getFrameHeight())));
+		acceptedOrganisms.add(new Organism("Barnacle",true,"I attach myself to the roots of mangroves.","resources/images/barnacle.png",(int)(.625*View.getFrameWidth()),(int)(.461*View.getFrameHeight())));
+		acceptedOrganisms.add(new Organism("Oyster",true,"I attach myself to mangrove roots.","resources/images/oyster.png",(int)(.684*View.getFrameWidth()),(int)(.526*View.getFrameHeight())));
+		acceptedOrganisms.add(new Organism("Red Mangrove",true,"My exposed roots provide a nesting habitat.","resources/images/redmangrove.png",(int)(.781*View.getFrameWidth()),(int)(.461*View.getFrameHeight())));
+		acceptedOrganisms.add(new Organism("Shore Purslane",true,"I grow well in the always-damp soil.","resources/images/shorepurslane.png",(int)(-.117*View.getFrameWidth()),(int)(.395*View.getFrameHeight())));
 	}//createAcceptedList
 
 	/**
@@ -45,12 +46,12 @@ public class MangroveLevel extends Level{
 	 * are invasive species.
 	 */
 	private void createUnacceptedList(){
-		unacceptedOrganisms.add(new Organism("Gopher",false,"I can't tunnel since there's too much water.","resources/images/gopher.png",650,200));
-		unacceptedOrganisms.add(new Organism("Spotted Turtle",false,"I live in fresh water.","resources/images/spottedturtle.png",200,200));
-		unacceptedOrganisms.add(new Organism("Rainbow Trout",false,"I live in fresh water.","resources/images/rainbowtrout.png",400,400));
-		unacceptedOrganisms.add(new Organism("Crappie",false,"I live in fresh water","resources/images/crappie.png",100,450));
-		unacceptedOrganisms.add(new Organism("Black Oak",false,"The salt water would damage my trunk and roots.","resources/images/blackoak.png",-150,0));
-		unacceptedOrganisms.add(new Organism("Water Lily",false,"I grow best in fresh water.","resources/images/waterlily.png",100,300));
+		unacceptedOrganisms.add(new Organism("Gopher",false,"I can't tunnel since there's too much water.","resources/images/gopher.png",(int)(.508*View.getFrameWidth()),(int)(.263*View.getFrameHeight())));
+		unacceptedOrganisms.add(new Organism("Spotted Turtle",false,"I live in fresh water.","resources/images/spottedturtle.png",(int)(.156*View.getFrameWidth()),(int)(.263*View.getFrameHeight())));
+		unacceptedOrganisms.add(new Organism("Rainbow Trout",false,"I live in fresh water.","resources/images/rainbowtrout.png",(int)(.313*View.getFrameWidth()),(int)(.526*View.getFrameHeight())));
+		unacceptedOrganisms.add(new Organism("Crappie",false,"I live in fresh water","resources/images/crappie.png",(int)(.078*View.getFrameWidth()),(int)(.592*View.getFrameHeight())));
+		unacceptedOrganisms.add(new Organism("Black Oak",false,"The salt water would damage my trunk and roots.","resources/images/blackoak.png",(int)(-.117*View.getFrameWidth()),0));
+		unacceptedOrganisms.add(new Organism("Water Lily",false,"I grow best in fresh water.","resources/images/waterlily.png",(int)(.078*View.getFrameWidth()),(int)(.395*View.getFrameHeight())));
 	}//createUnacceptedList
 
 	/**

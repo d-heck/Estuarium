@@ -45,16 +45,18 @@ import javax.swing.JInternalFrame;
 public class View extends JFrame implements ActionListener, MouseMotionListener {
 	public View(double Scale){
 		//Create and set up the window.
-		this.scale = Scale;
+		this.setScale(Scale);
+		this.setFrameWidth();
+		this.setFrameHeight();
 		frame = new JFrame("Estuarium");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	//Dimensions
-	double scale = 1.5; // 1.0 = Windowed 1.5 = Full Screen
+	static double scale = 1.5; // 1.0 = Windowed 1.5 = Full Screen
 	
-	int frameWidth = (int) (1280 * scale);
-	int frameHeight = (int) (760 * scale);
+	static int frameWidth = (int) (1280 * scale);
+	static int frameHeight = (int) (760 * scale);
 	
 	int picture = 0;
 	int maxTurns;
@@ -233,13 +235,13 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Sets Panel size
 		promptPanel.setSize((int) (frameWidth/ scale /4), (int) (frameHeight / scale/2));
 		//Sets Panel location
-		promptPanel.setLocation(3 * frameWidth/4 - 50, frameHeight/4);
+		promptPanel.setLocation(3 * frameWidth/4 -(int)(.039*frameWidth), frameHeight/4);
 		
 		//Tutorial Panel
 		JPanel tutorialPanel = new JPanel(new GridBagLayout());
 		tutorialPanel.setOpaque(true);
 		tutorialPanel.setBorder(blackline);
-		tutorialPanel.setSize(frameWidth/4 +100,frameHeight/4 -100);
+		tutorialPanel.setSize(frameWidth/4 +(int)(.078*frameWidth),frameHeight/4 -100);
 		ArrayList<JLabel> instructions = new ArrayList<JLabel>();
 		instructions.add(new JLabel("This guy doesn't belong. Choose the X."));
 		instructions.add(new JLabel("Good Job. This one does belong. Choose the check."));
@@ -797,7 +799,21 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-
+	public static int getFrameWidth() {
+		return frameWidth;
+	}
+	
+	public static int getFrameHeight() {
+		return frameHeight;
+	}
+	
+	public void setFrameWidth(){
+		frameWidth = (int)(1280*scale);
+	}
+	
+	public void setFrameHeight(){
+		frameHeight = (int)(760*scale);
+	}
 	
 	public double getScale() {
 		return scale;

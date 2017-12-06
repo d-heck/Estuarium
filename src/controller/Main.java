@@ -8,7 +8,7 @@ import view.View;
  */
 public class Main {
 	public static void main(String[] Args) {
-		View x = new View();		
+		View x = new View(1);		
 		x.play();
 	}//main
 }//Class Main

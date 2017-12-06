@@ -2,6 +2,8 @@ package model;
 
 import java.util.Collections;
 
+import view.View;
+
 /**
  * OysterReefLevel is a subclass of level that is associated with Oyster Reef 
  * environments. It contains two lists of organisms, acceptedOrganisms, which 
@@ -30,12 +32,12 @@ public class OysterReefLevel extends Level{
 	 * is set to true.  These organisms belong in an oyster reef.
 	 */
 	private void createAcceptedList(){
-		acceptedOrganisms.add(new Organism("Eastern Oyster",true,"I attach myself to others of my kind to form the main part of an oyster reef.","resources/images/easternoyster.png",300,180));
-		acceptedOrganisms.add(new Organism("Goby",true,"I can hide from larger predators in small crevices in oyster reefs.","resources/images/goby.png",800,400));
-		acceptedOrganisms.add(new Organism("Black Drum",true,"As an adult, my teeth are large enough to crush oyster shells so I can eat the oyster within.","resources/images/blackdrum.png",100,180));
-		acceptedOrganisms.add(new Organism("Microalgae",true,"I provide a source of food to the oysters in the reef, who can filter me out of the water.","resources/images/microalgae.png",600,250));
-		acceptedOrganisms.add(new Organism("American Eel",true,"I can feed on a variety of organisms that call oyster reefs home.","resources/images/americaneel.png",650,500));
-		acceptedOrganisms.add(new Organism("Oyster Toadfish",true,"While I mostly eat small crabs, I can also feed on the oysters and small fish.","resources/images/oystertoadfish.png",600,100));
+		acceptedOrganisms.add(new Organism("Eastern Oyster",true,"I attach myself to others of my kind to form the main part of an oyster reef.","resources/images/easternoyster.png",(int)(.234*View.getFrameWidth()),(int)(.23*View.getFrameHeight())));
+		acceptedOrganisms.add(new Organism("Goby",true,"I can hide from larger predators in small crevices in oyster reefs.","resources/images/goby.png",(int)(.625*View.getFrameWidth()),(int)(.526*View.getFrameHeight())));
+		acceptedOrganisms.add(new Organism("Black Drum",true,"As an adult, my teeth are large enough to crush oyster shells so I can eat the oyster within.","resources/images/blackdrum.png",(int)(.078*View.getFrameWidth()),(int)(.23*View.getFrameHeight())));
+		acceptedOrganisms.add(new Organism("Microalgae",true,"I provide a source of food to the oysters in the reef, who can filter me out of the water.","resources/images/microalgae.png",(int)(.469*View.getFrameWidth()),(int)(.329*View.getFrameHeight())));
+		acceptedOrganisms.add(new Organism("American Eel",true,"I can feed on a variety of organisms that call oyster reefs home.","resources/images/americaneel.png",(int)(.508*View.getFrameWidth()),(int)(.658*View.getFrameHeight())));
+		acceptedOrganisms.add(new Organism("Oyster Toadfish",true,"While I mostly eat small crabs, I can also feed on the oysters and small fish.","resources/images/oystertoadfish.png",(int)(.469*View.getFrameWidth()),(int)(.132*View.getFrameHeight())));
 	}//createAcceptedList
 	
 	/**
@@ -44,12 +46,12 @@ public class OysterReefLevel extends Level{
 	 * invasive species.
 	 */
 	private void createUnacceptedList(){
-		unacceptedOrganisms.add(new Organism("Green Porcelain Crab",false,"I am an invasive species.","resources/images/greenporcelaincrab.png",300,0));
-		unacceptedOrganisms.add(new Organism("Striped Barnacle",false,"I am an invasive species.","resources/images/barnacle.png",200,300));
-		unacceptedOrganisms.add(new Organism("European Green Crab",false,"I am an invasive species.","resources/images/europeangreencrab.png",0,400));
-		unacceptedOrganisms.add(new Organism("Tube Worm",false,"I am invasive and can damage the shell of oysters I burrow into.","resources/images/tubeworm.png",450,350));
-		unacceptedOrganisms.add(new Organism("Orange-Striped Anemone",false,"I am invasive and can make it difficult for oysters to feed.","resources/images/anemone.png",400,120));
-		unacceptedOrganisms.add(new Organism("Charru Mussel",false,"I am invasive and can compete with oysters for food.","resources/images/charrumussel.png",900,150));
+		unacceptedOrganisms.add(new Organism("Green Porcelain Crab",false,"I am an invasive species.","resources/images/greenporcelaincrab.png",(int)(.234*View.getFrameWidth()),0));
+		unacceptedOrganisms.add(new Organism("Striped Barnacle",false,"I am an invasive species.","resources/images/barnacle.png",(int)(.156*View.getFrameWidth()),(int)(.395*View.getFrameHeight())));
+		unacceptedOrganisms.add(new Organism("European Green Crab",false,"I am an invasive species.","resources/images/europeangreencrab.png",0,(int)(.526*View.getFrameHeight())));
+		unacceptedOrganisms.add(new Organism("Tube Worm",false,"I am invasive and can damage the shell of oysters I burrow into.","resources/images/tubeworm.png",(int)(.352*View.getFrameWidth()),(int)(.461*View.getFrameHeight())));
+		unacceptedOrganisms.add(new Organism("Orange-Striped Anemone",false,"I am invasive and can make it difficult for oysters to feed.","resources/images/anemone.png",(int)(.313*View.getFrameWidth()),(int)(.164*View.getFrameHeight())));
+		unacceptedOrganisms.add(new Organism("Charru Mussel",false,"I am invasive and can compete with oysters for food.","resources/images/charrumussel.png",(int)(.703*View.getFrameWidth()),(int)(.066*View.getFrameHeight())));
 	}//createUnacceptedList
 	
 	/**

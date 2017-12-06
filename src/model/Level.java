@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.io.InputStream;
 import java.util.Scanner;
+
+import view.View;
 /**
  * Superclass for MangroveLevel, SaltMarshLevel, and OysterReefLevel that has
  * an organismList, number of strikes, background image, and lists for 
@@ -64,7 +66,7 @@ public class Level {
 		Organism Example1 = new Organism("Cooked Crab", false,"This is Cooked Crab's toString, he doesn't belong.", "resources/images/crab.png");
 		organismList.add(Example1);
 		
-		Organism Example2 = new Organism("Fish", true,"This is Fish's toString, he belongs.", "resources/images/fish.png",300,400);
+		Organism Example2 = new Organism("Fish", true,"This is a fish. He belongs.", "resources/images/fish.png",(int)(.1*View.getFrameWidth()),(int)(.22*View.getFrameHeight()));
 		organismList.add(Example2);
 		
 		Organism Example3 = new Organism("Plant", true,"This is Plant's toString, he belongs.", "resources/images/kelp.png");
