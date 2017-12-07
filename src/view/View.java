@@ -48,8 +48,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	public View(double Scale){
 		//Create and set up the window.
 		this.setScale(Scale);
-		this.setFrameWidth();
-		this.setFrameHeight();
 		frame = new JFrame("Estuarium");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -57,8 +55,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	//Dimensions
 	static double scale = 1.0; // 1.0 = Windowed 1.5 = Full Screen
 	
-	static int frameWidth = (int) (1280 * scale);
-	static int frameHeight = (int) (760 * scale);
+	int frameWidth = (int) (1280 * scale);
+	int frameHeight = (int) (760 * scale);
 	
 	int picture = 0;
 	int maxTurns;
@@ -769,6 +767,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				else if (picture == maxTurns){
 					System.out.println(L.organismList.get(2).toString());
 					
+					
+					
 					if(L.organismList.get(picture).isDoesBelong() == false) {
 						System.out.println("Wrong!");
 						L.setStrikes(L.getStrikes() + 1);
@@ -776,7 +776,17 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					}
 					
 					org_panels.get(picture).setVisible(true);
+					
+					//Add all elements to end-card
+					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
+					endPanel.add(endLabel1);
+					endPanel.add(endLabel2);
+					endPanel.add(restartButton);
+					endPanel.add(quitButton);
+					
+					endPanel.setVisible(true);
 					promptPanel.setVisible(false);
+					
 					p.revalidate();
 					p.repaint();
 				}
@@ -830,7 +840,16 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 						strikePanel.getComponent(L.getStrikes()-1).setVisible(true);
 					}
 					
+					//Add all elements to end-card
+					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
+					endPanel.add(endLabel1);
+					endPanel.add(endLabel2);
+					endPanel.add(restartButton);
+					endPanel.add(quitButton);
+					
+					endPanel.setVisible(true);
 					promptPanel.setVisible(false);
+					
 					p.revalidate();
 					p.repaint();
 				}
@@ -860,21 +879,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public static int getFrameWidth() {
-		return frameWidth;
-	}
-	
-	public static int getFrameHeight() {
-		return frameHeight;
-	}
-	
-	public void setFrameWidth(){
-		frameWidth = (int)(1280*scale);
-	}
-	
-	public void setFrameHeight(){
-		frameHeight = (int)(760*scale);
-	}
 	
 	public double getScale() {
 		return scale;
