@@ -754,7 +754,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					strikePanel.getComponent(L.getStrikes()-1).setVisible(true); 
 					
 					//Add all elements to end-card
-					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
+					endLabel2.setText("You Scored: " + (L.getScore() + 1) + " out of " + "12" + "!");
 					endPanel.add(endLabel1);
 					endPanel.add(endLabel2);
 					endPanel.add(restartButton);
@@ -800,7 +800,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					org_panels.get(picture).setVisible(true);
 					
 					//Add all elements to end-card
-					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
+					endLabel2.setText("You Scored: " + (L.getScore()+1) + " out of " + "12" + "!");
 					endPanel.add(endLabel1);
 					endPanel.add(endLabel2);
 					endPanel.add(restartButton);
