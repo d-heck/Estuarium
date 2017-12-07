@@ -23,7 +23,6 @@ public class Organism {
 	boolean doesBelong = false;
 	String name;
 	String filepath;
-	String filepathFull;
 	String purpose;
 	String description;
 	int xloc;
@@ -88,20 +87,6 @@ public class Organism {
 		}
 	}
 	
-	public Organism(String Name, boolean Belongs, String Pur, String File, int x, int y){
-		name = Name;
-		doesBelong = Belongs;
-		purpose = Pur;
-		filepath = File;
-		try {
-			image = ImageIO.read(new File(filepath));
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		xloc = x;
-		yloc = y;
-	}
 	public Organism(String Name, boolean Belongs, String Pur, String File, int x, int y, String desc){
 		name = Name;
 		doesBelong = Belongs;
