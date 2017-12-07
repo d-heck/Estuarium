@@ -34,7 +34,7 @@ public class MangroveLevel extends Level{
 	private void createAcceptedList(){
 		acceptedOrganisms.add(new Organism("Kingfisher",true,"I nest in the mangroves.","resources/images/kingfisher.png",875,-125,"A small bird that nests near rivers."));
 		acceptedOrganisms.add(new Organism("Fiddler Crab",true,"I burrow into mud at the mangroves roots.","resources/images/fiddlercrab.png",550,200,"A small crab found in swampy areas."));
-		acceptedOrganisms.add(new Organism("Barnacle",true,"I attach myself to the roots of mangroves.","resources/images/barnacle.png",800,350,"Shelled creatures that grow to surfaces in shallow water."));
+		acceptedOrganisms.add(new Organism("Barnacle",true,"I attach myself to the roots of mangroves.","resources/images/barnacle.png",800,350,"Shelled creatures that grow on surfaces underwater."));
 		acceptedOrganisms.add(new Organism("Oyster",true,"I attach myself to mangrove roots.","resources/images/oyster.png",875,400, "Molluscs that thrive in brackish, swampy habitats."));
 		acceptedOrganisms.add(new Organism("Red Mangrove",true,"My exposed roots provide a nesting habitat.","resources/images/redmangrove.png",1000,350, "A tree that grows near brackish rivers."));
 		acceptedOrganisms.add(new Organism("Shore Purslane",true,"I grow well in the always-damp soil.","resources/images/shorepurslane.png",-150,300, "A flower that can grow on a swampy riverside."));
