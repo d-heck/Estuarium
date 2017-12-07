@@ -33,7 +33,7 @@ public class SaltMarshLevel extends Level{
 	 */
 	private void createAcceptedList(){
 		acceptedOrganisms.add(new Organism("Muskrat",true,"I nest using the vegetation and mud of salt marshes.","resources/images/muskrat.png",300,50,"I can make a home using mud"));
-		acceptedOrganisms.add(new Organism("Ribbed Mussel", true,"I live in areas flooded with the tides and attach myself to marsh grass roots.","resources/images/ribbedmussel.png",0,150,"There's alot of water here!"));
+		acceptedOrganisms.add(new Organism("Ribbed Mussel", true,"I live in areas flooded with the tides and attach myself to marsh grass roots.","resources/images/ribbedmussel.png",900,150,"There's alot of water here!"));
 		acceptedOrganisms.add(new Organism("Whelk", true,"I feed on marsh detritus and provide food for wading and shore birds.","resources/images/whelk.png",700,350,"Is that my favorite food over there?!"));
 		acceptedOrganisms.add(new Organism("Fiddler Crab", true,"I burrow into the mud of the marsh, which actually helps new plants grow.","resources/images/fiddlercrab.png",650,100,"The soil isnt too hard here!"));
 		acceptedOrganisms.add(new Organism("Great Blue Heron",true,"I stand very still in the water before striking at fish or crabs.","resources/images/greatblueheron.png",250,400,"My prey will come out any second now..."));

@@ -47,13 +47,12 @@ import javax.swing.JInternalFrame;
 public class View extends JFrame implements ActionListener, MouseMotionListener {
 	public View(double Scale){
 		//Create and set up the window.
-		this.setScale(Scale);
 		frame = new JFrame("Estuarium");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	//Dimensions
-	static double scale = 1.0; // 1.0 = Windowed 1.5 = Full Screen
+	static double scale = 1.5; // 1.0 = Windowed 1.5 = Full Screen
 	
 	int frameWidth = (int) (1280 * scale);
 	int frameHeight = (int) (760 * scale);
@@ -211,7 +210,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		p.add(b1);
 		p.add(b2);
 		p.add(b3);
-		p.add(fs);
+		//p.add(fs);
 
 		//Display the window.
 		frame.add(p);
@@ -278,7 +277,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		System.out.println(screenSize);
 		//Sets Panel size and Location
 		if(scale>1.0) {
-			promptPanel.setSize( (int)(frameWidth*scale/4), (int) (frameHeight*scale/3));
+			promptPanel.setSize( (int)(frameWidth*scale/4 - 350), (int) (frameHeight*scale/3 - 150));
 			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
 		}else {
 			promptPanel.setSize( (int)(frameWidth/4), (int) (frameHeight/3));
@@ -581,7 +580,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		//Sets Panel size and Location
 		if(scale>1.0) {
-			promptPanel.setSize( (int)(frameWidth*scale/4), (int) (frameHeight*scale/3));
+			promptPanel.setSize( (int)(frameWidth*scale/4 - 350), (int) (frameHeight*scale/3 - 150));
 			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
 		}else {
 			promptPanel.setSize( (int)(frameWidth/4), (int) (frameHeight/3));
@@ -719,7 +718,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		endPanel.setSize(400,150);
 		JLabel endLabel1 = new JLabel("Game Over! ", JLabel.CENTER);
 		JLabel endLabel2 = new JLabel();
-		JButton restartButton = new JButton("Retry?");
+		JButton restartButton = new JButton("Main Menu");
 		JButton quitButton = new JButton("Quit");
 		//Keep default location, covers up the X's allows user to view estuary
 		//endPanel.setLocation(3 * frameWidth/4 - 500, frameHeight/4 + 20);
@@ -798,6 +797,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					}
 					
 					org_panels.get(picture).setVisible(true);
+					L.setScore(L.getScore()+1);
 					
 					//Add all elements to end-card
 					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
@@ -863,6 +863,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 						strikePanel.getComponent(L.getStrikes()-1).setVisible(true);
 					}
 					
+					L.setScore(L.getScore()+1);
+					
 					//Add all elements to end-card
 					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
 					endPanel.add(endLabel1);
@@ -905,10 +907,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	
 	public double getScale() {
 		return scale;
-	}
-	
-	public void setScale(double x) {
-		this.scale = x;
 	}
 	
 	/**
