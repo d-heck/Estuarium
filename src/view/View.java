@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -39,6 +40,7 @@ import javax.swing.JInternalFrame;
  * @author David Heck
  * @author Jason Hickman
  * @author Kevin Doak
+ * @author Nonso Iwu
  * @version 0.6
  */
 
@@ -53,7 +55,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	}
 
 	//Dimensions
-	static double scale = 1.5; // 1.0 = Windowed 1.5 = Full Screen
+	static double scale = 1.0; // 1.0 = Windowed 1.5 = Full Screen
 	
 	static int frameWidth = (int) (1280 * scale);
 	static int frameHeight = (int) (760 * scale);
@@ -103,6 +105,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	//Load Main Menu, Launch Level on Play
 	private void MainMenu() {
 		frame.setUndecorated(true);
+		System.out.println(scale);
 		if (scale > 1) {
 			try {
 				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/images/menufull.png")))));
@@ -113,6 +116,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		else {
 			try {
 				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/images/menu.png")))));
+				frame.setUndecorated(false);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}			
@@ -120,7 +124,12 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 		//Set up panels
 		JPanel p = new JPanel(new GridBagLayout());
-		p.setSize(frameWidth, frameHeight);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		if(scale>1.0) {
+			p.setSize((int)screenSize.getWidth(), (int) screenSize.getHeight());
+		}else {
+			p.setSize(frameWidth, frameHeight);
+		}
 		p.setOpaque(false);
 
 		//Add Button + Label
@@ -134,7 +143,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		JButton b = new JButton(tutorial);
 		JButton b1 = new JButton(saltmarsh);
 		JButton b2 = new JButton(mangrove);
-		JButton b3 = new JButton(oysterreef);	
+		JButton b3 = new JButton(oysterreef);
+		JButton fs = new JButton("Toggle Fullscreen");
 		
 		//Tutorial Loader
 		b.addActionListener(new ActionListener() {
@@ -152,7 +162,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			 * @param ActionEvent an action performed
 			 */
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {				
 				LoadLevel(new SaltMarshLevel());
 				frame.dispose();					
 			}
@@ -185,17 +195,49 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			}
 		});	
 		
+		fs.addActionListener(new ActionListener() {
+			/**
+			 * actionPerformed returns nothing but makes a fullscreen version or windowed versio
+			 * of the game.
+			 * @param ActionEvent an action performed
+			 */
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				scale = (scale>1.0)? 1.0 : 1.5;
+				frame.dispose();			
+				MainMenu();
+			}
+		});
+		
 		p.add(b);
 		p.add(b1);
 		p.add(b2);
 		p.add(b3);
+		p.add(fs);
 
 		//Display the window.
 		frame.add(p);
 		frame.pack();
 		frame.setVisible(true);
-		frame.setSize(frameWidth, frameHeight);
-		if(scale>1.0) frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		if(scale>1.0) { 
+			p.setLayout(null);
+			b.setBounds(((int)screenSize.getWidth()/2)-400,((int)screenSize.getHeight()/2)-200,200,400);
+			b1.setBounds(((int)screenSize.getWidth()/2)-200,((int)screenSize.getHeight()/2)-200,200,400);
+			b2.setBounds((int)screenSize.getWidth()/2,((int)screenSize.getHeight()/2)-200,200,400);
+			b3.setBounds(((int)screenSize.getWidth()/2) + 200,((int)screenSize.getHeight()/2)-200,200,400);
+			fs.setBounds(0,0,fs.getWidth(),fs.getHeight());
+			frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			frame.setSize(screenSize.width,screenSize.height);
+		}else {
+			p.setLayout(null);
+			b.setBounds(240,180,200,400);
+			b1.setBounds(440,180,200,400);
+			b2.setBounds(640,180,200,400);
+			b3.setBounds(840,180,200,400);
+			fs.setBounds(0,0,fs.getWidth(),fs.getHeight());
+			frame.setSize(frameWidth, frameHeight);
+		}
+		
 	}
 	
 	//Tutorial
@@ -232,10 +274,16 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		Border blackline = BorderFactory.createLineBorder(Color.black);
 		//Sets border to blackline
 		promptPanel.setBorder(blackline);
-		//Sets Panel size
-		promptPanel.setSize((int) (frameWidth/ scale /4), (int) (frameHeight / scale/2));
-		//Sets Panel location
-		promptPanel.setLocation(3 * frameWidth/4 -(int)(.039*frameWidth), frameHeight/4);
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		//Sets Panel size and Location
+		if(scale>1.0) {
+			promptPanel.setSize( (int)(frameWidth/4), (int) (frameHeight/3));
+			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
+		}else {
+			promptPanel.setSize( (int)(frameWidth*scale/4), (int) (frameHeight*scale/3));
+			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
+		}
 		
 		//Tutorial Panel
 		JPanel tutorialPanel = new JPanel(new GridBagLayout());
@@ -249,13 +297,13 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		instructions.add(new JLabel("A strike! Get three wrong and you lose!"));
 		tutorialPanel.add(instructions.get(picture));
 		if (scale > 1){
-			tutorialPanel.setLocation(frameWidth/2 - 300, frameHeight/4 + 100);
+			tutorialPanel.setLocation(screenSize.width/2 - (tutorialPanel.getWidth()/2), screenSize.height - (tutorialPanel.getHeight())-50);
+			//tutorialPanel.setLocation(frameWidth/2 - 300, frameHeight/4 + 100);
 		}
 		else{
 			tutorialPanel.setLocation(frameWidth/2 - 300, frameHeight/4 + 100);
 			tutorialPanel.setLocation(frameWidth/2 - 150, 3 * frameHeight/4+ 50);
 		}
-		
 		tutorialPanel.setVisible(true);
 		
 		JButton mainButton = new JButton("Main Menu");
@@ -333,6 +381,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		else {
 			try {
 				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.background)))));
+				frame.setUndecorated(false);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}			
@@ -453,7 +502,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		});
 
 		frame.add(strikePanel);
-		//frame.add(p, BorderLayout.CENTER);
+		frame.add(p, BorderLayout.CENTER);
 		frame.add(promptPanel);
 		frame.add(tutorialPanel);
 		//Set Up Frame
@@ -463,8 +512,13 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		}
 		frame.pack();
 		frame.setVisible(true);
-		frame.setSize(frameWidth, frameHeight);
-		if(scale>1.0) frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		if(scale>1.0) { 
+			//p.setLayout(null);
+			frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			frame.setSize(screenSize.width,screenSize.height);
+		}else {
+			frame.setSize(frameWidth, frameHeight);
+		}
 	}
 	
 	/**
@@ -511,10 +565,16 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		Border blackline = BorderFactory.createLineBorder(Color.black);
 		//Sets border to blackline
 		promptPanel.setBorder(blackline);
-		//Sets Panel size
-		promptPanel.setSize((int) (frameWidth/ scale /4), (int) (frameHeight / scale/2));
-		//Sets Panel location
-		promptPanel.setLocation(frameWidth/2 + (int) (150 * scale), frameHeight/4);
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		//Sets Panel size and Location
+		if(scale>1.0) {
+			promptPanel.setSize( (int)(frameWidth/4), (int) (frameHeight/3));
+			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
+		}else {
+			promptPanel.setSize( (int)(frameWidth*scale/4), (int) (frameHeight*scale/3));
+			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
+		}
 		
 		ArrayList<JLabel> img_labels = new ArrayList<JLabel>(); //JLabels for Prompt
 		ArrayList<JPanel> org_panels = new ArrayList<JPanel>(); //JLabels for Organisms
@@ -591,6 +651,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		else {
 			try {
 				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.background)))));
+				frame.setUndecorated(false);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
