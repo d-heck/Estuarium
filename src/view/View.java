@@ -279,7 +279,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Sets Panel size and Location
 		if(scale>1.0) {
 			promptPanel.setSize( (int)(frameWidth/4), (int) (frameHeight/3));
-			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
+			promptPanel.setLocation(frameWidth - promptPanel.getWidth() - 50, frameHeight/4);
 		}else {
 			promptPanel.setSize( (int)(frameWidth*scale/4), (int) (frameHeight*scale/3));
 			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
@@ -570,7 +570,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Sets Panel size and Location
 		if(scale>1.0) {
 			promptPanel.setSize( (int)(frameWidth/4), (int) (frameHeight/3));
-			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
+			promptPanel.setLocation(frameWidth - promptPanel.getWidth() - 50, frameHeight/4);
 		}else {
 			promptPanel.setSize( (int)(frameWidth*scale/4), (int) (frameHeight*scale/3));
 			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
