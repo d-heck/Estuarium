@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -156,7 +157,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			 * @param ActionEvent an action performed
 			 */
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {				
 				LoadLevel(new SaltMarshLevel());
 				frame.dispose();					
 			}
@@ -270,9 +271,10 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Sets border to blackline
 		promptPanel.setBorder(blackline);
 		//Sets Panel size
-		promptPanel.setSize((int) (frameWidth/ scale /4), (int) (frameHeight / scale/2));
+		promptPanel.setSize((int) (frameWidth/scale/3), (int) (frameHeight / scale/2));
 		//Sets Panel location
-		promptPanel.setLocation(3 * frameWidth/4 -(int)(.039*frameWidth), frameHeight/4);
+		//promptPanel.setLocation(frameWidth/4 -(int)(.039*frameWidth), frameHeight/4);
+		promptPanel.setLocation(frameWidth/2 + (int) (150 * scale), frameHeight/4);
 		
 		//Tutorial Panel
 		JPanel tutorialPanel = new JPanel(new GridBagLayout());
@@ -286,13 +288,14 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		instructions.add(new JLabel("A strike! Get three wrong and you lose!"));
 		tutorialPanel.add(instructions.get(picture));
 		if (scale > 1){
-			tutorialPanel.setLocation(frameWidth/2 - 300, frameHeight/4 + 100);
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			tutorialPanel.setLocation(screenSize.width/2 - (tutorialPanel.getWidth()/2), screenSize.height - (tutorialPanel.getHeight())-50);
+			//tutorialPanel.setLocation(frameWidth/2 - 300, frameHeight/4 + 100);
 		}
 		else{
 			tutorialPanel.setLocation(frameWidth/2 - 300, frameHeight/4 + 100);
 			tutorialPanel.setLocation(frameWidth/2 - 150, 3 * frameHeight/4+ 50);
 		}
-		
 		tutorialPanel.setVisible(true);
 		
 		JButton mainButton = new JButton("Main Menu");
@@ -491,7 +494,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		});
 
 		frame.add(strikePanel);
-		//frame.add(p, BorderLayout.CENTER);
+		frame.add(p, BorderLayout.CENTER);
 		frame.add(promptPanel);
 		frame.add(tutorialPanel);
 		//Set Up Frame
@@ -502,7 +505,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		frame.pack();
 		frame.setVisible(true);
 		if(scale>1.0) { 
-			p.setLayout(null);
+			//p.setLayout(null);
 			frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			frame.setSize(screenSize.width,screenSize.height);
@@ -556,7 +559,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		//Sets border to blackline
 		promptPanel.setBorder(blackline);
 		//Sets Panel size
-		promptPanel.setSize((int) (frameWidth/ scale /4), (int) (frameHeight / scale/2));
+		//promptPanel.setSize((int) (frameWidth/scale/3), (int) (frameHeight / scale /2));
+		promptPanel.setSize((int) (frameWidth/scale/3), (int) (frameHeight / scale/2));
 		//Sets Panel location
 		promptPanel.setLocation(frameWidth/2 + (int) (150 * scale), frameHeight/4);
 		
