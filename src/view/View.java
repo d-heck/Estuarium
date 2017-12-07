@@ -767,6 +767,16 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 				else if (picture == maxTurns){
 					System.out.println(L.organismList.get(2).toString());
 					
+					
+					
+					if(L.organismList.get(picture).isDoesBelong() == false) {
+						System.out.println("Wrong!");
+						L.setStrikes(L.getStrikes() + 1);
+						strikePanel.getComponent(L.getStrikes()-1).setVisible(true);
+					}
+					
+					org_panels.get(picture).setVisible(true);
+					
 					//Add all elements to end-card
 					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
 					endPanel.add(endLabel1);
@@ -777,14 +787,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					endPanel.setVisible(true);
 					promptPanel.setVisible(false);
 					
-					if(L.organismList.get(picture).isDoesBelong() == false) {
-						System.out.println("Wrong!");
-						L.setStrikes(L.getStrikes() + 1);
-						strikePanel.getComponent(L.getStrikes()-1).setVisible(true);
-					}
-					
-					org_panels.get(picture).setVisible(true);
-					promptPanel.setVisible(false);
 					p.revalidate();
 					p.repaint();
 				}
@@ -838,7 +840,16 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 						strikePanel.getComponent(L.getStrikes()-1).setVisible(true);
 					}
 					
+					//Add all elements to end-card
+					endLabel2.setText("You Scored: " + L.getScore() + " out of " + "12" + "!");
+					endPanel.add(endLabel1);
+					endPanel.add(endLabel2);
+					endPanel.add(restartButton);
+					endPanel.add(quitButton);
+					
+					endPanel.setVisible(true);
 					promptPanel.setVisible(false);
+					
 					p.revalidate();
 					p.repaint();
 				}

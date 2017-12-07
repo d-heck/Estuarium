@@ -46,7 +46,7 @@ public class SaltMarshLevel extends Level{
 	 * invasive species.
 	 */
 	private void createUnacceptedList(){
-		unacceptedOrganisms.add(new Organism("Phragmites Reed",false,"I am an invasive species.","resources/images/phragmitesreed.png",50,100));
+		unacceptedOrganisms.add(new Organism("Phragmites Reed",false,"I am an invasive species.","resources/images/phragmitesreed.png",50,200));
 		unacceptedOrganisms.add(new Organism("Anglerfish",false,"I live further out in the ocean.","resources/images/anglerfish.png",300,300));
 		unacceptedOrganisms.add(new Organism("Lynx",false,"I live in forest, mountain, or desert regions.","resources/images/lynx.png",200,480));
 		unacceptedOrganisms.add(new Organism("Purple Loosestrife",false,"I am an invasive species.","resources/images/purpleloosestrife.png",25,300));
