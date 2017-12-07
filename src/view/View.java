@@ -124,7 +124,12 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 
 		//Set up panels
 		JPanel p = new JPanel(new GridBagLayout());
-		p.setSize(frameWidth, frameHeight);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		if(scale>1.0) {
+			p.setSize((int)screenSize.getWidth(), (int) screenSize.getHeight());
+		}else {
+			p.setSize(frameWidth, frameHeight);
+		}
 		p.setOpaque(false);
 
 		//Add Button + Label
@@ -216,7 +221,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		frame.setVisible(true);
 		if(scale>1.0) { 
 			p.setLayout(null);
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			b.setBounds(((int)screenSize.getWidth()/2)-400,((int)screenSize.getHeight()/2)-200,200,400);
 			b1.setBounds(((int)screenSize.getWidth()/2)-200,((int)screenSize.getHeight()/2)-200,200,400);
 			b2.setBounds((int)screenSize.getWidth()/2,((int)screenSize.getHeight()/2)-200,200,400);
@@ -272,15 +276,13 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		promptPanel.setBorder(blackline);
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		//Sets Panel size and Location
 		if(scale>1.0) {
-		//Sets Panel size
-		promptPanel.setSize((int) (screenSize.getWidth()/scale/3), (int) (screenSize.getHeight() / scale/2));
-		//Sets Panel location
-		//promptPanel.setLocation(frameWidth/4 -(int)(.039*frameWidth), frameHeight/4);
-		promptPanel.setLocation((int) screenSize.getWidth()/2 + (int) (150 * scale),(int) screenSize.getHeight()/4);
+			promptPanel.setSize( (int)(frameWidth*scale/4), (int) (frameHeight*scale/3));
+			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
 		}else {
-			promptPanel.setSize( (int)(frameWidth/scale/3), (int) (frameHeight / scale/2));
-			promptPanel.setLocation( (int)frameWidth/2 + (int) (150 * scale),(int) frameHeight/4);
+			promptPanel.setSize( (int)(frameWidth*scale/4), (int) (frameHeight*scale/3));
+			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
 		}
 		
 		//Tutorial Panel
@@ -565,16 +567,14 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		promptPanel.setBorder(blackline);
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		//Sets Panel size and Location
 		if(scale>1.0) {
-			//Sets Panel size
-			promptPanel.setSize((int) (screenSize.getWidth()/scale/3), (int) (screenSize.getHeight() / scale/2));
-			//Sets Panel location
-			//promptPanel.setLocation(frameWidth/4 -(int)(.039*frameWidth), frameHeight/4);
-			promptPanel.setLocation((int) screenSize.getWidth()/2 + (int) (150 * scale),(int) screenSize.getHeight()/4);
-			}else {
-				promptPanel.setSize( (int)(frameWidth/scale/3), (int) (frameHeight / scale/2));
-				promptPanel.setLocation( (int)frameWidth/2 + (int) (150 * scale),(int) frameHeight/4);
-			}
+			promptPanel.setSize( (int)(frameWidth*scale/4), (int) (frameHeight*scale/3));
+			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
+		}else {
+			promptPanel.setSize( (int)(frameWidth*scale/4), (int) (frameHeight*scale/3));
+			promptPanel.setLocation((int) screenSize.getWidth() - (int) promptPanel.getWidth() - 50,(int) screenSize.getHeight()/4);
+		}
 		
 		ArrayList<JLabel> img_labels = new ArrayList<JLabel>(); //JLabels for Prompt
 		ArrayList<JPanel> org_panels = new ArrayList<JPanel>(); //JLabels for Organisms
