@@ -559,6 +559,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		
 		//Add Card Label
 		JLabel nameTag = new JLabel("Label");
+		JLabel desc = new JLabel("Description Label");
 		nameTag.setText("Test");
 		p.add(nameTag);
 		
@@ -603,6 +604,12 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			temp_panel.setLocation((int) (o.getXloc() * scale), (int) (o.getYloc() * scale)); //sets location for organism
 			temp_panel.setVisible(false); //sets visibility to false
 			temp_panel.setSize(400,400); // sets size of organism
+			
+			settings.weightx = 1;
+			settings.gridx = 0;
+			settings.gridwidth = 2;
+			settings.gridy = 2;
+			p.add(desc, settings);
 			
 			JPanel txtpanel = new JPanel(new GridBagLayout());
 			JLabel txtlabel = new JLabel(o.toString());
@@ -737,6 +744,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		
 		//Set First Test
 		nameTag.setText(L.organismList.get(0).getName());
+		desc.setText(L.organismList.get(0).getdesc());
 		
 		//Button Functionality for prompt 
 		bYes.addActionListener(new ActionListener() {
@@ -771,6 +779,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 					
 					org_panels.get(picture).setVisible(true);
 					nameTag.setText(L.organismList.get(picture + 1).getName());
+					desc.setText(L.organismList.get(picture + 1).getdesc());
 					p.remove(img_labels.get(picture));
 					picture++;
 					p.add(img_labels.get(picture));					
@@ -836,7 +845,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 						System.out.println(" Right! \n");
 					}
 					
-					nameTag.setText(L.organismList.get(picture + 1).getName());;
+					nameTag.setText(L.organismList.get(picture + 1).getName());
+					desc.setText(L.organismList.get(picture + 1).getdesc());
 					p.remove(img_labels.get(picture));
 					picture++;
 					p.add(img_labels.get(picture));					

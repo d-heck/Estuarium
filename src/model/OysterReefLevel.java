@@ -47,7 +47,7 @@ public class OysterReefLevel extends Level{
 	 */
 	private void createUnacceptedList(){
 		unacceptedOrganisms.add(new Organism("Green Porcelain Crab",false,"I am an invasive species.","resources/images/greenporcelaincrab.png",300,0));
-		unacceptedOrganisms.add(new Organism("Striped Barnacle",false,"I am an invasive species.","resources/images/barnacle.png",200,300));
+		unacceptedOrganisms.add(new Organism("Striped Barnacle",false,"I am an invasive species.","resources/images/barnacle.png",200,300,"Shelled creatures not native to this area."));
 		unacceptedOrganisms.add(new Organism("European Green Crab",false,"I am an invasive species.","resources/images/europeangreencrab.png",0,400));
 		unacceptedOrganisms.add(new Organism("Tube Worm",false,"I am invasive and can damage the shell of oysters I burrow into.","resources/images/tubeworm.png",450,350));
 		unacceptedOrganisms.add(new Organism("Orange-Striped Anemone",false,"I am invasive and can make it difficult for oysters to feed.","resources/images/anemone.png",400,125));
