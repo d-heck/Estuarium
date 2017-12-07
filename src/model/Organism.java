@@ -25,6 +25,7 @@ public class Organism {
 	String filepath;
 	String filepathFull;
 	String purpose;
+	String description;
 	int xloc;
 	int yloc;
 	public BufferedImage image;
@@ -100,6 +101,21 @@ public class Organism {
 		}
 		xloc = x;
 		yloc = y;
+	}
+	public Organism(String Name, boolean Belongs, String Pur, String File, int x, int y, String desc){
+		name = Name;
+		doesBelong = Belongs;
+		purpose = Pur;
+		filepath = File;
+		try {
+			image = ImageIO.read(new File(filepath));
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		xloc = x;
+		yloc = y;
+		description = desc;
 	}
 	
 	//Getters + Setters
@@ -179,6 +195,9 @@ public class Organism {
 	 */
 	public String toString(){
 		return purpose;
+	}
+	public String getdesc(){
+		return description;
 	}
 	
 }//Class Organism
