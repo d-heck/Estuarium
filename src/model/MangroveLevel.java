@@ -32,7 +32,7 @@ public class MangroveLevel extends Level{
 	 * is set to true.  These organisms belong in a mangrove environment.
 	 */
 	private void createAcceptedList(){
-		acceptedOrganisms.add(new Organism("Kingfisher",true,"I nest in the mangroves.","resources/images/kingfisher.png",875,125));
+		acceptedOrganisms.add(new Organism("Kingfisher",true,"I nest in the mangroves.","resources/images/kingfisher.png",875,-125));
 		acceptedOrganisms.add(new Organism("Fiddler Crab",true,"I burrow into mud at the mangroves roots.","resources/images/fiddlercrab.png",550,200));
 		acceptedOrganisms.add(new Organism("Barnacle",true,"I attach myself to the roots of mangroves.","resources/images/barnacle.png",800,350));
 		acceptedOrganisms.add(new Organism("Oyster",true,"I attach myself to mangrove roots.","resources/images/oyster.png",875,400));
