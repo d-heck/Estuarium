@@ -39,6 +39,7 @@ import javax.swing.JInternalFrame;
  * @author David Heck
  * @author Jason Hickman
  * @author Kevin Doak
+ * @author Nonso Iwu
  * @version 0.6
  */
 
@@ -53,7 +54,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	}
 
 	//Dimensions
-	static double scale = 1.5; // 1.0 = Windowed 1.5 = Full Screen
+	static double scale = 1.0; // 1.0 = Windowed 1.5 = Full Screen
 	
 	static int frameWidth = (int) (1280 * scale);
 	static int frameHeight = (int) (760 * scale);
@@ -103,6 +104,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	//Load Main Menu, Launch Level on Play
 	private void MainMenu() {
 		frame.setUndecorated(true);
+		System.out.println(scale);
 		if (scale > 1) {
 			try {
 				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/images/menufull.png")))));
@@ -113,6 +115,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		else {
 			try {
 				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/images/menu.png")))));
+				frame.setUndecorated(false);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}			
@@ -134,7 +137,8 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		JButton b = new JButton(tutorial);
 		JButton b1 = new JButton(saltmarsh);
 		JButton b2 = new JButton(mangrove);
-		JButton b3 = new JButton(oysterreef);	
+		JButton b3 = new JButton(oysterreef);
+		JButton fs = new JButton("Toggle Fullscreen");
 		
 		//Tutorial Loader
 		b.addActionListener(new ActionListener() {
@@ -185,17 +189,50 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 			}
 		});	
 		
+		fs.addActionListener(new ActionListener() {
+			/**
+			 * actionPerformed returns nothing but makes a fullscreen version or windowed versio
+			 * of the game.
+			 * @param ActionEvent an action performed
+			 */
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				scale = (scale>1.0)? 1.0 : 1.5;
+				frame.dispose();			
+				MainMenu();
+			}
+		});
+		
 		p.add(b);
 		p.add(b1);
 		p.add(b2);
 		p.add(b3);
+		p.add(fs);
 
 		//Display the window.
 		frame.add(p);
 		frame.pack();
 		frame.setVisible(true);
-		frame.setSize(frameWidth, frameHeight);
-		if(scale>1.0) frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		if(scale>1.0) { 
+			p.setLayout(null);
+			b.setBounds(240,360,200,400);
+			b1.setBounds(440,360,200,400);
+			b2.setBounds(640,360,200,400);
+			b3.setBounds(840,360,200,400);
+			fs.setBounds(0,0,fs.getWidth(),fs.getHeight());
+			frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			frame.setSize(screenSize.width,screenSize.height);
+		}else {
+			p.setLayout(null);
+			b.setBounds(240,180,200,400);
+			b1.setBounds(440,180,200,400);
+			b2.setBounds(640,180,200,400);
+			b3.setBounds(840,180,200,400);
+			fs.setBounds(0,0,fs.getWidth(),fs.getHeight());
+			frame.setSize(frameWidth, frameHeight);
+		}
+		
 	}
 	
 	//Tutorial
@@ -333,6 +370,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		else {
 			try {
 				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.background)))));
+				frame.setUndecorated(false);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}			
@@ -463,8 +501,14 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		}
 		frame.pack();
 		frame.setVisible(true);
-		frame.setSize(frameWidth, frameHeight);
-		if(scale>1.0) frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		if(scale>1.0) { 
+			p.setLayout(null);
+			frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			frame.setSize(screenSize.width,screenSize.height);
+		}else {
+			frame.setSize(frameWidth, frameHeight);
+		}
 	}
 	
 	/**
@@ -591,6 +635,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		else {
 			try {
 				frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(L.background)))));
+				frame.setUndecorated(false);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
