@@ -48,8 +48,4 @@ public class Menu extends Level {
 		}
 	}
 	
-	public void play() {
-		
-	}
-	
 }
