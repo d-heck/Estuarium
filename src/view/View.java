@@ -65,34 +65,23 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	 * mouseDragged returns nothing but potentially changes the state of the game if the mouse is 
 	 * dragged.
 	 * @param MouseEvent A mouse drag
-	 * 
 	 */
 	@Override
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-	
+	public void mouseDragged(MouseEvent e) {}
 	
 	/**
 	 * mouseMoved returns nothing but potentially changes the state of the game if the mouse is moved.
 	 * @param MouseEvent A mouse move
-	 * 
 	 */
 	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void mouseMoved(MouseEvent e) {}
 
 	/**
 	 * actionPerformed returns nothing but potentially changes the state of the game if an action is done.
 	 * @param ActionEvent an Action Performed
-	 * 
 	 */
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-	}
-	// TODO: View Class
+	public void actionPerformed(ActionEvent e) {}
 
 	/**
 	 * MainMenu returns nothing but changes the state of the game. It loads the main menu and launches
@@ -237,7 +226,10 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		
 	}
 	
-	//Tutorial
+	/*
+	 * tutorial loads and plays through the scripted tutorial level
+	 * It does not return anything and does not take any parameters.
+	 */
 	private void tutorial(){
 		//Instantiate Level
 		
@@ -898,6 +890,10 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 		if(scale>1.0) frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
+	/*
+	 * View is the basic constructor that creates a new Estuarium window in
+	 * which the game is played.
+	 */
 	public View(){
 		//Create and set up the window.
 		frame = new JFrame("Estuarium");
@@ -906,7 +902,7 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	
 	
 	/**
-	 * Calls function MainMenu
+	 * play calls the private function MainMenu
 	 * 
 	 */
 	public void play() {
