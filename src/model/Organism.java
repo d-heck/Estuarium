@@ -33,26 +33,6 @@ public class Organism {
 	
 	/**
 	 * Constructor for organism
-	 * @return Organism an Organism object
-	 */
-	
-	public Organism() {
-		doesBelong = false;
-		name = "Organism";
-	}//Organism
-	
-	/**
-	 * Constructor for organism
-	 * @param X is a boolean
-	 * @return Organism an Organism object
-	 */
-	
-	public Organism(boolean X) {
-		doesBelong = X;
-	}//Organism
-	
-	/**
-	 * Constructor for organism
 	 * @param Name The name of the organism
 	 * @param Belongs the boolean determining if the organism belongs in the level
 	 * @return Organism an Organism object

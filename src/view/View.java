@@ -905,10 +905,6 @@ public class View extends JFrame implements ActionListener, MouseMotionListener 
 	}
 	
 	
-	public double getScale() {
-		return scale;
-	}
-	
 	/**
 	 * Calls function MainMenu
 	 * 
