@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
  * 
  * 
  * @author David Heck
+ * @author Jason Hickman
  * @author Kevin Doak
  * @author Jeremy Gouveia
  * @see Level
@@ -32,10 +33,9 @@ public class Organism {
 	//Contructors
 	
 	/**
-	 * Constructor for organism
+	 * 2 param Constructor for most basic organism
 	 * @param Name The name of the organism
 	 * @param Belongs the boolean determining if the organism belongs in the level
-	 * @return Organism an Organism object
 	 */
 	public Organism(String Name, boolean Belongs) {
 		name = Name;
@@ -43,7 +43,7 @@ public class Organism {
 	}//Organism
 	
 	/**
-	 * 
+	 * 3 param Constructor 
 	 * @param Name The name of the organism	
 	 * @param Belongs the boolean determining if the organism belongs in the level
 	 * @param Pur Sets the toString
@@ -54,6 +54,13 @@ public class Organism {
 		purpose = Pur;
 	}
 	
+	/**
+	 * 4 param constructor
+	 * @param Name The name of the organism
+	 * @param Belongs the boolean determining if the organism belongs in the level
+	 * @param Pur Sets the toString
+	 * @param File Sets the filepath for the image of the organism
+	 */
 	public Organism(String Name, boolean Belongs, String Pur, String File){
 		name = Name;
 		doesBelong = Belongs;
@@ -67,6 +74,16 @@ public class Organism {
 		}
 	}
 	
+	/**
+	 * 7 param constructor
+	 * @param Name The name of the organism
+	 * @param Belongs the boolean determining if the organism belongs in the level
+	 * @param Pur Sets the toString
+	 * @param File Sets the filepath for the image of the organism
+	 * @param x Sets the int x location for image placement
+	 * @param y Sets the int y location for image placement
+	 * @param desc Sets the string description that gives a hint for the organism
+	 */
 	public Organism(String Name, boolean Belongs, String Pur, String File, int x, int y, String desc){
 		name = Name;
 		doesBelong = Belongs;
@@ -117,7 +134,7 @@ public class Organism {
 	
 	/**
 	 * Gets the xloc field of the organism
-	 * @return
+	 * @return int of x location
 	 */
 	public int getXloc() {
 		return xloc;
@@ -125,7 +142,7 @@ public class Organism {
 
 	/**
 	 * Gets the yloc field of the organism
-	 * @return
+	 * @return int of y location
 	 */
 	public int getYloc() {
 		return yloc;
@@ -156,11 +173,16 @@ public class Organism {
 	}
 	
 	/**
-	 * returns the purpose of the organism
+	 * @return the string explaining why the organism does/doesn't belong
 	 */
-	public String toString(){
+	public String getToString(){
 		return purpose;
 	}
+	
+	/**
+	 * 
+	 * @return the string giving the description/hint for the organism
+	 */
 	public String getdesc(){
 		return description;
 	}
