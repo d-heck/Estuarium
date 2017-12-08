@@ -30,6 +30,7 @@ public class SaltMarshLevel extends Level{
 	/**
 	 * createAcceptedList creates an ArrayList of Organisms for which doesBelong
 	 * is set to true.  These organisms belong in a salt marsh.
+	 * @return Nothing
 	 */
 	private void createAcceptedList(){
 		acceptedOrganisms.add(new Organism("Muskrat",true,"I nest using the vegetation and mud of salt marshes.","resources/images/muskrat.png",300,50,"I can make a home using mud"));
@@ -44,6 +45,7 @@ public class SaltMarshLevel extends Level{
 	 * createUnacceptedList creates an ArrayList of Organisms for which doesBelong
 	 * is set to false.  These organisms do not belong in a salt marsh or are 
 	 * invasive species.
+	 * @return Nothing
 	 */
 	private void createUnacceptedList(){
 		unacceptedOrganisms.add(new Organism("Phragmites Reed",false,"I am an invasive species.","resources/images/phragmitesreed.png",50,200, "I hurt alot of organisms here but I dont care!"));
@@ -57,6 +59,7 @@ public class SaltMarshLevel extends Level{
 	/**
 	 * createOrganismList combines acceptedOrganisms and unacceptedOrganisms
 	 * and uses Collections.shuffle to randomize the order of the list.
+	 * @return Nothing
 	 */
 	public void createOrganismList(){
 		organismList.addAll(acceptedOrganisms);

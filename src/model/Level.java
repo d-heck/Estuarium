@@ -12,6 +12,7 @@ import view.View;
  * accepted and unaccepted organisms
  * @author David Heck
  * @author Jason Hickman
+ * @author Nonso Iwu
  */
 public class Level {
 	
@@ -35,16 +36,33 @@ public class Level {
 		//Returns: the value of variable 'strikes'
 		return strikes;
 	}
+	
+	/**
+	 * Changes the value of the attribute {@code strikes} to the value put for parameter x
+	 * @param x an int
+	 * @return Nothing
+	 */
 	public void setStrikes(int x) {
 		strikes = x;
 		return;
 	}
 	
+	/**
+	 * Returns the value of the {@code score} attribute
+	 * @return An int representing the score of the Level being played after answering questions
+	 * 		   correctly
+	 */
 	public int getScore() {
 		//Parameters: none
 		//Returns: the value of variable 'score'
 		return score;
 	}
+	
+	/**
+	 * Changes the value of the attribute {@code score} to the value put for parameter x
+	 * @param x an int
+	 * @return Nothing
+	 */
 	public void setScore(int x) {
 		score = x;
 		return;
@@ -124,7 +142,7 @@ public class Level {
 	 * Asks the user for a type of habitat (Mangrove, OysterReef, SaltMarsh or tutorial style
 	 * Level)
 	 * @return a {@code MangroveLevel}, {@code OysterReefLevel}, {@code SaltMarshLevel} or
-	 * 			{@code Level} class based on {@code String} entered through Input Stream
+	 * 			{@code Level} object based on {@code String} entered through Input Stream
 	 */
 	public static Level getLevel(){
 		String choice = Menu.chooseLevel();

@@ -30,6 +30,7 @@ public class OysterReefLevel extends Level{
 	/**
 	 * createAcceptedList creates an ArrayList of Organisms for which doesBelong
 	 * is set to true.  These organisms belong in an oyster reef.
+	 * @return Nothing
 	 */
 	private void createAcceptedList(){
 		acceptedOrganisms.add(new Organism("Eastern Oyster",true,"I attach myself to others of my kind to form the main part of an oyster reef.","resources/images/easternoyster.png",300,175, "A small oyster."));
@@ -44,6 +45,7 @@ public class OysterReefLevel extends Level{
 	 * createUnacceptedList creates an ArrayList of Organisms for which doesBelong
 	 * is set to false.  These organisms do not belong in a oyster reef or are 
 	 * invasive species.
+	 * @return Nothing
 	 */
 	private void createUnacceptedList(){
 		unacceptedOrganisms.add(new Organism("Green Porcelain Crab",false,"I am an invasive species.","resources/images/greenporcelaincrab.png",300,60, "A big scary crab, looks mean."));
@@ -57,6 +59,7 @@ public class OysterReefLevel extends Level{
 	/**
 	 * createOrganismList combines acceptedOrganisms and unacceptedOrganisms
 	 * and uses Collections.shuffle to randomize the order of the list.
+	 * @return Nothing
 	 */
 	public void createOrganismList(){
 		organismList.addAll(acceptedOrganisms);

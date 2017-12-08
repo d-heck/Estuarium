@@ -16,7 +16,7 @@ import view.*;
 public class MangroveLevel extends Level{
 	/**
 	 * A basic constructor that instantiates a MangroveLevel and produces a 
-	 * randomized organismList. It does this by calling createAcceptedList, 
+	 * randomized organismList. It does this by calling methods createAcceptedList, 
 	 * createUnacceptedList, and createOrganismList.
 	 */
 	public MangroveLevel(){
@@ -30,6 +30,7 @@ public class MangroveLevel extends Level{
 	/**
 	 * createAcceptedList creates an ArrayList of Organisms for which doesBelong
 	 * is set to true.  These organisms belong in a mangrove environment.
+	 * @return Nothing
 	 */
 	private void createAcceptedList(){
 		acceptedOrganisms.add(new Organism("Kingfisher",true,"I nest in the mangroves.","resources/images/kingfisher.png",875,120,"A small bird that nests near rivers."));
@@ -44,6 +45,7 @@ public class MangroveLevel extends Level{
 	 * createUnacceptedList creates an ArrayList of Organisms for which doesBelong
 	 * is set to false.  These organisms do not belong in a mangrove environment or 
 	 * are invasive species.
+	 * @return Nothing
 	 */
 	private void createUnacceptedList(){
 		unacceptedOrganisms.add(new Organism("Gopher",false,"I can't tunnel since there's too much water.","resources/images/gopher.png",650,250,"An animal that tunnels in fields and farmland."));
@@ -57,6 +59,7 @@ public class MangroveLevel extends Level{
 	/**
 	 * createOrganismList combines acceptedOrganisms and unacceptedOrganisms
 	 * and uses Collections.shuffle to randomize the order of the list.
+	 * @return Nothing
 	 */
 	public void createOrganismList(){
 		organismList.addAll(acceptedOrganisms);
